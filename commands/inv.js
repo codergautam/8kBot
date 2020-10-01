@@ -14,7 +14,7 @@ module.exports = {
         api.getUser(id.id)
         .then((user) => {
             x=true
-            if(user.hasOwnProperty(inv)) {
+            if(user.hasOwnProperty("inv")) {
                 if(user.inv != {}) {
                     var inv = user.inv;
                     var dadata = ""
@@ -29,6 +29,7 @@ module.exports = {
                     .setDescription(dadata)
                     message.channel.send(embed)
                 } else {
+                    console.log("f")
                     const embed = new Discord.MessageEmbed()
                     .setColor('#0099ff')
                     .setTitle(user.name+"'s Inventory")
@@ -37,6 +38,7 @@ module.exports = {
                 }
 
             } else {
+                console.log("ff")
                 const embed = new Discord.MessageEmbed()
                 .setColor('#0099ff')
                 .setTitle(user.name+"'s Inventory")

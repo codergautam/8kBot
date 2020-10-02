@@ -1,12 +1,12 @@
 
-
 /*
+
         const api = require("../api")
 module.exports = {
-	name: 'name',
+	name: 'test',
 	execute(message, args) {
 
-        api.changeBal(message.author.id, 94.94)
+        api.changeBal(message.author.id, 94)
         .then(() => {
             message.channel.send('wo')
         })

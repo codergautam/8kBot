@@ -35,20 +35,26 @@ module.exports = {
                         } else {
                             var moneyEarned = Math.floor(Math.random()*100)+1
                         }
-                    user.bal = user.bal + moneyEarned;
-                    api.addCool(id, "beg", 10000)
-                    
-                    api.modUser(id, user)
-                    .then((user) => {
-                        const embed = new Discord.MessageEmbed()
-                        .setColor('#0099ff')
-                        .setTitle("Beg Results for "+user.name)
-                        .setDescription("You gained `"+moneyEarned+"` coins!\nNow you have a total of `"+user.bal+"`coins!")
-                        message.channel.send(embed)
-                        api.addCool(id, "beg", 10000)
-                        .catch(() => {
-                            message.channel.send("Something glitchd")
+                   // api.addCool(id, "beg", 10000)
+
+                    api.changeBal(id, moneyEarned)
+                    .then(() => {
+                        api.getUser(id)
+                        .then((user) => {
+                            const embed = new Discord.MessageEmbed()
+                            .setColor('#0099ff')
+                            .setTitle("Beg Results for "+user.name)
+                            .setDescription("You gained `"+moneyEarned+"` coins!\nNow you have a total of `"+user.bal+"`coins!")
+                            message.channel.send(embed)
+                            api.addCool(id, "beg", 10000)
+                            .catch(() => {
+                                message.channel.send("Something glitchd")
+                            })
                         })
+                       
+     
+                        
+
                     })
                     .catch((err) => {
       

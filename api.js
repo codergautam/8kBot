@@ -46,6 +46,7 @@ module.exports = {
     },
     modUser(id, obj) {
         return new Promise((resolve, reject) => {
+      
             $.ajax({
                 url: config.server+"/moduser.php",
                 method: "POST",
@@ -55,7 +56,7 @@ module.exports = {
                     json: JSON.stringify(obj)
                 },
                 success: function(json) {
-                    console.log(json)
+                    
             
                         var data = JSON.parse(json);
                    

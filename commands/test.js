@@ -1,28 +1,18 @@
 
-/*
+
 
         const api = require("../api")
 module.exports = {
+    /*
 	name: 'test',
 	execute(message, args) {
-
-        api.changeBal(message.author.id, 94)
-        .then(() => {
-            message.channel.send('wo')
+        api.getUser(message.author.id)
+        .then((user) => {
+            user.bal = user.bal + 100
+            api.modUser(message.author.id, user)
+            .then((user) => {
+                message.channel.send(user.bal)
+            })
         })
-        .catch((obj) => {
-            if (obj.type == 1) {
-                message.channel.send("Not integer")
-            }
-            if (obj.type == 2) {
-                message.channel.send("cannot")
-            }
-            if (obj.type == 0) {
-                message.channel.send("no acc")
-            }
-            if (obj.type == -1) {
-                message.channel.send("err")
-            }
-        })
-    }
 }*/
+}

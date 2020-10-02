@@ -32,7 +32,12 @@ module.exports = {
                         message.channel.send(embed)
                        } else {
                         //BUY THE ITEM
-                        user.inv[item] = {amount: amount}
+                        if(user.inv.hasOwnProperty(item)) {
+                            currentAmount = user.inv[item].amount
+                        } else {
+                            currentAmount = 0;
+                        }
+                        user.inv[item] = {amount: currentAmount+amount}
                         user.bal = user.bal - price
                         //Save their new data
                         api.modUser(message.author.id, user)

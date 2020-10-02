@@ -50,7 +50,8 @@ module.exports = {
                             message.channel.send("Something glitchd")
                         })
                     })
-                    .catch(() => {
+                    .catch((err) => {
+      
                         message.channel.send("Something went wrong")
         
                     })

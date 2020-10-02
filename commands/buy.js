@@ -43,6 +43,10 @@ module.exports = {
                             .setDescription("Congrats! You bought `"+amount+"` "+item+"s for `"+price+"`!\nYour remaining balance is `"+user.bal+"`")
                             message.channel.send(embed)
                         })
+                        .catch((err) => {
+                            message.channel.send("Something went wrong...")
+                            console.log(err)
+                        })
                        }
                         
                     }

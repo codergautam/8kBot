@@ -21,7 +21,8 @@ module.exports = {
             .setDescription('This user has `'+user.bal+"` coins!")
             message.channel.send(embed)
         })
-        .catch(() => {
+        .catch((err) => {
+            console.log(err)
             const embed = new Discord.MessageEmbed()
             .setColor('#0099ff')
             .setTitle("This user doesnt have an account! Create one by running `8k!start`")

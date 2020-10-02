@@ -21,5 +21,8 @@ module.exports = {
             .setDescription(leaderboard(all))
             message.channel.send(embed)
         })
+        .catch(() => {
+            message.channel.send("Leaderboard couldnt be generated")
+        })
     }
 }

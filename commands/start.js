@@ -1,31 +1,57 @@
-const fs = require('fs')
 
+const { JSDOM } = require( "jsdom" );
+const { window } = new JSDOM( "" );
+const $ = require( "jquery" )( window );
+const config = require( "../json/config.json" )
 module.exports = {
 	name: 'start',
 	async execute(message, args) {
-    fs.readFile('./json/main.json', (err, data) => {
-        var json = JSON.parse(data)
-        if(json.hasOwnProperty(message.author.id)) {
-            message.channel.send("You are already added to our database!")
-        } else {
-            json[message.author.id] = {
-                bal: 1000,
-                name: message.author.tag,
-                cooldown: {},
-                inv: {}
-            }
-            fs.writeFile('./json/main.json', JSON.stringify(json), (err) => {
-                
-                if(!err) {
-                    message.channel.send("You have been added to the database!\nWelcome to 8k Currency Game! ")
+        $.ajax({
+            url: config.server+"/getall.php",
+            method: "GET",
+            data: {
+            },
+            success: function(data) {
+                console.log(data)
+                var json = JSON.parse(data)
+                if(json.hasOwnProperty(message.author.id)) {
+                    message.channel.send("You are already added to our database!")
                 } else {
-                    console.log(err)
+                    usertemplate = {
+                        bal: 1000,
+                        name: message.author.tag,
+                        cooldown: {},
+                        inv: {},
+                        id: message.author.id
+                    }
+                    $.ajax({
+                        url: config.server+"/adduser.php",
+                        method: "POST",
+                        data: {
+                            sub2coder: "sub2codergautamonyoutube",
+                            id: message.author.id,
+                            json: JSON.stringify(usertemplate)
+                        },
+                        success: function(data) {
+                          if(JSON.parse(data).success) {
+                            message.channel.send("You have been added to the database!\nWelcome to 8k Currency Game! ")
+                          } else {
+                            message.channel.send("Your account couldn't be created") 
+                          }
+                            
+                                
+                            
+                            
+                        },
+                        error: function(err) {
+              
+                            message.channel.send("Something Went Wrong... ")
+                        }
+
+                    })
                 }
-                
-            })
-            
-        }
-    })
+            }
+          });
 
     }
 }

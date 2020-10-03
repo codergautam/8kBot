@@ -3,10 +3,12 @@ commands = {
     transfer: ["8k!give <amount> <@user>", "Gives <amount> of your coins to <@user>"],
     ask: ["8k!ask", "Kindly asks random people for coins"],
     bal: ["8k!bal <@user>", "See balance of <@user>"],
-    bal: ["8k!inv <@user>", "See inventory of <@user>"],
+    inv: ["8k!inv <@user>", "See inventory of <@user>"],
     shop: ["8k!shop", "View the shop"],
     buy: ["8k!buy <item>", "Buy <item> from shop"],
     rich: ["8k!leaderboard", "See Top 10 users with the most money"],
+    job: ["8k!jobs", "View available jobs!"],
+    job: ["8k!work", "Work at your job for coins"],
 }
 datajjk = "Sup peeps <3 \n I am 8kBot \n Created by Coder Gautam YT \n\n **Fun Commands:**\n`8k!question <question>` - asks a yes or no question to the 8k gods\n\n**Currency Commands**\n"
 for(command in commands) {

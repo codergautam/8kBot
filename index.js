@@ -63,7 +63,6 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
     client.commands.get('balance').execute(message, args, client);
   }
   if(command === 'beg' || command === 'ask') {
-   
       
       client.commands.get('beg').execute(message, args);
 
@@ -80,12 +79,21 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
   if(command === 'inv' ||command === 'inventory') {
     client.commands.get('inv').execute(message, args);
   }
+  if(command === 'job' ||command === 'jobs') {
+    client.commands.get('jobs').execute(message, args);
+  }
+  if(command === 'apply') {
+    client.commands.get('apply').execute(message, args);
+  }
+  if(command === 'work') {
+    client.commands.get('work').execute(message, args);
+  }
 
 } 
   }
 })
 
 //ORIGINAL
-client.login("NzU1MTQ2OTUxODU4ODQ3Nzk2.X1_DZw.HVvPsLDXyLz41H3Qf6myItytYEs");
+//client.login("NzU1MTQ2OTUxODU4ODQ3Nzk2.X1_DZw.HVvPsLDXyLz41H3Qf6myItytYEs");
 //BETA
-//client.login("NzYxMjI5MTM5MzczMzI2MzM4.X3Xj4Q.0cNK_LtkvVL1MGVFvpFO2pjpZXo")
+client.login("NzYxMjI5MTM5MzczMzI2MzM4.X3Xj4Q.0cNK_LtkvVL1MGVFvpFO2pjpZXo")

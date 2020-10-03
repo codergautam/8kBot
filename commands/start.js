@@ -20,7 +20,6 @@ module.exports = {
                     usertemplate = {
                         bal: 1000,
                         name: message.author.tag,
-                        cooldown: {},
                         inv: {},
                         id: message.author.id
                     }

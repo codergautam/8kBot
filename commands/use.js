@@ -42,7 +42,7 @@ api.getUser(message.author.id)
     }
 
 })
-/*.catch((err) => {
+.catch((err) => {
 if(err.type == 0) {
     const embed = new Discord.MessageEmbed()
     .setColor('#0099ff')
@@ -51,7 +51,7 @@ if(err.type == 0) {
 } else {
     message.channel.send("Something went wrong.")
 }
-})*/
+})
         } else {
             const embed = new Discord.MessageEmbed()
             .setColor('RED')

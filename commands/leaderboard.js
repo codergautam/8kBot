@@ -5,7 +5,17 @@ function leaderboard(obj) {
     
     var leaderboard = ""
     sorted.forEach((entry, i) => {
-     leaderboard = leaderboard+`#${i+1}: ${entry.name}- ${entry.bal} coins\n`
+
+        if(i+1==1) {
+            leaderboard = leaderboard+`🥇: ${entry.name}- ${entry.bal} coins\n`
+        } else if(i+1 ==2) {
+            leaderboard = leaderboard+`🥈: ${entry.name}- ${entry.bal} coins\n`
+        } else if(i+1 ==3) {
+            leaderboard = leaderboard+`🥉: ${entry.name}- ${entry.bal} coins\n`
+        } else {
+            leaderboard = leaderboard+`#${i+1}: ${entry.name}- ${entry.bal} coins\n`
+        }
+ 
     })
     return(leaderboard)
     }

@@ -21,6 +21,7 @@ module.exports = {
         
     },
     getUser(id) {
+   
         return new Promise((resolve, reject) => {
 
             $.ajax({

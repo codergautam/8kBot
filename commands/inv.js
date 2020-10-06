@@ -22,12 +22,21 @@ module.exports = {
                         dadata += `**${items[key][0]}** - \`${inv[key].amount}\`\n*${items[key][1]}*\n\n`
                     });
                     
-        
-                    const embed = new Discord.MessageEmbed()
-                    .setColor('#0099ff')
-                    .setTitle(user.name+"'s Inventory")
-                    .setDescription(dadata)
-                    message.channel.send(embed)
+                    if(!dadata.replace(/\s/g, '').length) {
+                        const embed = new Discord.MessageEmbed()
+                        .setColor('#0099ff')
+                        .setTitle(user.name+"'s Inventory")
+                        .setDescription("No items.")
+                        .setFooter('You can buy an item from the shop `8k!shop`')
+                        message.channel.send(embed)
+                    } else {
+                        const embed = new Discord.MessageEmbed()
+                        .setColor('#0099ff')
+                        .setTitle(user.name+"'s Inventory")
+                        .setDescription(dadata)
+                        message.channel.send(embed)
+                    }
+
                 } else {
                     console.log("f")
                     const embed = new Discord.MessageEmbed()

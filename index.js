@@ -88,7 +88,9 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
   if(command === 'work') {
     client.commands.get('work').execute(message, args);
   }
-
+  if(command === 'use') {
+    client.commands.get('use').execute(message, args);
+  }
 } 
   }
 })

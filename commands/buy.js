@@ -9,6 +9,7 @@ module.exports = {
         api.getUser(message.author.id)
         .then((user) => {
             var item = args.join(' ').toLowerCase()
+            if(item != 0) {
             if(items.hasOwnProperty(item)) {
                 message.channel.send("How many "+item+"s do you want? \n Please respond within 20 seconds");
                 const collector = message.channel.createMessageCollector(m => m.author.id == message.author.id,{max:1,time: 20000})
@@ -65,7 +66,13 @@ module.exports = {
                 message.channel.send(embed)
             }
 
-
+        } else {
+            const embed = new Discord.MessageEmbed()
+            .setColor('RED')
+            .setTitle("No item entered")
+            .setDescription("Please use the command like `8k!buy <itemname>`\nType `8k!shop` for a list of items")
+            message.channel.send(embed)
+        }
         })
         .catch((err) => {
             if(err.type == 0) {
@@ -76,6 +83,8 @@ module.exports = {
             } else {
                 message.channel.send("Something went wrong....")
             }
+        
         })
-    }
+    
+      }
 }

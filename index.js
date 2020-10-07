@@ -10,10 +10,6 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 let stats = ["8k bot", "8k!help"]
 let myArray = ["dnd", "available", "idle"]
 
-var cooldowns = {
-}
-
-
 client.on("ready", () => {
 
 setInterval(function() {
@@ -90,6 +86,9 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
   }
   if(command === 'use') {
     client.commands.get('use').execute(message, args);
+  }
+  if(command === 'sell') {
+    client.commands.get('sell').execute(message, args);
   }
 } 
   }

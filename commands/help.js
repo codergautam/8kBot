@@ -8,6 +8,7 @@ commands = {
     inv: ["8k!inv <@user>", "See inventory of <@user>"],
     shop: ["8k!shop", "View the shop"],
     buy: ["8k!buy <item>", "Buy <item> from shop"],
+    buy: ["8k!sell <item>", "Sell <item>"],
     use: ["8k!use <item>", "Use <item>"],
     rich: ["8k!leaderboard", "See Top 10 users with the most money"],
     job: ["8k!jobs", "View available jobs!"],

@@ -3,7 +3,7 @@ const api = require('../api')
 module.exports = {
     
 	name: 'apple',
-	use(message, userItem, itemData, user) {
+	use(message, userItem, user) {
 		if(Math.floor(Math.random()*50+1 == 30)) {
 			var moneyEarn = 50000
 			var type = "LEGENDARY GOLDEN APPLE. YUM!"
@@ -41,5 +41,22 @@ api.modUser(message.author.id, user)
 })
 
 		
+		},
+		sell(message, userItem, user, amount) {
+			const priceEarn = 900 * amount
+			 user.inv.apple.amount = userItem.amount - amount
+			 user.bal += priceEarn
+
+			 api.modUser(message.author.id, user)
+			 .then(() => {
+				const embed = new Discord.MessageEmbed()
+				.setColor('#0099ff')
+				.setTitle(`Sold ${amount} Apples`)
+				.setDescription(`You sold \`${amount}\` apples for \`${priceEarn}\` coins!\nYour total balance is \`${user.bal}\``)
+				message.channel.send(embed)
+			 })
+			 .catch(() => {
+
+			 })
 		}
     }

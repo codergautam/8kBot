@@ -1,3 +1,5 @@
+var config = require("../json/config.json")
+
 commands = {
     start: ["8k!start", "Creates a 8k Currency Account"],
     transfer: ["8k!give <amount> <@user>", "Gives <amount> of your coins to <@user>"],
@@ -11,7 +13,7 @@ commands = {
     job: ["8k!jobs", "View available jobs!"],
     work: ["8k!work", "Work at your job for coins"],
 }
-datajjk = "Sup peeps <3 \n I am 8kBot \n Created by Coder Gautam YT \n\n **Fun Commands:**\n`8k!question <question>` - asks a yes or no question to the 8k gods\n\n**Currency Commands**\n"
+datajjk = "Sup peeps \n I am 8kBot, an awesome currency bot! \n Created by Coder Gautam YT \n**You are using __v"+config.version+"__**\n\n **Fun Commands:**\n`8k!question <question>` - asks a yes or no question to the 8k gods\n\n**Currency Commands**\n"
 for(command in commands) {
   datajjk = datajjk + "`"+commands[command][0]+"` - "+commands[command][1]+"\n";
 }

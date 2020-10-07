@@ -45,6 +45,9 @@ api.modUser(message.author.id, user)
 		sell(message, userItem, user, amount) {
 			const priceEarn = 900 * amount
 			 user.inv.apple.amount = userItem.amount - amount
+			 if(user.inv.apple.amount == 0) {
+				delete user.inv.apple
+			}
 			 user.bal += priceEarn
 
 			 api.modUser(message.author.id, user)

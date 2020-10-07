@@ -1,6 +1,6 @@
 {
   "name": "linkvertise-bypass",
-  "version": "1.2.2",
+  "version": "1.2.2b",
   "description": "bypasses linkvertise",
   "main": "index.js",
   "scripts": {

@@ -28,21 +28,14 @@ api.getUser(message.author.id)
     }
 
     if(user.inv.hasOwnProperty(item)) {
-        api.checkCool(message.author.id, "use")
-        .then((cooldown) => {
-            if(cooldown.cooldown) {
-                const embed = new Discord.MessageEmbed()
-                .setColor('#0099ff')
-                .setTitle("Cooldown")
-                .setDescription("You just used an item!\nYou can use an item again in `"+api.convertMS(cooldown.msleft)+"`")
-                message.channel.send(embed)
-            } else {
-                api.addCool(message.author.id, "use", 15000)
+
+
+            
                 var userItem = user.inv[item]
                 itemfiles.get(item).use(message,userItem, user)
         
-            }
-        })
+            
+        
 
 
     } else {

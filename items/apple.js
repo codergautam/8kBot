@@ -4,6 +4,15 @@ module.exports = {
     
 	name: 'apple',
 	use(message, userItem, user) {
+		api.checkCool(message.author.id, "apple")
+        .then((cooldown) => {
+            if(cooldown.cooldown) {
+                const embed = new Discord.MessageEmbed()
+                .setColor('#0099ff')
+                .setTitle("Cooldown")
+                .setDescription("You just ate an apple!\nYou can eat another one in `"+api.convertMS(cooldown.msleft)+"`")
+                message.channel.send(embed)
+            } else {
 		if(Math.floor(Math.random()*50+1 == 30)) {
 			var moneyEarn = 50000
 			var type = "LEGENDARY GOLDEN APPLE. YUM!"
@@ -35,11 +44,16 @@ api.modUser(message.author.id, user)
 		.setDescription("That was a "+type+"\nYou got `"+moneyEarn+"` coins!")
 	
 		message.channel.send(embed)
+		api.addCool(message.author.id, "apple", 5000)
+		.catch(() => {
+			
+		})
 })
+			
 .catch(() => {
 	message.channel.send("Something went wrongg")
 })
-
-		
+			} 
+			})
 		}
     }

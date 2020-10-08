@@ -25,7 +25,7 @@ if(randm == 1) {
 } else if(randm >=2 && randm <= 9) {
    var moneyEarned = 10000 * amount
     var typ1e = "JACKPOT!!!!!💰💰💰"
-} else if(randm >= 80 && randm <=100) {
+} else if(randm >= 70 && randm <=100) {
    var moneyEarned = 1000 * amount
    var typ1e = "Quik Cash💵💵"
 } else {

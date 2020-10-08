@@ -1,5 +1,5 @@
 {
     "apple": ["Apple", "A tasty red apple!🍎", 1000, {"custom": false, "price": 900}],
-    "lottery": ["Lottery", "A lottery ticket, used for entering the lottery!🎟️", 50, {"custom": false, "price": 10}]
+    "lottery": ["Lottery", "A lottery ticket, used for entering the lottery!🎟️", 150, {"custom": false, "price": 10}]
 }
 

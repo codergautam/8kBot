@@ -22,10 +22,10 @@ var randm = Math.floor(Math.random()*100)+1
 if(randm == 1) {
     var moneyEarned = 100000 * amount
     var typ1e = "MEGA MEGA JACKPOT!!!!!🤑🤑🤑🤑"
-} else if(randm >=2 && randm <= 5) {
+} else if(randm >=2 && randm <= 9) {
    var moneyEarned = 10000 * amount
     var typ1e = "JACKPOT!!!!!💰💰💰"
-} else if(randm >= 6 && randm <=10) {
+} else if(randm >= 80 && randm <=100) {
    var moneyEarned = 1000 * amount
    var typ1e = "Quik Cash💵💵"
 } else {
@@ -51,7 +51,7 @@ message.channel.send("WAITING FOR LOTTERY RESULTS!!!")
         }, 1000)
     })
     .catch(() => {
-        message23.channel.send("Something went wrong")
+        message23.channel.send("Something went wrong. Pls try again")
     })
 
 

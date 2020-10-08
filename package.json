@@ -1,6 +1,6 @@
 {
   "name": "8kbot",
-  "version": "1.3a",
+  "version": "1.3b",
   "description": "currency bot",
   "main": "index.js",
   "scripts": {

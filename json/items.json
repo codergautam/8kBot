@@ -1,3 +1,4 @@
 {
-    "apple": ["Apple", "A tasty red apple!🍎", 1000]
+    "apple": ["Apple", "A tasty red apple!🍎", 1000, {"custom": false, "price": 900}],
+    "lottery": ["Lottery", "A lottery ticket, used for entering the lottery!🎟️", 100, {"custom": false, "price": 10}]
 }

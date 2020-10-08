@@ -7,7 +7,8 @@ const jobfiles = new Discord.Collection();
 const jobarray = fs.readdirSync('./jobs/').filter(file => file.endsWith('.js'));
 for (const file of jobarray) {
 	const jobdata = require(`../jobs/${file}`);
-	jobfiles.set(jobdata.name, jobdata);
+    jobfiles.set(jobdata.name, jobdata);
+    console.log("Initialized "+`./jobs/${file}`)
 } 
 
 

@@ -19,7 +19,12 @@ module.exports = {
                     var inv = user.inv;
                     var dadata = ""
                     Object.keys(inv).forEach(key => {
-                        dadata += `**${items[key][0]}** - \`${inv[key].amount}\`\n*${items[key][1]}*\n\n`
+                        if(items.hasOwnProperty(key)) {
+                            dadata += `**${items[key][0]}** - \`${inv[key].amount}\`\n*${items[key][1]}*\n\n`
+                        } else {
+                            dadata += `**${key}** - \`${inv[key].amount}\`\n*Unknown Description...*\n\n`
+                        }
+                       
                     });
                     
                     if(!dadata.replace(/\s/g, '').length) {

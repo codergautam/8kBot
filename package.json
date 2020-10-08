@@ -1,7 +1,7 @@
 {
-  "name": "linkvertise-bypass",
-  "version": "1.2.2b",
-  "description": "bypasses linkvertise",
+  "name": "8kbot",
+  "version": "1.3a",
+  "description": "currency bot",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

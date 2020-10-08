@@ -41,25 +41,5 @@ api.modUser(message.author.id, user)
 })
 
 		
-		},
-		sell(message, userItem, user, amount) {
-			const priceEarn = 900 * amount
-			 user.inv.apple.amount = userItem.amount - amount
-			 if(user.inv.apple.amount == 0) {
-				delete user.inv.apple
-			}
-			 user.bal += priceEarn
-
-			 api.modUser(message.author.id, user)
-			 .then(() => {
-				const embed = new Discord.MessageEmbed()
-				.setColor('#0099ff')
-				.setTitle(`Sold ${amount} Apples`)
-				.setDescription(`You sold \`${amount}\` apples for \`${priceEarn}\` coins!\nYour total balance is \`${user.bal}\``)
-				message.channel.send(embed)
-			 })
-			 .catch(() => {
-
-			 })
 		}
     }

@@ -8,11 +8,12 @@ commands = {
     inv: ["8k!inv <@user>", "See inventory of <@user>"],
     shop: ["8k!shop", "View the shop"],
     buy: ["8k!buy <item>", "Buy <item> from shop"],
-    buy: ["8k!sell <item>", "Sell <item>"],
+    sell: ["8k!sell <item>", "Sell <item>"],
     use: ["8k!use <item>", "Use <item>"],
     rich: ["8k!leaderboard", "See Top 10 users with the most money"],
     job: ["8k!jobs", "View available jobs!"],
     work: ["8k!work", "Work at your job for coins"],
+    rob: ["8k!rob <@user>", "Rob money from <@user>"],
 }
 datajjk = "Sup peeps \n I am 8kBot, an awesome currency bot! \n Created by Coder Gautam YT \n**You are using __v"+config.version+"__**\n\n **Fun Commands:**\n`8k!question <question>` - asks a yes or no question to the 8k gods\n\n**Currency Commands**\n"
 for(command in commands) {

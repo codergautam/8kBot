@@ -91,7 +91,7 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
   if(command === 'sell') {
     client.commands.get('sell').execute(message, args);
   }
-  if(command === 'rob' || command === 'steal') {
+  if(command === 'rob' || command === 'steal' || command === 'take') {
     client.commands.get('rob').execute(message, args);
   }
 } 

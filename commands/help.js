@@ -1,7 +1,9 @@
 var package = require("../package.json")
 
 commands = {
+  invite: ["8k!invite", "Link to add 8k bot to your server!"],
     start: ["8k!start", "Creates a 8k Currency Account"],
+
     transfer: ["8k!give <amount> <@user>", "Gives <amount> of your coins to <@user>"],
     ask: ["8k!ask", "Kindly asks random people for coins"],
     bal: ["8k!bal <@user>", "See balance of <@user>"],

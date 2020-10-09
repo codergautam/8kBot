@@ -94,6 +94,9 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
   if(command === 'rob' || command === 'steal' || command === 'take') {
     client.commands.get('rob').execute(message, args);
   }
+  if(command === 'invite') {
+    client.commands.get('invite').execute(message, args);
+  }
 } 
   }
 })

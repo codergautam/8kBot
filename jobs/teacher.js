@@ -46,7 +46,7 @@ module.exports = {
             var moneyEarned = 0
             embed.setDescription("You took your students on a field trip and they hated it.\nYou get 0 coins lol")
         } else if(num == 4) {
-            var moneyEarned = 1500 + getRandomInt(100, 500)
+            var moneyEarned = 1500 + getRandomInt(400, 500)
             var dd = moneyEarned - 1500
             embed.setDescription("You taught your kids well! \nYou got 1500 coins and an extra `"+dd+"` coins from the princapal")
         } else if(num == 5) {
@@ -56,10 +56,10 @@ module.exports = {
             var moneyEarned =  getRandomInt(1000, 2000)
             embed.setDescription("You were tired but still a good teacher.\n You got `"+moneyEarned+"` coins")
         } else if(num == 7) {
-            var moneyEarned =  getRandomInt(0, 500)
+            var moneyEarned =  getRandomInt(1000, 2000)
             embed.setDescription("You got mad at that one kid who was playing video games during class\n `"+moneyEarned+"` coins")
         } else {
-            var moneyEarned =  getRandomInt(500, 2000)
+            var moneyEarned =  getRandomInt(1500, 2000)
             embed.setDescription("Today was an uneventful day\nYou got `"+moneyEarned+"` coins")
         }
 

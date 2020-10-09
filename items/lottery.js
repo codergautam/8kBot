@@ -31,7 +31,7 @@ module.exports = {
         if(randm == 1) {
             var moneyEarned = 100000 * amount
             var typ1e = "MEGA MEGA JACKPOT!!!!!🤑🤑🤑🤑"
-        } else if(randm >=2 && randm <= 9) {
+        } else if(randm >=2 && randm <= 7) {
            var moneyEarned = 10000 * amount
             var typ1e = "JACKPOT!!!!!💰💰💰"
         } else if(randm >= 85 && randm <=100) {

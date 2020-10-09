@@ -48,7 +48,7 @@ function leaderboard(obj) {
 module.exports = {
 	name: 'leaderboard',
 	async execute(message, args) {
-        if(args[0].toLowerCase() == "local") {
+        if((args[0] ? args[0].toLowerCase() : "") == "local") {
             api.getAll()
             .then((all) => {
             const embed = new Discord.MessageEmbed()
@@ -61,7 +61,7 @@ module.exports = {
                 console.log(err)
                 message.channel.send("Leaderboard couldnt be generated")
             })
-        } else if(args[0].toLowerCase() == "global"){
+        } else if((args[0] ? args[0].toLowerCase() : "") == "global"){
             api.getAll()
             .then((all) => {
                 const embed = new Discord.MessageEmbed()

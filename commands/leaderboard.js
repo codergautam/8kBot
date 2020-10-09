@@ -22,6 +22,69 @@ function leaderboard(obj) {
     })
     return(leaderboard)
     }
+
+module.exports = {
+	name: 'leaderboard',
+	async execute(message, args) {
+        const embed = new Discord.MessageEmbed()
+        .setColor('YELLOW')
+        .setTitle("Leaderboards")
+        .setDescription("Which leaderboard do you want?\n\nType `local` for **"+message.guild.name+"'s leaderboard**\nType `global` for the world-wide leaderboard!")
+        .setFooter("You have "+user.inv[item].amount+" "+item+"s")
+        message.channel.send(embed)
+        const collector = message.channel.createMessageCollector(m => m.author.id == message.author.id,{max:1,time: 20000})
+        collector.on("collect", (msg) => {
+            if(message.content.toLowerCase() == "local") {
+
+
+            } else if(message.content.toLowerCase() == "global") {
+                api.getAll()
+                .then((all) => {
+                    const embed = new Discord.MessageEmbed()
+                    .setColor('#0099ff')
+                    .setTitle("Global Leaderboard")
+                    .setDescription(leaderboard(all))
+                    message.channel.send(embed)
+                })
+                .catch(() => {
+                    message.channel.send("Leaderboard couldnt be generated")
+                })
+            } else {
+                const embed = new Discord.MessageEmbed()
+                .setColor('#0099ff')
+                .setTitle("Global Leaderboard")
+                .setDescription(leaderboard(all))
+                message.channel.send(embed)
+            }
+        })
+
+    }
+}
+/*
+const api = require("../api")
+const Discord = require("discord.js")
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+}
+function leaderboard(obj) {
+    const sorted = Object.values(obj).sort((a, b) => a.bal - b.bal).reverse().slice(0,10)
+    
+    var leaderboard = ""
+    sorted.forEach((entry, i) => {
+        dk = numberWithCommas(entry.bal)
+        if(i+1==1) {
+            leaderboard = leaderboard+`🥇 **${entry.name}**- \`${dk}\` coins\n`
+        } else if(i+1 ==2) {
+            leaderboard = leaderboard+`🥈 ${entry.name}- \`${dk}\` coins\n`
+        } else if(i+1 ==3) {
+            leaderboard = leaderboard+`🥉 ${entry.name}- \`${dk}\` coins\n`
+        } else {
+            leaderboard = leaderboard+`#${i+1}: ${entry.name}- \`${dk}\` coins\n`
+        }
+ 
+    })
+    return(leaderboard)
+    }
     function localleaderboard(obj, guild) {
         const sorted = Object.values(obj).sort((a, b) => a.bal - b.bal).reverse().slice(0,10)
         
@@ -117,4 +180,4 @@ module.exports = {
         }
 
     }
-}
+}*/

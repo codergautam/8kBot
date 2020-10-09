@@ -58,7 +58,9 @@ module.exports = {
                             })
                             
                         } else {
-                            var moneyTaken = Math.floor(((Math.floor(Math.random()*5)+1)/100)*mainuser.bal)
+                          
+
+                            var moneyTaken = Math.floor(((Math.floor(Math.random()*5)+1)/100)*Math.floor(1000000 <= mainuser ? 1000000:mainuser.bal))
                             
                             api.changeBal(message.author.id, -moneyTaken)
                             .then(() => {

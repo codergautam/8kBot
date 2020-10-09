@@ -1,4 +1,4 @@
-var config = require("../json/config.json")
+var package = require("../package.json")
 
 commands = {
     start: ["8k!start", "Creates a 8k Currency Account"],
@@ -15,7 +15,7 @@ commands = {
     work: ["8k!work", "Work at your job for coins"],
     rob: ["8k!rob <@user>", "Rob money from <@user>"],
 }
-datajjk = "Sup peeps \n I am 8kBot, an awesome currency bot! \n Created by Coder Gautam YT \n**You are using __v"+config.version+"__**\n\n **Fun Commands:**\n`8k!question <question>` - asks a yes or no question to the 8k gods\n\n**Currency Commands**\n"
+datajjk = "Sup peeps \n I am 8kBot, an awesome currency bot! \n Created by Coder Gautam YT \n**You are using __v"+package.version+"__**\n\n **Fun Commands:**\n`8k!question <question>` - asks a yes or no question to the 8k gods\n\n**Currency Commands**\n"
 for(command in commands) {
   datajjk = datajjk + "`"+commands[command][0]+"` - "+commands[command][1]+"\n";
 }

@@ -11,7 +11,21 @@ module.exports = {
             var item = args.join(' ').toLowerCase()
             if(item != 0) {
             if(items.hasOwnProperty(item)) {
-                message.channel.send("How many "+item+"s do you want? \n Please respond within 20 seconds");
+                if(Math.round(user.bal/items[item][2]) == 0) {
+                    const embed = new Discord.MessageEmbed()
+                    .setColor('RED')
+                    .setTitle("Not Enough Coins")
+                    .setDescription("You need `"+(user.bal-items[item][2])*-1+"` more coins to buy 1 "+item)
+                    message.channel.send(embed)
+                } else {
+
+                
+                const embed = new Discord.MessageEmbed()
+                .setColor('GREEN')
+                .setTitle("Buying "+item)
+                .setDescription("How many "+item+"s do you want? \n Please respond within 20 seconds")
+                .setFooter("You can buy up to "+Math.round(user.bal/items[item][2])+" "+item+"s")
+                message.channel.send(embed)
                 const collector = message.channel.createMessageCollector(m => m.author.id == message.author.id,{max:1,time: 20000})
                 collector.on("collect", (message23) => {
                     if(isNaN(parseInt(message23.content)) || parseInt(message23.content) < 1) {
@@ -58,6 +72,7 @@ module.exports = {
                     }
                     
                 })
+            }
             } else {
                 const embed = new Discord.MessageEmbed()
                 .setColor('RED')

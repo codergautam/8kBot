@@ -42,7 +42,12 @@ api.getUser(message.author.id)
                     var userItem = user.inv[item]
                     itemfiles.get(item).sell(message,userItem, user)
                 } else {
-                    message.channel.send("How much "+item+"s do you want to sell?\nPlease respond within 20 seconds")
+                    const embed = new Discord.MessageEmbed()
+                    .setColor('GREEN')
+                    .setTitle("Buying "+item)
+                    .setDescription("How many "+item+"s do you want to sell? \n Please respond within 20 seconds")
+                    .setFooter("You have "+user.inv[item].amount+" "+item+"s")
+                    message.channel.send(embed)
                     const collector = message.channel.createMessageCollector(m => m.author.id == message.author.id,{max:1,time: 20000})
                     collector.on("collect", (message23) => {
                         if(isNaN(parseInt(message23.content)) || parseInt(message23.content) < 1) {
@@ -75,13 +80,13 @@ api.getUser(message.author.id)
                                             const embe45d = new Discord.MessageEmbed()
                                             .setColor('#0099ff')
                                             .setTitle(`Sold ${amount} ${item}s`)
-                                            .setDescription(`You sold \`${amount}\` ${item}s for \`${priceEarn}\` coins!\nYour total balance is \`${user.bal}\`\nYou have \`${user.inv[item].amount}\` ${item}s left!`)
+                                            .setDescription(`You sold \`${amount}\` ${item}s for \`${priceEarn}\` coins!\nYour total balance is \`${user.bal}\`\nYou have \`${(user.inv.hasOwnProperty(item) ? user.inv[item].amount : 0)}\` ${item}s left!`)
                                             coolmesgae.channel.send(embe45d)
      
                                            api.addCool(message.author.id, "sell", 15000)
                                         })
-                                        .catch(() => {
-                           
+                                        .catch((err) => {
+                           console.log(err)
                                         })
                                     } else {
                                         const embed = new Discord.MessageEmbed()

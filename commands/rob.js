@@ -11,6 +11,13 @@ module.exports = {
         var user = message.mentions.users.first()
         
         if(user) {
+            if(user.id == message.author.id) {
+                const embed = new Discord.MessageEmbed()
+                .setColor('#0099ff')
+                .setTitle("You cant steal from yourself lol")
+                
+                message.channel.send(embed)
+            } else {
             api.getUser(message.author.id) 
                 .then((mainuser) => {
                     if(mainuser.bal < 1000) {
@@ -101,9 +108,9 @@ module.exports = {
                         message.channel.send("Something went wrong. Pls try again")
                     }
                 })
-            
+            }   
         } else {
-            message.channel.send("Please tag a user to steal from!\nFor example: `8k!steal <@user>`")
+            message.channel.send("Please tag a user to steal from!\nFor example: `8k!rob <@user>`")
         }
     }
 }

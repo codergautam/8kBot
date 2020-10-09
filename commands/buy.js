@@ -24,14 +24,14 @@ module.exports = {
                 .setColor('GREEN')
                 .setTitle("Buying "+item)
                 .setDescription("How many "+item+"s do you want? \n Please respond within 20 seconds")
-                .setFooter("You can buy up to "+Math.round(user.bal/items[item][2])+" "+item+"s")
+                .setFooter("You can buy up to "+Math.floor(user.bal/items[item][2])+" "+item+"s")
                 message.channel.send(embed)
                 const collector = message.channel.createMessageCollector(m => m.author.id == message.author.id,{max:1,time: 20000})
                 collector.on("collect", (message23) => {
-                    if(isNaN(parseInt(message23.content)) || parseInt(message23.content) < 1) {
+                    if(isNaN(Number(message23.content)) || Number(message23.content) < 1) {
                         message23.channel.send("Pls enter a valid number... \n Run the command again")
                     } else {
-                        var amount = parseInt(message23.content)
+                        var amount = Number(message23.content)
                         var price = items[item][2] * amount
                         //add inventory if does not exist
                        if(!user.hasOwnProperty("inv")) {

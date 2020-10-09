@@ -50,12 +50,12 @@ api.getUser(message.author.id)
                     message.channel.send(embed)
                     const collector = message.channel.createMessageCollector(m => m.author.id == message.author.id,{max:1,time: 20000})
                     collector.on("collect", (message23) => {
-                        if(isNaN(parseInt(message23.content)) || parseInt(message23.content) < 1) {
+                        if(isNaN(Number(message23.content)) || Number(message23.content) < 1) {
                             message23.channel.send("Pls enter a valid number... \n Run the command again")
                         } else {
-                            amount = parseInt(message23.content)
+                            amount = Number(message23.content)
                             if(user.inv[item].amount >= amount) {
-                                var amount = parseInt(message23.content)
+                                var amount = Number(message23.content)
                                 var userItem = user.inv[item]
                 
                                 var sellthing = items[item][3]

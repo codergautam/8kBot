@@ -22,10 +22,10 @@ module.exports = {
                 message.channel.send(embed)
                 const collector67 = message.channel.createMessageCollector(m => m.author.id == message.author.id,{max:1,time: 20000})
                 collector67.on("collect", (message23) => {
-                    if(isNaN(parseInt(message23.content)) || parseInt(message23.content) < 1) {
+                    if(isNaN(Number(message23.content)) || Number(message23.content) < 1) {
                         message23.channel.send("Pls enter a valid number... \n Run the command again")
                     } else {
-                    amount = parseInt(message23.content)
+                    amount = Number(message23.content)
                     if(userItem.amount >= amount) {
         var randm = Math.floor(Math.random()*100)+1
         if(randm == 1) {

@@ -49,7 +49,7 @@ module.exports = {
                                 } else {
                       
                         if(Math.floor(Math.random()*3)+1 == 3) {
-                            var maxSteal = 1000000
+                            var maxSteal = 500000
                             var toSteal = Math.floor(Math.floor(Math.random()*10)+1 == 10 ? (taguser.bal >= maxSteal ? maxSteal:taguser.bal)*getRandomInt(5,8)/100 : (taguser.bal >= maxSteal ? maxSteal:taguser.bal)*(Math.floor(Math.random()*10)+1)/100)
                             api.changeBal(message.author.id, toSteal)
                             .then(() => {

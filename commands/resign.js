@@ -11,7 +11,7 @@ module.exports = {
                     const embed = new Discord.MessageEmbed()
                     .setColor('#0099ff')
                     .setTitle("Cooldown")
-                    .setDescription("Dont beg too much\nYou can beg again in `"+api.convertMS(cooldown.msleft)+"`")
+                    .setDescription("You just resigned your old job, you can resign again in `"+api.convertMS(cooldown.msleft)+"`")
                     message.channel.send(embed)
                 } else {
                     

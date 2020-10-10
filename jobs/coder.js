@@ -1,6 +1,6 @@
 
 module.exports = {
-	name: 'teacher',
+	name: 'coder',
 	interview(message, callback) {
         message.channel.send("Coming soon!")
     }}

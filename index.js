@@ -97,8 +97,6 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
   if(command === 'invite') {
     client.commands.get('invite').execute(message, args);
   }
-  
-  
   if(command === 'resign'||command === 'quir') {
     client.commands.get('resign').execute(message, args);
   }

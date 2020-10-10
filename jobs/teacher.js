@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { get } = require('jquery');
+
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);

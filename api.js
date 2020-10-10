@@ -148,8 +148,8 @@ module.exports.getUser(id)
         } else {
             user.bal = user.bal + amount
             module.exports.modUser(id, user)
-            .then(() => {
-                resolve()
+            .then((user) => {
+                resolve(user)
             })
             .catch((err) => {
                 reject(err)
@@ -188,5 +188,45 @@ module.exports.getUser(id)
             }
         })
     })
+    },
+    userExists(id) {
+        return new Promise((resolve, reject) => {
+        $.ajax({
+            url: config.server+"/getall.php",
+            method: "GET",
+            data: {
+            },
+            success: function(dta) {
+                try {
+                    var json = JSON.parse(dta)
+                } catch {
+                    return(undefined)
+                }
+        
+                if(json.hasOwnProperty(id.toString())) {
+                    resolve(true)
+                     } else {
+         resolve(false)
+                         
+                     
+             }
+            
+            },
+            error: function() {
+               reject()
+            }
+        
+        })
+    })
+      
+            
+
+                
+        
+
+
+
     }
-}
+        
+    }
+

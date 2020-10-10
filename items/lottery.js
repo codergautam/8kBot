@@ -1,5 +1,4 @@
 const Discord = require('discord.js')
-const { type } = require('jquery')
 const api = require('../api')
 module.exports = {
     

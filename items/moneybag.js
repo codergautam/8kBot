@@ -9,7 +9,16 @@ module.exports = {
     
 	name: 'moneybag',
 	use(message, userItem, user) {
-  
+        api.checkCool(message.author.id, "moneybag")
+        .then((cooldown) => {
+            if(cooldown.cooldown) {
+                const embed = new Discord.MessageEmbed()
+                .setColor('#0099ff')
+                .setTitle("Cooldown")
+                .setDescription("You just used a moneybag. You can use one again in `"+api.convertMS(cooldown.msleft)+"`")
+                message.channel.send(embed)
+            } else {
+
                 const embed111 = new Discord.MessageEmbed()
                 .setColor('#0099ff')
                 .setTitle("Catch the moneybag!")
@@ -50,6 +59,7 @@ module.exports = {
                                         .setDescription(use22r.name+" caught the moneybag and earned `"+moneyetn+"` coins!\n"+`${user.name} gets \`${ownerearn}\` extra coins for being a nice person!`)
                                         .setFooter("\"I caught a bag of money\"- "+use22r.name)
                                         message.channel.send(embed111)
+                                        api.addCool(message.author.id, "moneybag", 1800000)
                                     })
 
                                 })
@@ -120,6 +130,7 @@ module.exports = {
                                         .setDescription(`The moneybag was emptied...\n ${user.name} gets \`${ownerearn}\` extra coins for being a nice person!`)
                                         .setFooter("\" we got some free money ay\" -"+user.name)
                                         message.channel.send(embed)
+                                        api.addCool(message.author.id, "moneybag", 1800000)
                                     })
 
                                 })
@@ -131,7 +142,12 @@ module.exports = {
             
                     })
                 })
+            }
 
+        })
+        .catch(() => {
+            message.channel.send("Something error")
+        })
 
     }
 }

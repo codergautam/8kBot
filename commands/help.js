@@ -15,6 +15,7 @@ commands = {
     rich: ["8k!leaderboard", "See Top 10 users with the most money"],
     job: ["8k!jobs", "View available jobs!"],
     work: ["8k!work", "Work at your job for coins"],
+    resign: ["8k!resign", "Resign from your current job"],
     rob: ["8k!rob <@user>", "Rob money from <@user>"],
 }
 datajjk = "Sup peeps \n I am 8kBot, an awesome currency bot! \n Created by Coder Gautam YT \n**You are using __v"+package.version+"__**\n\n **Fun Commands:**\n`8k!question <question>` - asks a yes or no question to the 8k gods\n\n**Currency Commands**\n"

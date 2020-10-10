@@ -36,7 +36,7 @@ module.exports = {
         embed.setTitle("Teaching Results")
         var num = Math.floor(Math.random()*10)+1;
         if(num == 1) {
-            var moneyEarned = getRandomInt(1000, 2000)
+            var moneyEarned = getRandomInt(1500, 2000)
             embed.setDescription("Your students started sleeping in class\nYou got `"+moneyEarned+"` coins!")
         } else if(num == 2) { 
             var moneyEarned = 2000+getRandomInt(1200, 2000)
@@ -53,13 +53,13 @@ module.exports = {
             var moneyEarned =  getRandomInt(1000, 2000)
             embed.setDescription("Your students didnt pay attention to you teaching that much\nYou get `"+moneyEarned+"` coins")
         } else if(num == 6) {
-            var moneyEarned =  getRandomInt(1000, 2000)
+            var moneyEarned =  getRandomInt(1700, 2000)
             embed.setDescription("You were tired but still a good teacher.\n You got `"+moneyEarned+"` coins")
         } else if(num == 7) {
-            var moneyEarned =  getRandomInt(1000, 2000)
+            var moneyEarned =  getRandomInt(1500, 2000)
             embed.setDescription("You got mad at that one kid who was playing video games during class\n `"+moneyEarned+"` coins")
         } else {
-            var moneyEarned =  getRandomInt(1500, 2000)
+            var moneyEarned =  getRandomInt(1700, 2000)
             embed.setDescription("Today was an uneventful day\nYou got `"+moneyEarned+"` coins")
         }
 

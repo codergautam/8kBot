@@ -50,7 +50,7 @@ api.getUser(message.author.id)
                     message.channel.send(embed)
                     const collector = message.channel.createMessageCollector(m => m.author.id == message.author.id,{max:1,time: 20000})
                     collector.on("collect", (message23) => {
-                        if(isNaN(Number(message23.content)) || Number(message23.content) < 1) {
+                        if(isNaN(Number(message23.content)) || Number(message23.content) < 1 || !Number.isInteger(Number(message23.content))) {
                             message23.channel.send("Pls enter a valid number... \n Run the command again")
                         } else {
                             amount = Number(message23.content)

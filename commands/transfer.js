@@ -6,7 +6,7 @@ module.exports = {
         var user1 = message.author
         var user2 = message.mentions.users.first()
     console.log(args[0])
-if(isNaN(Number(args[0])) || Number(args[0]) < 1) {
+if(isNaN(Number(args[0])) || Number(args[0]) < 1 || !Number.isInteger(Number(args[0]))) {
     message.channel.send("Please use command like this `8k!give <amount> <@user>`")
 } else {
 

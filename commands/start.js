@@ -12,7 +12,6 @@ module.exports = {
             data: {
             },
             success: function(data) {
-                console.log(data)
                 var json = JSON.parse(data)
                 if(json.hasOwnProperty(message.author.id)) {
                     message.channel.send("You are already added to our database!")

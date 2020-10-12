@@ -33,9 +33,6 @@ for (const file of commandFiles) {
 var prefix = "8k!"
 
 client.on("message", (message) => {
-  if (message.content === '!join') {
-		client.emit('guildMemberAdd', message.member);
-	}
   if(message.author.id !== client.user.id) {
   const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();
@@ -99,6 +96,9 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
   }
   if(command === 'resign'||command === 'quir') {
     client.commands.get('resign').execute(message, args);
+  }
+  if(command === 'fight'||command === 'brawl') {
+    client.commands.get('fight').execute(message, args);
   }
 } 
   }

@@ -89,7 +89,7 @@ module.exports = {
                                                                 if (coolmesgade.content.toLowerCase() == "axe" || coolmesgade.content.toLowerCase() == "ak47" || coolmesgade.content.toLowerCase() == "sniper") {
                                                                     user2f.weapon = coolmesgade.content.toLowerCase()
                                                                     xyuj1 = true
-                                                                    fight(message, user1, user2, user1d, user2d, user1f, user2f, randomInteger(1,2), 0, betmoney)
+                                                                    fight(message, user1, user2, user1d, user2d, user1f, user2f, 2, 0, betmoney)
                                                                 } else {
                                                                     const embed = new Discord.MessageEmbed()
                                                                         .setTitle(`Invalid Item`)
@@ -166,7 +166,7 @@ module.exports = {
             }
 
         } else {
-            message.channel.send("Please tag a valid use to fight\nFor example: `8k!fight @" + user1.tag.substring(0, user1.tag.length - 5) + "`")
+            message.channel.send("Please tag a valid user to fight\nFor example: `8k!fight @" + user1.tag.substring(0, user1.tag.length - 5) + "`")
         }
     }
 }
@@ -192,10 +192,10 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
             .setColor('#0099ff')
             .setTitle(`${user1d.name}, what do you want to do?!`)
             .setDescription(`You have \`${user1f.health}\` health\n**Available options**\n\n\`attack\` - attack with your ${user1f.weapon}\n${(user1f.health == 100 ? "" : "\`heal\` - heal up and gain some health\n")}\`quit\` - give up!`)
-            .setFooter(user1d.name + ", Respond with an option\nPlease respond within 20 seconds")
+            .setFooter(user1d.name + ", Respond with an option\nPlease respond within 35 seconds")
         message.channel.send(embed11)
         var xyuj12 = false
-        const collector67121 = message.channel.createMessageCollector(m => m.author.id == user1.id, { max: 1, time: 30000 })
+        const collector67121 = message.channel.createMessageCollector(m => m.author.id == user1.id, { max: 1, time: 45000 })
         collector67121.on("collect", (coolmesgade) => {
             xyuj12 = true
             if (coolmesgade.content.toLowerCase() == "quit" || coolmesgade.content.toLowerCase() == "end") {

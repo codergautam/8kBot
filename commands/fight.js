@@ -53,7 +53,7 @@ module.exports = {
                                             const embed = new Discord.MessageEmbed()
                                                 .setColor('#0099ff')
                                                 .setTitle(`${user2d.name} was challenged to a fight!`)
-                                                .setDescription(`${user1d.name} challenged ${user2d.name} to a fight!\n<@${user2.id}> Do you accept?\nYou have to pay \`${betmoney}\` coins to enter. You will win \`${betmoney * 2}\` coins if you win the fight!`)
+                                                .setDescription(`${user1d.name} challenged ${user2d.name} to a fight!\n<@${user2.id}> Do you accept?\nYou will lose \`${betmoney}\` coins if you lose. You will win \`${betmoney}\` coins if you win the fight!`)
                                                 .setFooter("Respond with 'Y' or 'N'\nPlease respond within 20 seconds")
                                             message.channel.send(embed)
                                             var x = false
@@ -206,7 +206,7 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
                                 const embed11 = new Discord.MessageEmbed()
                                     .setColor('#0099ff')
                                     .setTitle(`${user2d.name} wins!`)
-                                    .setDescription(`${user1d.name} gave up lol.\n\n${user1d.name} lost \`${betmoney}\` coins!\n${user1d.name} gained \`${betmoney * 2}\` coins!`)
+                                    .setDescription(`${user1d.name} gave up lol.\n\n${user1d.name} lost \`${betmoney}\` coins!\n${user1d.name} gained \`${betmoney}\` coins!`)
                                     .setFooter("\"Im too scared to die\" - " + user1d.name)
                                 message.channel.send(embed11)
                               
@@ -304,7 +304,7 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
                 .then(() => {
                     const embed564 = new Discord.MessageEmbed()
                     .setTitle(`${user1d.name} wins!`)
-                    .setDescription(`${user1d.name} beat ${user2d.name} by ${user1f.health} health XD.\n\n${user1d.name} won \`${2*betmoney}\` coins!\n${user2d.name} lost \`${betmoney}\` coins!`)
+                    .setDescription(`${user1d.name} beat ${user2d.name} by ${user1f.health} health XD.\n\n${user1d.name} won \`${betmoney}\` coins!\n${user2d.name} lost \`${betmoney}\` coins!`)
                     .setFooter("GG")
                     message.channel.send(embed564)
                 })

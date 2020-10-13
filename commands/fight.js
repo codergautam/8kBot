@@ -187,13 +187,14 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
     var user1f = (turn == 1 ? orig1f : orig2f)
     var user2f = (turn == 1 ? orig2f : orig1f)
 
-    
+    if(xf == 0) {
         const embed11 = new Discord.MessageEmbed()
             .setColor('#0099ff')
             .setTitle(`${user1d.name}, what do you want to do?!`)
             .setDescription(`You have \`${user1f.health}\` health\n**Available options**\n\n\`attack\` - attack with your ${user1f.weapon}\n${(user1f.health == 100 ? "" : "\`heal\` - heal up and gain some health\n")}\`quit\` - give up!`)
             .setFooter(user1d.name + ", Respond with an option\nPlease respond within 35 seconds")
         message.channel.send(embed11)
+    }
         var xyuj12 = false
         const collector67121 = message.channel.createMessageCollector(m => m.author.id == user1.id, { max: 1, time: 45000 })
         collector67121.on("collect", (coolmesgade) => {
@@ -206,7 +207,7 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
                                 const embed11 = new Discord.MessageEmbed()
                                     .setColor('#0099ff')
                                     .setTitle(`${user2d.name} wins!`)
-                                    .setDescription(`${user1d.name} gave up lol.\n\n${user1d.name} lost \`${betmoney}\` coins!\n${user1d.name} gained \`${betmoney}\` coins!`)
+                                    .setDescription(`${user1d.name} gave up lol.\n\n${user1d.name} lost \`${betmoney}\` coins!\n${user2d.name} gained \`${betmoney}\` coins!`)
                                     .setFooter("\"Im too scared to die\" - " + user1d.name)
                                 message.channel.send(embed11)
                               
@@ -222,9 +223,11 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
        
             } else if (coolmesgade.content.toLowerCase() == "heal") {
                 if (user1f.health == 100) {
+
+                    var fjkgjk =3-xf
                     if (xf <= 2) {
-                        message.channel.send("Thats not a valid option, now its not ur turn anymore smh")
-                        fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf += 1, betmoney)
+                        message.channel.send("Thats not a valid option, pls try again\nYou have "+fjkgjk.toString()+" more chances")
+                        fight(message, orig1, orig2, orig1d, orig2d, orig1f, orig2f, turn, xf += 1, betmoney)
                     } else {
                         message.channel.send("Game ended cuz you put too many invalid input")
                     }
@@ -326,11 +329,17 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
 
 
             } else {
-                if (xf <= 2) {
-                    message.channel.send("Thats not a valid option, now its not ur turn anymore smh")
-                    fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf += 1, betmoney)
+
+                    var fjkgjk =3-xf
+                    if (xf <= 2) {
+                        message.channel.send("Thats not a valid option, pls try again\nYou have "+fjkgjk.toString()+" more chances")
+                        fight(message, orig1, orig2, orig1d, orig2d, orig1f, orig2f, turn, xf += 1, betmoney)
+
                 } else {
-                    message.channel.send("Game ended cuz you put too many invalid input")
+                    const embed = new Discord.MessageEmbed()
+                    .setTitle(`Challenge Ended`)
+                    .setDescription("Due to too many invalid responses")
+                message.channel.send(embed)
                 }
 
             }

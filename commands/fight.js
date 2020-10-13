@@ -223,7 +223,7 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
             } else if (coolmesgade.content.toLowerCase() == "heal") {
                 if (user1f.health == 100) {
                     if (xf <= 2) {
-                        message.channel.send("Thats not a valid option, please try again...")
+                        message.channel.send("Thats not a valid option, now its not ur turn anymore smh")
                         fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf += 1, betmoney)
                     } else {
                         message.channel.send("Game ended cuz you put too many invalid input")
@@ -327,7 +327,7 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
 
             } else {
                 if (xf <= 2) {
-                    message.channel.send("Thats not a valid option, please try again...")
+                    message.channel.send("Thats not a valid option, now its not ur turn anymore smh")
                     fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf += 1, betmoney)
                 } else {
                     message.channel.send("Game ended cuz you put too many invalid input")

@@ -25,7 +25,7 @@ module.exports = {
                                 const embed = new Discord.MessageEmbed()
                                     .setColor('#0099ff')
                                     .setTitle("Fight")
-                                    .setDescription("How much money do you bet?\nYou and " + user2d.name + " have to pay this.\nType `0` for a friendly match!")
+                                    .setDescription("How much money do you bet to win?\nType `0` for a friendly match!")
                                     .setFooter("Respond with a number from 0 - " + (user1d.bal < user2d.bal ? user1d.bal : user2d.bal) + "\nPlease respond within 20 seconds")
                                 message.channel.send(embed)
                                 const collector67 = message.channel.createMessageCollector(m => m.author.id == message.author.id, { max: 1, time: 20000 })
@@ -68,7 +68,7 @@ module.exports = {
                                                     const embed1 = new Discord.MessageEmbed()
                                                         .setColor('#0099ff')
                                                         .setTitle(`${user1d.name}, Select your weapon!`)
-                                                        .setDescription(`**Available Weapons**\n\n\`ak47\` - ︻╦╤─ Fast fire, but less accuracy\n\`axe\` - 🪓Deadly, medium fire, but low accuracy\n\`sniper\` - ▄︻̷̿┻̿═━一 Deadly, good accuracy, but low fire rate\``)
+                                                        .setDescription(`\`ak47\` - ︻╦╤─ Fast fire, but less accuracy\n\`axe\` - 🪓Deadly, medium fire, but low accuracy\n\`sniper\` - ▄︻̷̿┻̿═━一 Deadly, good accuracy, but low fire rate\``)
                                                         .setFooter(user1d.name + ", Respond with a weapon name\nPlease respond within 20 seconds")
                                                     message.channel.send(embed1)
                                                     xyuj = false
@@ -80,7 +80,7 @@ module.exports = {
                                                             const embed11 = new Discord.MessageEmbed()
                                                                 .setColor('#0099ff')
                                                                 .setTitle(`${user2d.name}, Select your weapon!`)
-                                                                .setDescription(`**Available Weapons**\n\n\`ak47\` - ︻╦╤─ Fast fire, but less accuracy\n\`axe\` - 🪓Deadly, medium fire, but low accuracy\n\`sniper\` - ▄︻̷̿┻̿═━一 Deadly, good accuracy, but low fire rate\``)
+                                                                .setDescription(`\`ak47\` - ︻╦╤─ Fast fire, but less accuracy\n\`axe\` - 🪓Deadly, medium fire, but low accuracy\n\`sniper\` - ▄︻̷̿┻̿═━一 Deadly, good accuracy, but low fire rate\``)
                                                                 .setFooter(user2d.name + ", Respond with a weapon name\nPlease respond within 20 seconds")
                                                             message.channel.send(embed11)
                                                             var xyuj1 = false
@@ -190,8 +190,8 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
     if(xf == 0) {
         const embed11 = new Discord.MessageEmbed()
             .setColor('#0099ff')
-            .setTitle(`${user1d.name}, what do you want to do?!`)
-            .setDescription(`You have \`${user1f.health}\` health\n**Available options**\n\n\`attack\` - attack with your ${user1f.weapon}\n${(user1f.health == 100 ? "" : "\`heal\` - heal up and gain some health\n")}\`quit\` - give up!`)
+            .setTitle(`${user1d.name}, your move!`)
+            .setDescription(`__**HEALTH: **__\`${user1f.health}\`\n\n**Available options:**\n\`attack\`, ${(user1f.health == 100 ? "" : "\`heal\`, ")} \`quit\``)
             .setFooter(user1d.name + ", Respond with an option\nPlease respond within 35 seconds")
         message.channel.send(embed11)
     }
@@ -240,7 +240,7 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
                     const embed11 = new Discord.MessageEmbed()
                         .setColor('#0099ff')
                         .setTitle(`${user1d.name} heals!`)
-                        .setDescription(`${user1d.name} heals! They gained \`${heal}\` health!\n${user1d.name} now has \`${user1f.health}\` health!`)
+                        .setDescription(`__**GAINED**__ \`${heal}\` __**HEALTH!**__\n\nYou now have \`${user1f.health}\` health!`)
                         .setFooter("\"Try to kill me now\" - " + user1d.name)
                     message.channel.send(embed11)
                     fight(message, user1, user2, user1d, user2d, user1f, user2f, 2, 0, betmoney)
@@ -253,13 +253,13 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
                     if(damage != 0) {
                         const embed56 = new Discord.MessageEmbed()
                         .setTitle("Axe Results!")
-                        .setDescription("You swung your axe 3 times and hit them " +hit+" times! You did `"+damage+"` damage! \nLeaving "+user2d.name+" with `"+(user2f.health - damage < 0 ? "0" : user2f.health - damage)+"` health!")
+                        .setDescription("**"+user1d.name+" Hits "+user2d.name+" With AXE**\n\n"+" __**DAMAGE DEALT:  **__`" +damage+"`\n __** "+user2d.name+"**__ now has `"+(user2f.health - damage < 0 ? "0" : user2f.health - damage)+"` health!\n")
                         .setFooter("\"axe power :D\" - "+user1d.name)
                         message.channel.send(embed56)
                     } else {
                         const embed56 = new Discord.MessageEmbed()
                         .setTitle("Axe Results!")
-                        .setDescription("You missed all your swings and did `0` damage!")
+                        .setDescription("**"+user1d.name+" fails to hit "+user2d.name+" With AXE**\n\n"+" __**DAMAGE DEALT:  **__`0`\n")
                         .setFooter("\"axes are so heavy ugh\" - "+user1d.name)
                         message.channel.send(embed56)
                     }
@@ -269,14 +269,14 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
                         var damage = randomInteger(40,100)
                         const embed56 = new Discord.MessageEmbed()
                         .setTitle("Sniper Shot!")
-                        .setDescription("You HIT your shot! You did `"+damage+"` damage! \nLeaving `"+user2d.name+" with "+(user2f.health - damage < 0 ? "0" : user2f.health - damage)+"` health!")
+                        .setDescription("**"+user1d.name+" Hits "+user2d.name+" With SNIPER**\n\n"+" __**DAMAGE DEALT:  **__`" +damage+"`\n __** "+user2d.name+"**__ now has `"+(user2f.health - damage < 0 ? "0" : user2f.health - damage)+"` health!\n")
                         .setFooter("\"ha i sniped him\" - "+user1d.name)
                         message.channel.send(embed56)
                     } else {
                         var damage = 0
                         const embed56 = new Discord.MessageEmbed()
                         .setTitle("Sniper Shot!")
-                        .setDescription("You missed your shot! You did `0` damage!")
+                        .setDescription("**"+user1d.name+" fails to hit "+user2d.name+" With SNIPER**\n\n"+" __**DAMAGE DEALT:  **__`0`\n")
                         message.channel.send(embed56)
                     }
                 } else if(user1f.weapon == "ak47") {
@@ -285,13 +285,13 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
                     if(damage != 0) {
                         const embed56 = new Discord.MessageEmbed()
                         .setTitle("Ak47 Results!")
-                        .setDescription("You hit " +hit+" out of your 30 bullets! You did `"+damage+"` damage! \nLeaving "+user2d.name+" with `"+(user2f.health - damage < 0 ? "0" : user2f.health - damage)+"` health!")
+                        .setDescription("**"+user1d.name+" Hits "+user2d.name+" With AK47**\n\n"+" __**DAMAGE DEALT:  **__`" +damage+"`\n __** "+user2d.name+"**__ now has `"+(user2f.health - damage < 0 ? "0" : user2f.health - damage)+"` health!\n")
                         .setFooter("\"im sorry for shooting you\" - "+user1d.name)
                         message.channel.send(embed56)
                     } else {
                         const embed56 = new Discord.MessageEmbed()
                         .setTitle("Ak47 Results!")
-                        .setDescription("You missed all of your 30 bullets and did `0` damage!")
+                        .setDescription("**"+user1d.name+" fails to hit "+user2d.name+" With Ak47**\n\n"+" __**DAMAGE DEALT:  **__`0`\n")
                         .setFooter("\"this gun has so much recoil smh\" - "+user1d.name)
                         message.channel.send(embed56)
                     }

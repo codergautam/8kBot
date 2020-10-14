@@ -18,7 +18,7 @@ module.exports = {
                 } else {
                     usertemplate = {
                         bal: 1000,
-                        name: message.author.tag,
+                        name: message.author.username,
                         inv: {},
                         id: message.author.id
                     }

@@ -1,8 +1,9 @@
+const { data } = require("jquery");
 var package = require("../package.json")
 
 commands = {
   invite: ["8k!invite", "Link to add 8k bot to your server!"],
-    start: ["8k!start", "Creates a 8k Currency Account"],
+
 
     transfer: ["8k!give <amount> <@user>", "Gives <amount> of your coins to <@user>"],
     ask: ["8k!ask", "Kindly asks random people for coins"],
@@ -19,7 +20,15 @@ commands = {
     rob: ["8k!rob <@user>", "Rob money from <@user>"],
     fight: ["8k!fight <@user>", "Fight <@user>"],
 }
-datajjk = "Sup peeps \n I am 8kBot, an awesome currency bot! \n Created by Coder Gautam YT \n**You are using __v"+package.version+"__**\n\n **Fun Commands:**\n`8k!question <question>` - asks a yes or no question to the 8k gods\n\n**Currency Commands**\n"
+genral = {
+  start: ["8k!start", "Creates a 8k Currency Account"],
+  sync: ["8k!sync", "Syncs 8k data and Discord user data"]
+}
+datajjk = "Sup peeps \n I am 8kBot, an awesome currency bot! \n Created by Coder Gautam YT \n**You are using __v"+package.version+"__**\n\n ⚙️**General Commands**⚙️\n" 
+for(genr in genral) {
+  datajjk = datajjk + "`"+genral[genr][0]+"` - "+genral[genr][1]+"\n";
+}
+datajjk = datajjk + "\n💰**Currency Commands**💰\n"
 for(command in commands) {
   datajjk = datajjk + "`"+commands[command][0]+"` - "+commands[command][1]+"\n";
 }

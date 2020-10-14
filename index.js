@@ -108,6 +108,6 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
 })
 
 //ORIGINAL
-//lient.login("NzU1MTQ2OTUxODU4ODQ3Nzk2.X1_DZw.HVvPsLDXyLz41H3Qf6myItytYEs");
+client.login("NzU1MTQ2OTUxODU4ODQ3Nzk2.X1_DZw.HVvPsLDXyLz41H3Qf6myItytYEs");
 //BETA
-client.login("NzYxMjI5MTM5MzczMzI2MzM4.X3Xj4Q.0cNK_LtkvVL1MGVFvpFO2pjpZXo")
+//client.login("NzYxMjI5MTM5MzczMzI2MzM4.X3Xj4Q.0cNK_LtkvVL1MGVFvpFO2pjpZXo")

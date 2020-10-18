@@ -100,9 +100,6 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
   if(command === 'fight'||command === 'brawl') {
     client.commands.get('fight').execute(message, args);
   }
-  if(command === 'sync'||command === 'brawl') {
-    client.commands.get('sync').execute(message, args);
-  }
 } 
   }
 })

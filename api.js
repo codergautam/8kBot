@@ -2,7 +2,7 @@ const { JSDOM } = require( "jsdom" );
 const { window } = new JSDOM( "" );
 const $ = require( "jquery" )( window );
 const config = require( "./json/config.json" )
-var cooldowns = {}
+
 module.exports = {
     name: 'api',
     convertMS(milliseconds) {
@@ -102,39 +102,51 @@ module.exports = {
     },
     addCool(id, name, ms) {
         return new Promise((resolve, reject) => {
-            if(!cooldowns.hasOwnProperty(id)) {
-                cooldowns[id] = {}
-            }
-            cooldowns[id][name] = {
-                started: Date.now(),
-                ms: ms
-            }
-            resolve()
+module.exports.getUser(id)
+.then((user) => {
+user.cooldown[name] = {
+    started: Date.now(),
+    ms: ms
+}
+module.exports.modUser(id, user)
+.then(() => {
+resolve(user)
+})
+.catch((err) => {
+    reject(err)
+})
+})
+.catch((err) => {
+reject(err)
+}) 
 
     })
        
     },
     checkCool(id, name) {
         return new Promise((resolve, reject) => {
-            if(cooldowns.hasOwnProperty(id)) {
-                if(cooldowns[id].hasOwnProperty(name)) {
-                    var dacooldown = cooldowns[id][name]
-                    if(dacooldown.started+dacooldown.ms<=Date.now()) {
+module.exports.getUser(id)
+.then((user)=> {
+    if(user.cooldown.hasOwnProperty(name)) {
+        var dacooldown = user.cooldown[name]
+        if(dacooldown.started+dacooldown.ms<=Date.now()) {
  
-                        //No cooldown
-                        resolve({cooldown: false})
-                    } else {
-                        //cooldown
+            //No cooldown
+            resolve({cooldown: false})
+        } else {
+            //cooldown
+          
+            resolve({cooldown: true, msleft: dacooldown.started+dacooldown.ms-Date.now(), ms: dacooldown.ms})
+        }
+    } else {
+        resolve({cooldown: false})
+    }
+})
+.catch((err) => {
+    reject(err)
+})
+                    })
                       
-                        resolve({cooldown: true, msleft: dacooldown.started+dacooldown.ms-Date.now(), ms: dacooldown.ms})
-                    }
-                } else {
-                    resolve({cooldown: false})
-                }
-            } else {
-                resolve({cooldown: false})
-            }
-        })                   
         
     },
     changeBal(id, amount) {

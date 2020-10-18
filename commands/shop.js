@@ -6,7 +6,9 @@ const Discord = require('discord.js')
 const items = require('../json/items.json')
 data = "*To buy an Item, please type* `8k!buy <itemname>`\n\n**Shop Items: **\n"
 for(item in items) {
+  if(items[item][4].shop) {
   data = data + items[item][0]+" - "+items[item][1]+"-`"+items[item][2]+"` coins\n";
+  }
 }
 
 

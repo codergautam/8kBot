@@ -32,7 +32,7 @@ module.exports = {
                         },
                         success: function(data) {
                           if(JSON.parse(data).success) {
-                            message.channel.send("You have been added to the database!\nWelcome to 8k Currency Game! ")
+                            message.channel.send("You have been added to the database!\nWelcome to 8k Currency Game!\n Type `8k!help` to view the commands!")
                           } else {
                             message.channel.send("Your account couldn't be created") 
                           }

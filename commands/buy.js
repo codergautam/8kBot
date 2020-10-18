@@ -1,7 +1,14 @@
 const Discord = require('discord.js')
 const api = require('../api')
 //Name, Description, price
-
+const fs = require("fs")
+const itemfiles = new Discord.Collection();
+const itemarray = fs.readdirSync('./items/').filter(file => file.endsWith('.js'));
+for (const file of itemarray) {
+	const itemdata = require(`../items/${file}`);
+    itemfiles.set(itemdata.name, itemdata);
+    console.log("Initialized "+`./items/${file}`)
+} 
 const items = require('../json/items.json')
 module.exports = {
 	name: 'buy',
@@ -11,6 +18,10 @@ module.exports = {
             var item = args.join(' ').toLowerCase()
             if(item != 0) {
             if(items.hasOwnProperty(item)) {
+                if(items[item][4].custombuy) {
+                    var userItem = user.inv[item]
+                    itemfiles.get(item).buy(message,userItem, user)
+                } else {
                 if(Math.round(user.bal/items[item][2]) == 0) {
                     const embed = new Discord.MessageEmbed()
                     .setColor('RED')
@@ -73,6 +84,7 @@ module.exports = {
                     
                 })
             }
+        }
             } else {
                 const embed = new Discord.MessageEmbed()
                 .setColor('RED')

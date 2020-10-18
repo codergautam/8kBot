@@ -1,5 +1,5 @@
 {
-    "apple": ["Apple", "A tasty red apple!🍎", 1000, {"custom": false, "price": 900}],
-    "lottery": ["Lottery", "A lottery ticket, used for entering the lottery!🎟️", 150, {"custom": false, "price": 10}],
-    "moneybag": ["Moneybag", "A moneybag that you can throw💰", 1750, {"custom": false, "price": 1500}]
+    "apple": ["Apple", "A tasty red apple!🍎", 1000, {"custom": false, "price": 900}, {"custombuy": false, "shop": true}],
+    "lottery": ["Lottery", "A lottery ticket, used for entering the lottery!🎟️", 150, {"custom": false, "price": 10}, {"custombuy": false, "shop": true}],
+    "moneybag": ["Moneybag", "A moneybag that you can throw💰", 1750, {"custom": false, "price": 1500}, {"custombuy": false, "shop": true}]
 }

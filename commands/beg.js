@@ -61,6 +61,7 @@ module.exports = {
                 }
             })
             .catch((e) => {
+                console.log(e)
                         const embed = new Discord.MessageEmbed()
                         .setColor('#0099ff')
                         .setTitle("You don't have an account! Create one by running `8k!start`")

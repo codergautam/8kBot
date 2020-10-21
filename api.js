@@ -127,7 +127,7 @@ reject(err)
         return new Promise((resolve, reject) => {
 module.exports.getUser(id)
 .then((user)=> {
-    if(!user.hasOwnProperty(cooldown)) {
+    if(!user.hasOwnProperty("cooldown")) {
         user.cooldown = {}
     }
     if(user.cooldown.hasOwnProperty(name)) {

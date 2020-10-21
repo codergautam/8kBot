@@ -16,6 +16,30 @@ module.exports = {
             x=true
             if(user.hasOwnProperty("inv")) {
                 if(user.inv != {}) {
+                    var item = args.join(' ').toLowerCase()
+           
+                        if(user.inv.hasOwnProperty(item)) {
+                            if(items.hasOwnProperty(item)) {
+                                const embed = new Discord.MessageEmbed()
+                                .setColor('#0099ff')
+                                .setTitle(user.name+"'s "+items[item][0]+" count")
+                                .setDescription(`**${items[item][0]}** - \`${user.inv[item].amount}\`\n*${items[item][1]}*\n\n`)
+                                .setFooter("Sub to coder gautam YT lol")
+                                message.channel.send(embed)
+                            } else { 
+                                const embed = new Discord.MessageEmbed()
+                                .setColor('#0099ff')
+                                .setTitle(user.name+"'s "+item+" count")
+                                .setDescription(`**${item}** - \`${user.inv[key].amount}\`\n*Unknown Description...*\n\n`)
+                                .setFooter("Sub to coder gautam YT lol")
+                                message.channel.send(embed)
+                            }
+
+
+                         
+                        } else {
+
+
                     var inv = user.inv;
                     var dadata = ""
                     Object.keys(inv).forEach(key => {
@@ -41,7 +65,7 @@ module.exports = {
                         .setDescription(dadata)
                         message.channel.send(embed)
                     }
-
+                        }
                 } else {
                     console.log("f")
                     const embed = new Discord.MessageEmbed()

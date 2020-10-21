@@ -19,8 +19,7 @@ module.exports = {
             if(item != 0) {
             if(items.hasOwnProperty(item)) {
                 if(items[item][4].custombuy) {
-                    var userItem = user.inv[item]
-                    itemfiles.get(item).buy(message,userItem, user)
+                    itemfiles.get(item).buy(message, user)
                 } else {
                 if(Math.round(user.bal/items[item][2]) == 0) {
                     const embed = new Discord.MessageEmbed()

@@ -102,6 +102,9 @@ module.exports = {
     },
     addCool(id, name, ms) {
         return new Promise((resolve, reject) => {
+            if(!user.hasOwnProperty("cooldown")) {
+                user.cooldown = {}
+            }
 module.exports.getUser(id)
 .then((user) => {
 user.cooldown[name] = {

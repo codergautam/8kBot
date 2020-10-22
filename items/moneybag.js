@@ -18,7 +18,7 @@ module.exports = {
                 .setDescription("You just used a moneybag. You can use one again in `"+api.convertMS(cooldown.msleft)+"`")
                 message.channel.send(embed)
             } else {
-
+                api.addCool(message.author.id, "moneybag", 1800000)
                 const embed111 = new Discord.MessageEmbed()
                 .setColor('#0099ff')
                 .setTitle("Catch the moneybag!")
@@ -130,7 +130,7 @@ module.exports = {
                                         .setDescription(`The moneybag was emptied...\n ${user.name} gets \`${ownerearn}\` extra coins for being a nice person!`)
                                         .setFooter("\" we got some free money ay\" -"+user.name)
                                         message.channel.send(embed)
-                                        api.addCool(message.author.id, "moneybag", 1800000)
+                                        
                                     })
 
                                 })

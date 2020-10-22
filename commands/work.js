@@ -1,7 +1,8 @@
 const api = require("../api")
 const Discord = require('discord.js')
 
-const fs = require('fs')
+const fs = require('fs');
+const { use } = require("../items/lottery");
 const jobfiles = new Discord.Collection();
 const jobarray = fs.readdirSync('./jobs/').filter(file => file.endsWith('.js'));
 for (const file of jobarray) {
@@ -37,10 +38,11 @@ module.exports = {
                                 message.channel.send("Eror!")
                             })
                            
-                          })
+                          }, user)
                     }
                 })
-                .catch(() =>{ 
+                .catch((err) =>{ 
+                    console.log(err)
                    message.channel.send("Something glitched") 
                 })
 

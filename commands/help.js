@@ -6,6 +6,7 @@ commands = {
 
 
     transfer: ["8k!give <amount> <@user>", "Gives <amount> of your coins to <@user>"],
+    gift: ["8k!gift <itemname> <amount> <@user>", "Gives <amount> <itemname>s to <@user>"],
     ask: ["8k!ask", "Kindly asks random people for coins"],
     bal: ["8k!bal <@user>", "See balance of <@user>"],
     inv: ["8k!inv <@user>", "See inventory of <@user>"],

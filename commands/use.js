@@ -2,7 +2,6 @@ const Discord = require('discord.js')
 const api = require('../api')
 const fs = require('fs')
 const items = require('../json/items.json');
-const { isDeepStrictEqual } = require('util');
 //Name, Description, price
 const itemfiles = new Discord.Collection();
 const itemarray = fs.readdirSync('./items/').filter(file => file.endsWith('.js'));

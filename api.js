@@ -137,13 +137,14 @@ module.exports.getUser(id)
     if(user.cooldown.hasOwnProperty(name)) {
         var dacooldown = user.cooldown[name]
         if(dacooldown.started+dacooldown.ms<=Date.now()) {
- 
+            //if(dacooldown.started+10000<=Date.now()) {
             //No cooldown
             resolve({cooldown: false})
         } else {
             //cooldown
           
-            resolve({cooldown: true, msleft: dacooldown.started+dacooldown.ms-Date.now(), ms: dacooldown.ms})
+            //resolve({cooldown: true, msleft: dacooldown.started+dacooldown.ms-Date.now(), ms: dacooldown.ms})
+            resolve({cooldown: true, msleft: dacooldown.started+10000-Date.now(), ms: dacooldown.ms})
         }
     } else {
         resolve({cooldown: false})
@@ -245,6 +246,45 @@ module.exports.getUser(id)
 
 
 
+    },
+    storeData(id, name, data) {
+         return new Promise((resolve, reject) => {
+             module.exports.getUser(id)
+             .then((user) => {
+                if(!user.hasOwnProperty("data")) {
+                    user.data = {}
+                }
+                user.data[name] = data
+                module.exports.modUser(id, user)
+                .then(() => {
+                    resolve()
+                })
+                .catch((err) =>{
+                    reject(err)
+                })
+             })
+             .catch((err) => {
+                reject(err)
+             })
+         })
+    },
+    readData(id, name) {
+        return new Promise((resolve, reject) => {
+            module.exports.getUser(id)
+            .then((user) => {
+               if(!user.hasOwnProperty("data")) {
+                   user.data = {}
+               }
+               if(user.data.hasOwnProperty(name)) {
+                   resolve({exists: true, data: user.data[name]})
+               } else {
+                resolve({exists: false})
+               }
+            })
+            .catch((err) => {
+               reject(err)
+            })
+        })
     }
         
     }

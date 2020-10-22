@@ -1,7 +1,7 @@
 const api = require("../api")
 const Discord = require('discord.js')
 const items = require('../json/items.json')
-
+const fs = require('fs')
 const itemfiles = new Discord.Collection();
 const itemarray = fs.readdirSync('./items/').filter(file => file.endsWith('.js'));
 for (const file of itemarray) {

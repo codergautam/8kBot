@@ -143,8 +143,8 @@ module.exports.getUser(id)
         } else {
             //cooldown
           
-            //resolve({cooldown: true, msleft: dacooldown.started+dacooldown.ms-Date.now(), ms: dacooldown.ms})
-            resolve({cooldown: true, msleft: dacooldown.started+10000-Date.now(), ms: dacooldown.ms})
+            resolve({cooldown: true, msleft: dacooldown.started+dacooldown.ms-Date.now(), ms: dacooldown.ms})
+            //resolve({cooldown: true, msleft: dacooldown.started+10000-Date.now(), ms: dacooldown.ms})
         }
     } else {
         resolve({cooldown: false})

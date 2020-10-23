@@ -33,7 +33,7 @@ for (const file of commandFiles) {
 var prefix = "8k!"
 
 client.on("message", (message) => {
-
+/*
   var check = ["coder gautam", "gautam", "eightk", "8k!bot", "gautam", "8k bot", "bot", "lol", "xd", "lmao", "yeet", "js", "javascript", "coding", "code", "program", "halloween", "pumpkin", "haloween", "pumkin", "scary", "scare", "spooktober","ghost", "zombie", "witch", "spook", "spooky", "october", "sword", "spider", "candy", "trick", "or", "treat"]
   var emojis = ["😨", "😰", "😱", "🤡", "😈", "👿", "👹", "👺", "💀", "☠️", "👻", "👽", "👾", "🤖", "🧙‍", "🧚‍", "🧛‍", "🧜‍", "🧝‍", "🧞‍", "🧟‍", "🕴", "💚", "🖤", "🦄", "🦇", "🦉", "🕷", "🕸", "🥀", "🍫", "🍬", "🍭", "🏚", "🌃", "🛸", "🌕", "🌚", "🌩", "⚡️", "🎃", "🔮", "🎭", "🕯", "🗡", "⛓", "⚰️", "⚱️"]
   for(str in check) {
@@ -44,7 +44,7 @@ client.on("message", (message) => {
       })
     }
   }
-
+*/
   if(message.author.id !== client.user.id) {
   const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();

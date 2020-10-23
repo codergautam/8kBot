@@ -115,6 +115,9 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
   if(command === 'gift'||command === 'giveitem') {
     client.commands.get('gift').execute(message, args);
   }
+  if(command === 'translate') {
+    client.commands.get('translate').execute(message, args);
+  }
 } 
   }
 })

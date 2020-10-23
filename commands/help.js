@@ -22,7 +22,8 @@ commands = {
     fight: ["8k!fight <@user>", "Fight <@user>"],
 }
 genral = {
-  start: ["8k!start", "Creates a 8k Currency Account"]
+  start: ["8k!start", "Creates a 8k Currency Account"],
+  translate: ["8k!translate <language> <text>", "Translates <text> to <language>"]
 }
 datajjk = "Sup peeps \n I am 8kBot, an awesome currency bot! \n Created by Coder Gautam YT \n**You are using __v"+package.version+"__**\n\n ⚙️**General Commands**⚙️\n" 
 for(genr in genral) {

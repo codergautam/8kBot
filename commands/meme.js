@@ -4,7 +4,7 @@ module.exports = {
 	name: 'meme',
 	async execute(message, args) {
  
-        memeAsync() // Use memeAsync('subredditname') to filter subreddits
+        memeAsync("dankmemes") // Use memeAsync('subredditname') to filter subreddits
         .then(m => {
           // Do stuff with the JSON
          const embed = new Discord.MessageEmbed()

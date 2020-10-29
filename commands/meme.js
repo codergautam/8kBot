@@ -3,7 +3,7 @@ const Discord = require('discord.js')
 module.exports = {
 	name: 'meme',
 	async execute(message, args) {
- 
+        message.channel.startTyping()
         memeAsync("dankmemes") // Use memeAsync('subredditname') to filter subreddits
         .then(m => {
           // Do stuff with the JSON
@@ -13,10 +13,14 @@ module.exports = {
          .setFooter('Author: '+m.author)
 
          message.channel.send(embed)
+         message.channel.stopTyping()
+         return
         })
         .catch(e => {
           // Handle the error
           console.log(e);
+          message.channel.stopTyping()
+          return
         })
     }
 }

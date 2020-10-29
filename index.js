@@ -121,6 +121,9 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
   if(command === 'meme') {
     client.commands.get('meme').execute(message, args);
   }
+  if(command === 'one2ten' ||command === 'onetoten') {
+    client.commands.get('one2ten').execute(message, args);
+  }
 } 
   }
 })

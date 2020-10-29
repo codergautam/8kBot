@@ -1,6 +1,6 @@
 {
   "name": "8kbot",
-  "version": "1.4.9e",
+  "version": "1.4.9d",
   "description": "currency bot",
   "main": "index.js",
   "scripts": {
@@ -13,6 +13,7 @@
     "iso-639-1": "^2.1.4",
     "jquery": "^3.5.1",
     "jsdom": "^16.4.0",
+    "memejs": "^1.2.3",
     "translation-google": "^0.2.1"
   }
 }

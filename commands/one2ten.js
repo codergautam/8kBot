@@ -5,6 +5,6 @@ function getRandomInt(min, max) {
 module.exports = {
 	name: 'one2ten',
 	async execute(message, args) {
-      message.channel.send("I have chosen **"+getRandomInt+"**")
+      message.channel.send("I have chosen **"+getRandomInt(1,10)+"**")
     }
 }

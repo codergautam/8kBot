@@ -124,19 +124,22 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
   if(command === 'one2ten' ||command === 'onetoten') {
     client.commands.get('one2ten').execute(message, args);
   }
-  /*
+  
   if(command === 'petshop' ||command === 'petstore' || command === 'buypet') {
     client.commands.get('petshop').execute(message, args);
-  }
+  }/*
   if(command === 'adopt') {
     client.commands.get('adopt').execute(message, args);
+  }
+  if(command === 'pets') {
+    client.commands.get('pets').execute(message, args);
   }*/
 } 
   }
 })
 
 //ORIGINAL
-//client.login("NzU1MTQ2OTUxODU4ODQ3Nzk2.X1_DZw.HVvPsLDXyLz41H3Qf6myItytYEs");
+client.login("NzU1MTQ2OTUxODU4ODQ3Nzk2.X1_DZw.HVvPsLDXyLz41H3Qf6myItytYEs");
 //BETA
 //client.login("NzYxMjI5MTM5MzczMzI2MzM4.X3Xj4Q.0cNK_LtkvVL1MGVFvpFO2pjpZXo")
 //BETA 2

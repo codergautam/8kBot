@@ -248,8 +248,8 @@ function good(message, user) {
 }
 
 function oof(message, user) {
-    if (getRandomInt(1, 10) == 5) {
-        user.inv.laptop.amount = userItem.amount - 1
+    if (getRandomInt(1,3) == 2) {
+        user.inv.laptop.amount = user.inv.laptop.amount - 1
         if (user.inv.laptop.amount == 0) {
             delete user.inv.laptop
         }

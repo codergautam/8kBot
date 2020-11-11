@@ -1,4 +1,4 @@
-const { data } = require("jquery");
+
 var package = require("../package.json")
 
 commands = {

@@ -76,7 +76,7 @@ module.exports = {
             api.changeBal(user.id, moneyEarn)
                 .then(() => {
                     if(getRandomInt(1,5) ==3) {
-                        user.inv.laptop -= 1
+                        user.inv.laptop.amount -= 1
                         if(user.inv.laptop.amount == 0) {
                             delete user.inv.laptop
                         }

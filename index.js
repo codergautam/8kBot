@@ -83,7 +83,9 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
     client.commands.get('buy').execute(message, args);
   }
   if(command === 'inv' ||command === 'inventory') {
+
     client.commands.get('inv').execute(message, args);
+   
   }
   if(command === 'job' ||command === 'jobs') {
     client.commands.get('jobs').execute(message, args);
@@ -124,10 +126,10 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
   if(command === 'one2ten' ||command === 'onetoten') {
     client.commands.get('one2ten').execute(message, args);
   }
-  
+  /*
   if(command === 'petshop' ||command === 'petstore' || command === 'buypet') {
     client.commands.get('petshop').execute(message, args);
-  }/*
+  }
   if(command === 'adopt') {
     client.commands.get('adopt').execute(message, args);
   }

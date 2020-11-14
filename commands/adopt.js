@@ -2,14 +2,7 @@
 const Discord = require('discord.js')
 const api = require('../api')
 //Name, Description, price
-const fs = require("fs")
-const petfiles = new Discord.Collection();
-const petarray = fs.readdirSync('./pets/').filter(file => file.endsWith('.js'));
-for (const file of petarray) {
-	const petdata = require(`../pets/${file}`);
-    petfiles.set(petdata.name, petdata);
-    console.log("Initialized "+`./pets/${file}`)
-} 
+
 const pets = require('../json/pets.json')
 module.exports = {
 	name: 'adopt',

@@ -1,7 +1,6 @@
 const api = require("../api")
 const Discord = require("discord.js")
 const pets = require('../json/pets.json')
-const { use } = require("../items/lottery")
 module.exports = {
     name: "pet",
     execute(message, args) {

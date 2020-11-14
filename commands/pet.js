@@ -58,7 +58,7 @@ module.exports = {
                 .setColor('#0099ff')
                 .setTitle(petjson.name)
                 .setAuthor(user.name, message.author.avatarURL())
-                .setFooter("Gain more XP by being more active on")
+                .setFooter("Gain more XP by being more active")
                 .setDescription("**Date adopted: "+petjson.adopted+"**\nType: "+petjson.type+"\n\nXP: "+petjson.exp+"\nLevel: "+petjson.level+"\n\n"+`**${petjson.name} needs ${250 - (petjson.exp % 250)} more XP to get level ${petjson.level +1}**`)
                 message.channel.send(embed)
             } else {

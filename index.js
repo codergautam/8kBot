@@ -4,6 +4,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
+const msgcli = require('./message');
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
@@ -23,6 +24,7 @@ setInterval(function() {
 client.on("ready", () => {
 console.log("ready!")
 })
+
 
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
@@ -45,6 +47,7 @@ client.on("message", (message) => {
     }
   }
 */
+if(message.author.bot) return;
   if(message.author.id !== client.user.id) {
   const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();
@@ -126,17 +129,31 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
   if(command === 'one2ten' ||command === 'onetoten') {
     client.commands.get('one2ten').execute(message, args);
   }
-  /*
+  
   if(command === 'petshop' ||command === 'petstore' || command === 'buypet') {
     client.commands.get('petshop').execute(message, args);
   }
   if(command === 'adopt') {
     client.commands.get('adopt').execute(message, args);
   }
-  if(command === 'pets') {
-    client.commands.get('pets').execute(message, args);
-  }*/
+
+  if(command === 'pet'||command === 'pets') {
+    client.commands.get('pet').execute(message, args);
+  }
+  if(command === 'json') {
+    client.commands.get('viewjson').execute(message, args);
+  }
+  if(command === 'modjson') {
+    client.commands.get('modjson').execute(message, args);
+  }
+  if(command === 'quote') {
+    client.commands.get('quote').execute(message, args);
+  }
+
+
+
 } 
+msgcli(message)
   }
 })
 

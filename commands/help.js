@@ -20,6 +20,10 @@ commands = {
     resign: ["8k!resign", "Resign from your current job"],
     rob: ["8k!rob <@user>", "Rob money from <@user>"],
     fight: ["8k!fight <@user>", "Fight <@user>"],
+    pets: ["8k!pets", "View all your pets!"],
+    pet: ["8k!pet <petname>", "View stats of your pet <petname>!"],
+    petshop: ["8k!petshop", "View all available pets!"],
+    adopt: ["8k!adopt <petname>", "Adopt a new pet <petname>!"],
 }
 genral = {
   start: ["8k!start", "Creates a 8k Currency Account"],

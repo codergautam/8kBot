@@ -285,6 +285,41 @@ module.exports.getUser(id)
                reject(err)
             })
         })
+    },
+    createUser(id, username) {
+        return new Promise((resolve, reject)=> {
+            var usertemplate = {
+                bal: 1000,
+                name: username,
+                inv: {},
+                id: id
+            }
+            $.ajax({
+                url: config.server+"/adduser.php",
+                method: "POST",
+                data: {
+                    sub2coder: "sub2codergautamonyoutube",
+                    id: id,
+                    json: JSON.stringify(usertemplate)
+                },
+                success: function(data) {
+                  if(JSON.parse(data).success) {
+                   resolve
+                  } else {
+                    reject(1)
+                  }
+                    
+                        
+                    
+                    
+                },
+                error: function(err) {
+                    reject(err)
+                }
+    
+            })
+        })
+ 
     }
         
     }

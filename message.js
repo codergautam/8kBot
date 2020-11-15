@@ -34,6 +34,11 @@ module.exports = (message) => {
             .setDescription(`${user.pets[pet].name} is now level ${user.pets[pet].level}!\nYou gained \`${moneyGain}\` coins!`)
             message.channel.send(embed)
         }
+        talkedRecently.add(message.author.id);
+        setTimeout(() => {
+          // Removes the user from the set after a minute
+          talkedRecently.delete(message.author.id);
+        }, 60000-array.length);
     })
     .catch(() => {
 
@@ -43,15 +48,19 @@ module.exports = (message) => {
     
             }
         })
-        .catch(() => {
+        .catch((err) => {
+            if(err.type == 0) {
+                api.createUser(message.author.id, message.author.username)
+                .then(() => {
+
+                })
+                .catch(() => {
+                    
+                })
+            }
         })
 
-    // Adds the user to the set so that they can't talk for a minute
-    talkedRecently.add(message.author.id);
-    setTimeout(() => {
-      // Removes the user from the set after a minute
-      talkedRecently.delete(message.author.id);
-    }, 30000);
+
 }
 
 }

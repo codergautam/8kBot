@@ -24,8 +24,5 @@
     "translation-google": "^0.2.1",
     "yt-search": "^2.5.0",
     "ytdl-core": "^4.0.5"
-  },
-  "engines": {
-    "node": "10.16.0"
   }
 }

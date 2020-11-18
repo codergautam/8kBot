@@ -64,6 +64,7 @@ module.exports = {
                                                         .setTitle(`Challenge Accepted`)
                                                     message.channel.send(embed)
                                                     x = true
+                                                
 
                                                     const embed1 = new Discord.MessageEmbed()
                                                         .setColor('#0099ff')

@@ -20,7 +20,7 @@ module.exports = {
                 }
                 for (pet in user.pets) {
                     var pet = user.pets[pet]
-                    ff += `\`${pet.name}\`- ${pet.type}\n*${pets[pet.type][1]}*\n\n`
+                    ff += `\`${pet.name}\`- ${pet.type}(${pet.exp} xp)\n*${pets[pet.type][1]}*\n\n`
                 }
                 if(ff == "") {
                     const embed = new Discord.MessageEmbed()

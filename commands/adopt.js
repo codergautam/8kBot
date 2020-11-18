@@ -52,7 +52,7 @@ module.exports = {
                         if(user.pets.hasOwnProperty(message23.content.toLowerCase())) {
                             message23.channel.send("*visible confusion*\nYou already have a pet "+user.pets[message23.content.toLowerCase()].type+" named "+message23.content.toLowerCase())
                         } else {
-                        var name = message23.content
+                        var name = message23.content.replace(/ +(?= )/g,'').trim();
 
                         //BUY THE pet
                         user.pets[name.toLowerCase()] = {

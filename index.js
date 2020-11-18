@@ -76,8 +76,8 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
       client.commands.get('beg').execute(message, args);
 
   }
-  if(command === 'rich' || command === 'leaderboard' || command === 'top') {
-    client.commands.get('leaderboard').execute(message, args);
+  if(command === 'rich') {
+    client.commands.get('rich').execute(message, args);
   }
   if(command === 'shop' || command === 'market' || command === 'store') {
     client.commands.get('shop').execute(message, args);
@@ -149,7 +149,40 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
   if(command === 'quote') {
     client.commands.get('quote').execute(message, args);
   }
+  if(command === 'trigger') {
+    client.commands.get('trigger').execute(message, args);
+  }
+  if(command === 'facepalm') {
+    client.commands.get('facepalm').execute(message, args);
+  }
+  if(command === 'comment') {
+    client.commands.get('comment').execute(message, args);
+  }
 
+  if(command === 'level' ||command === 'xp'  ) {
+    client.commands.get('level').execute(message, args);
+  }
+  if(command === 'play') {
+    client.commands.get('play').execute(message, args);
+  }
+  if(command === 'leave' || command === 'stop' ||command === 'disconnect') {
+    client.commands.get('leave').execute(message, args, client);
+  }
+  if(command === 'active' || command === 'xplb') {
+    client.commands.get('active').execute(message, args);
+  }
+  if(command === 'leaderboard' || command === 'lb' || command === 'top' ) {
+    client.commands.get('leaderboard').execute(message, args);
+  }
+  if(command === 'loop') {
+    client.commands.get('loop').execute(message, args);
+  }
+  if(command === 'rank') {
+    client.commands.get('rank').execute(message, args);
+  }
+  if(command === 'disown') {
+    client.commands.get('disown').execute(message, args);
+  }
 
 
 } 

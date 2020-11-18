@@ -44,7 +44,7 @@ api.getUser(message.author.id)
                 } else {
                     const embed = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle("Buying "+item)
+                    .setTitle("Selling "+item)
                     .setDescription("How many "+item+"s do you want to sell? \n Please respond within 20 seconds")
                     .setFooter("You have "+user.inv[item].amount+" "+item+"s")
                     message.channel.send(embed)

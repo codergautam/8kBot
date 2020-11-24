@@ -266,8 +266,8 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
                     }
 
                 } else if(user1f.weapon == "sniper") {
-                    if(randomInteger(1,2) == 2) {
-                        var damage = randomInteger(40,100)
+                    if(randomInteger(1,4) == 2) {
+                        var damage = randomInteger(30,100)
                         const embed56 = new Discord.MessageEmbed()
                         .setTitle("Sniper Shot!")
                         .setDescription("**"+user1d.name+" Hits "+user2d.name+" With SNIPER**\n\n"+" __**DAMAGE DEALT:  **__`" +damage+"`\n __** "+user2d.name+"**__ now has `"+(user2f.health - damage < 0 ? "0" : user2f.health - damage)+"` health!\n")

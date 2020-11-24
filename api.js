@@ -1,8 +1,8 @@
+const request = require("node-superfetch")
+const config = require( "./json/config.json" )
 const { JSDOM } = require( "jsdom" );
 const { window } = new JSDOM( "" );
 const $ = require( "jquery" )( window );
-const config = require( "./json/config.json" )
-
 module.exports = {
     name: 'api',
     convertMS(milliseconds) {
@@ -23,32 +23,28 @@ module.exports = {
     getUser(id) {
    
         return new Promise((resolve, reject) => {
-
-            $.ajax({
-                url: config.server+"/getall.php",
-                method: "GET",
-                data: {
-                },
-                success: function(dta) {
-                    try {
-                        var json = JSON.parse(dta)
-                    } catch {
-                        reject({type:-1})
-                    }
-            
-                    if(json.hasOwnProperty(id.toString())) {
-                        resolve(json[id])
-                         } else {
-             reject({type: 0})
-                             
-                         
-                 }
-                
-                },
-                error: function() {
-                    reject({type: -1})
+            request.get(config.server+"/getall.php")
+            .then((data) => {
+                var body = data.body.toString()
+                try {
+                    var json = JSON.parse(body)
+                } catch {
+                    reject({type:-1})
                 }
+        
+                if(json.hasOwnProperty(id.toString())) {
+                    resolve(json[id])
+                     } else {
+         reject({type: 0})
+                         
+                     
+             }
+            
             })
+            
+
+      
+            
           
                 
     
@@ -63,7 +59,7 @@ module.exports = {
     },
     modUser(id, obj) {
         return new Promise((resolve, reject) => {
-      
+      if(obj.bal < 0) obj.bal = 0;
             $.ajax({
                 url: config.server+"/moduser.php",
                 method: "POST",
@@ -95,6 +91,7 @@ module.exports = {
                     reject({type: -1})
                 }
             })
+        
         })
 
         
@@ -102,7 +99,6 @@ module.exports = {
     },
     addCool(id, name, ms) {
         return new Promise((resolve, reject) => {
-
 module.exports.getUser(id)
 .then((user) => {
     if(!user.hasOwnProperty("cooldown")) {
@@ -131,12 +127,14 @@ reject(err)
         return new Promise((resolve, reject) => {
 module.exports.getUser(id)
 .then((user)=> {
+
     if(!user.hasOwnProperty("cooldown")) {
         user.cooldown = {}
     }
+
     if(user.cooldown.hasOwnProperty(name)) {
         var dacooldown = user.cooldown[name]
-        if(dacooldown.started+dacooldown.ms<=Date.now()) {
+        if(dacooldown.started+dacooldown.ms<Date.now()) {
             //if(dacooldown.started+10000<=Date.now()) {
             //No cooldown
             resolve({cooldown: false})

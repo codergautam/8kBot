@@ -17,6 +17,21 @@ const levels = new Set();
 const api = require("./api")
 const Discord = require("discord.js")
 module.exports = (message) => {
+    if(message.content.toLowerCase() == "who is your dad") {
+        message.channel.send("💖It's Coder ofcourse💖")
+      }
+      if(message.content.toLowerCase() == "who is your mom") {
+        message.channel.send("i dont have one... yet...")
+      }
+        if(message.content.toLowerCase() == "who is your grandpa") {
+          message.channel.send("✨It's Phoenix ofcourse✨")
+        }
+        if(message.content.toLowerCase() == "who is your grandma") {
+          message.channel.send("🥰It's Serenity ofcourse🥰")
+        }
+        if(message.content.toLowerCase() == "who is the best couple in the world") {
+          message.channel.send("It's 🤍Serenity🤍 and 🤍Phoenix🤍 ofcourse")
+        }
    
     api.getUser(message.author.id)
     .then((user) => {

@@ -37,6 +37,7 @@ const Discord = require("discord.js");
                     .setCurrentXP(user.levels.xp)
                     .setRequiredXP( calculateRequired(user.levels.level+1))
                     .setStatus("dnd")
+                    .renderEmojis(true)
                     .setProgressBar("#FFFFFF", "COLOR")
                     .setUsername(user.name)
                     .setDiscriminator(message.author.discriminator)

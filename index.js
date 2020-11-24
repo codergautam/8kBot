@@ -7,7 +7,7 @@ const fs = require('fs');
 const msgcli = require('./message');
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-
+const process = require("process")
 let stats = ["8k bot", "8k!help"]
 let myArray = ["dnd", "available", "idle"]
 
@@ -20,6 +20,11 @@ setInterval(function() {
   
 }, 5000)
 })
+
+process.on('SIGINT', () => {
+  console.log('Goodbye bot!');
+  process.exit()
+});
 
 client.on("ready", () => {
 console.log("ready!")
@@ -149,7 +154,7 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
   if(command === 'quote') {
     client.commands.get('quote').execute(message, args);
   }
-  if(command === 'trigger') {
+  if(command === 'trigger' || command === 'triggered' ||command === 'triggerd') {
     client.commands.get('trigger').execute(message, args);
   }
   if(command === 'facepalm') {
@@ -183,6 +188,32 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
   if(command === 'disown') {
     client.commands.get('disown').execute(message, args);
   }
+  if(command === 'autocomplete') {
+    client.commands.get('autocomplete').execute(message, args);
+  }
+  if(command === 'search') {
+    client.commands.get('search').execute(message, args);
+  }
+  if(command === 'tictactoe' || command === 'ttt') {
+    client.commands.get('tictactoe').execute(message, args);
+  }
+  if(command === 'doubleornothing' || command === 'don') {
+    client.commands.get('doubleornothing').execute(message, args);
+  }
+  if(command === 'ping' || command === 'ms') {
+    client.commands.get('ping').execute(message, args, client);
+  }
+  if(command === 'trivia') {
+    client.commands.get('trivia').execute(message, args);
+  }
+  if(command === 'triviastats') {
+    client.commands.get('triviastats').execute(message, args);
+  }
+
+
+  //fun random stuff
+
+  
 
 
 } 

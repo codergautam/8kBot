@@ -19,13 +19,17 @@ commands = {
     resign: ["8k!resign", "Resign from your current job"],
     rob: ["8k!rob <@user>", "Rob money from <@user>"],
     fight: ["8k!fight <@user>", "Fight <@user>"],
+    tictactoe: ["8k!ttt <@user>", "Play tictactoe with <@user>"],
+    doubleornothing: ["8k!don", "Play Double Or Nothing"],
     pets: ["8k!pets", "View all your pets!"],
     pet: ["8k!pet <petname>", "View stats of your pet <petname>!"],
     petshop: ["8k!petshop", "View all available pets!"],
     adopt: ["8k!adopt <pettype>", "Adopt a new pet <pettype>!"],
     rank: ["8k!disown <petname>", "Disown your <petname>"],
     xp: ["8k!xp", "View your XP card"],
-    rank: ["8k!rank", "View your 8k rank!"]
+    rank: ["8k!rank", "View your 8k rank!"],
+    trivia: ["8k!trivia", "Play a game of trivia!"],
+    triviastats: ["8k!triviastats <@user>", "View the trivia game stats of <@user>!"]
 }
 genral = {
   start: ["8k!start", "Creates a 8k Currency Account"],

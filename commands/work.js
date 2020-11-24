@@ -49,7 +49,7 @@ module.exports = {
             } else {
                 const embed = new Discord.MessageEmbed()
                 .setColor('#0099ff')
-                .setTitle("You dont have an job! View a list of jobs by typing ``8k!jobs`")
+                .setTitle("You dont have an job! View a list of jobs by typing `8k!jobs`")
                 message.channel.send(embed)
             }
         })

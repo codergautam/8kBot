@@ -297,7 +297,7 @@ turn(b){
         .then(() => this.m.react('7⃣'))
         .catch(err=>console.log(err.toString()))
       }
-    this.m.awaitReactions((reaction, user)=>['1⃣', '2⃣', '3⃣', '4⃣', '5⃣', '6⃣', '7⃣'].includes(reaction.emoji.name) && user.id === this.id, { max: 1, time: 60000})
+    this.m.awaitReactions((reaction, user)=>['1⃣', '2⃣', '3⃣', '4⃣', '5⃣', '6⃣', '7⃣'].includes(reaction.emoji.name) && user.id === this.id, { max: 1, time: 120000})
         .then(collected => {
           const reaction = collected.first();
               

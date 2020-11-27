@@ -20,6 +20,7 @@ commands = {
     rob: ["8k!rob <@user>", "Rob money from <@user>"],
     fight: ["8k!fight <@user>", "Fight <@user>"],
     tictactoe: ["8k!ttt <@user>", "Play tictactoe with <@user>"],
+    connectfour: ["8k!c4 <@user>", "Play connect 4 with <@user>"],
     doubleornothing: ["8k!don", "Play Double Or Nothing"],
     pets: ["8k!pets", "View all your pets!"],
     pet: ["8k!pet <petname>", "View stats of your pet <petname>!"],

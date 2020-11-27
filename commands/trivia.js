@@ -18,8 +18,7 @@ module.exports = {
                         message.channel.send(embed)
                     } else {
                  
-            api.addCool(message.author.id, "trivia", 3600000)
-            .then(() => {
+
            if(!user.hasOwnProperty("trivia")) {
                 user.trivia = {
                     streak: 0,
@@ -75,11 +74,12 @@ module.exports = {
         collector.on("end", () => {
             if(!collected) {
                 message.channel.send(`${message.member}, Time is up!\nThe correct answer was: \`${body.correct_answer.toLowerCase()}\``)
+                api.addCool(message.author.id, "trivia", 20000)
             }
         })
         
     })
-})
+
 }
                     
 })
@@ -102,6 +102,7 @@ const embed = new Discord.MessageEmbed()
 .setDescription(`The correct answer was \`${body.correct_answer.toLowerCase()}\`\n\nYou gained 0 coins lol and your streak is 0`)
 .setFooter(`Type 8k!triviastats to see your trivia stats!`)
 message.channel.send(embed)
+api.addCool(message.author.id, "trivia", 20000)
     })
 }
 const correctmsg = (message, body, user) => {
@@ -119,6 +120,9 @@ const correctmsg = (message, body, user) => {
         .setDescription(`You got the answer right! Nice job!!\n\nYou gained \`${moneygain}\` coins and your new streak is ${user.trivia.streak}!`)
         .setFooter(`Type 8k!triviastats to see your trivia stats!`)
         message.channel.send(embed)
+        api.addCool(message.author.id, "trivia", 20000)
     })
 
     }
+
+  

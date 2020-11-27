@@ -250,7 +250,7 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
             } else if (coolmesgade.content.toLowerCase() == "attack" || coolmesgade.content.toLowerCase() == "fight") {
                 if(user1f.weapon == "axe") {
                     var hit = randomInteger(0,3)
-                    var damage = hit*randomInteger(5,35)
+                    var damage = hit*randomInteger(5,20)
                     if(damage != 0) {
                         const embed56 = new Discord.MessageEmbed()
                         .setTitle("Axe Results!")
@@ -266,8 +266,8 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
                     }
 
                 } else if(user1f.weapon == "sniper") {
-                    if(randomInteger(1,4) == 2) {
-                        var damage = randomInteger(30,100)
+                    if(randomInteger(1,3) == 2) {
+                        var damage = randomInteger(30,95)
                         const embed56 = new Discord.MessageEmbed()
                         .setTitle("Sniper Shot!")
                         .setDescription("**"+user1d.name+" Hits "+user2d.name+" With SNIPER**\n\n"+" __**DAMAGE DEALT:  **__`" +damage+"`\n __** "+user2d.name+"**__ now has `"+(user2f.health - damage < 0 ? "0" : user2f.health - damage)+"` health!\n")

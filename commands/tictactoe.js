@@ -23,7 +23,7 @@ module.exports = {
                     .then((user1d) => {
                         api.getUser(user2.id)
                             .then((user2d) => {
-                                if(Number.isInteger(Number(wager)) && Number(wager) <= user1d.bal &&  Number(wager) <= user1d.bal) {
+                                if(Number.isInteger(Number(wager)) && Number(wager) <= user1d.bal &&  Number(wager) <= user1d.bal && Number(wager) >= 1) {
                                     ask(Number(wager), user1d, user2d, message, user1, user2)
                                 } else {
                                 const embed = new Discord.MessageEmbed()
@@ -168,10 +168,10 @@ function tictactoe(message, user1, user2, user1d, user2d, turn, xf, betmoney, ga
                         var us = x
                     }
                     if(checkwin(us)) {
+                        api.changeBal(user2d.id, -betmoney)
+                        .then(() => {
                         api.changeBal(user1d.id, betmoney)
                         .then(() => {
-                            api.changeBal(user2d.id, -betmoney)
-                            .then(() => {
                                 const embedyee = new Discord.MessageEmbed()
                                 .setTitle(`${user1d.name} wins!`)
                                 .setDescription(`${user1d.name} beat ${user2d.name} in TicTacToe!!\n${user1d.name} gained ${betmoney} coins! ${user2d.name} lost ${betmoney} coins!`)
@@ -186,6 +186,7 @@ function tictactoe(message, user1, user2, user1d, user2d, turn, xf, betmoney, ga
                         })
                         .catch(() => {
                             message.channel.send("Something went wrong\nError code: 1")
+                            return
                         })
                     } else {
                         //continue play

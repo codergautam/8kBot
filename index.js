@@ -209,8 +209,12 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
   if(command === 'triviastats') {
     client.commands.get('triviastats').execute(message, args);
   }
-
-
+  if(command === 'chat') {
+    client.commands.get('chat').execute(message, args);
+  }
+  if(command === 'connect4' || command === 'connectfour' || command === 'c4') {
+    client.commands.get('connect4').execute(message, args);
+  }
   //fun random stuff
 
   

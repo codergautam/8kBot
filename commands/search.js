@@ -13,7 +13,7 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
         .setTitle(href.title)
         .setDescription(href.snippet)
-        .setImage(href.pagemap ? href.pagemap.cse_image[0].src : null)
+        .setImage(href.pagemap ? (href.pagemap.cse_image?href.pagemap.cse_image[0].src:null) : null)
         .setURL(href.link)
         .setFooter("Powered by Google")
         message.channel.send(embed)

@@ -216,9 +216,13 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
     client.commands.get('connect4').execute(message, args);
   }
   //fun random stuff
-
   
-
+  if(command == "owo" || command == "uwuify" || command ==  "owofy" || command == "owoify") {
+    client.commands.get('owoify').execute(message, args)
+  }
+  if(command == "ph" || command == "programmerhumor" || command ==  "programmerjoke") {
+    client.commands.get('ph').execute(message, args)
+  }
 
 } 
 msgcli(message)

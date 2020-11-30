@@ -14,7 +14,13 @@ for (const file of jobarray) {
 
 
 module.exports = {
-	name: 'apply',
+    name: 'apply',
+    aliases: ["apply"],
+    secret: false,
+    format: "8k!apply <jobname>",
+    usage: ["8k!apply coder", "8k!apply teacher"],
+    category: "currency",
+    description: "Apply for a job a new pet <jobname>! You can view a list of the available jobs by typing 8k!jobs", 
 	async execute(message, args) {
         api.getUser(message.author.id)
         .then((user) => {

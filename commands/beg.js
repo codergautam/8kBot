@@ -3,7 +3,13 @@ const api = require('../api')
 
 
 module.exports = {
-	name: 'beg',
+    name: 'beg',
+    aliases: ["beg", "ask"],
+    secret: false,
+    category: "currency",
+    format: "8k!beg",
+    usage: ["8k!beg"],
+    description: "Beg for money, you can gain up to 1000 coins if you're lucky!", 
 	execute(message, args) {
 
 

@@ -2,6 +2,12 @@ const fetch = require("node-superfetch")
 
 module.exports = {
     name: "chat",
+    aliases: ["chat", "chatbot"],
+    secret: false,
+    category: "fun",
+    format: "8k!chat <message>",
+    usage: ["8k!chat Hello!", "8k!chat Whats 1+1?"],
+    description: "Say <message> to the chatbot! You will get a response from it!", 
     execute(message, args) {
         var msg = args.join(" ")
         if(msg == "") return message.reply("**No message entered**\nPlease use the command like `8k!chat <message>`")

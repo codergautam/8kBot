@@ -5,7 +5,13 @@ const api = require('../api')
 
 const pets = require('../json/pets.json')
 module.exports = {
-	name: 'adopt',
+    name: 'adopt',
+    aliases: ["adopt"],
+    secret: false,
+    category: "currency",
+    format: "8k!adopt <petname>",
+    usage: ["8k!adopt dog", "8k!adopt cat"],
+    description: "Adopt a new pet <petname>! You can view a list of the available pets by typing 8k!petshop", 
 	async execute(message, args) {
         api.getUser(message.author.id)
         .then((user) => {

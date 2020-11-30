@@ -3,6 +3,12 @@ var connectfour = require("../stuff/c4")
 const Discord = require("discord.js")
 module.exports = {
     name: "connect4",
+    aliases: ["ytcomment", "youtube", "comment"],
+    secret: false,
+    category: "fun",
+    format: "8k!comment <text>",
+    usage: ["8k!comment Hello", "8k!comment sub to coder gautam lol"],
+    description: "This command shows a youtube comment image with <text> in it!", 
     execute(message, args) {
         if(!message.guild.me.hasPermission("MANAGE_MESSAGES")) return message.channel.send("I need the manage messages permission to play this game")
         var user1 = message.author

@@ -2,7 +2,13 @@ const Discord = require('discord.js')
 const autocomplete = require('google-search-autocomplete');
 
 module.exports = {
-	name: 'autocomplete',
+    name: 'autocomplete',
+    aliases: ["autocomplete"],
+    secret: false,
+    category: "fun",
+    format: "8k!autocomplete <searchterm>",
+    usage: ["8k!autocomplete coder ga", "8k!autocomplete Mrbeast"],
+    description: "See what google autocompletes for provided search term!", 
 	async execute(message, args) {
         var query = args.join(' ')
         if(query == "") return message.channel.send("**No Query Entered**\nUse command like \n`8k!autocomplete` <query>")

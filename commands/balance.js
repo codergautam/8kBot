@@ -2,7 +2,13 @@ const Discord = require('discord.js')
 const api = require('../api')
 
 module.exports = {
-	name: 'balance',
+    name: 'balance',
+    aliases: ["bal", "balance"],
+    secret: false,
+    category: "currency",
+    format: "8k!bal [@user]",
+    usage: ["8k!bal", "8k!bal @pokeski"],
+    description: "View how many coins @user has, if no user mentioned, it will show your balance", 
 	async execute(message, args) {
 
         if(message.mentions.users.first()) {

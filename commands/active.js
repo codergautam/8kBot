@@ -24,7 +24,13 @@ function leaderboard(obj, page) {
     }
 
 module.exports = {
-	name: 'active',
+    name: 'active',
+    aliases: ["active", "xplb"],
+    category: "currency",
+    format: "8k!active [pagenum]",
+    secret: false,
+    usage: ["8k!active", "8k!active 2"],
+    description: "View the most active users on all the servers 8k bot is in!", 
 	async execute(message, args) {
         api.getAll()
         .then((all) => {

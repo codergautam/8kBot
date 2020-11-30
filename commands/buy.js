@@ -11,7 +11,13 @@ for (const file of itemarray) {
 } 
 const items = require('../json/items.json')
 module.exports = {
-	name: 'buy',
+    name: 'buy',
+    aliases: ["buy", "purchase"],
+    secret: false,
+    category: "currency",
+    format: "8k!buy <item>",
+    usage: ["8k!buy apple", "8k!buy laptop"],
+    description: "Buy <item>, you can type 8k!shop for a list of available items!", 
 	async execute(message, args) {
         api.getUser(message.author.id)
         .then((user) => {

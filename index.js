@@ -235,8 +235,8 @@ msgcli(message)
 })
 
 //ORIGINAL
-//client.login(process.env.TOKENMAIN);
+client.login(process.env.TOKENMAIN);
 //BETA
-client.login(process.env.TOKENBETA)
+//client.login(process.env.TOKENBETA)
 //BETA 2
 //client.login(process.env.TOKENBETA2);

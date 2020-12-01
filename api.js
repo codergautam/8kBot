@@ -1,5 +1,10 @@
 const request = require("node-superfetch")
-const config = require( "./json/config.json" )
+require('dotenv').config()
+const config = {
+    server: process.env.SERVERURL,
+    secret: process.env.SECRET
+}
+
 const { JSDOM } = require( "jsdom" );
 const { window } = new JSDOM( "" );
 const $ = require( "jquery" )( window );
@@ -64,7 +69,7 @@ module.exports = {
                 url: config.server+"/moduser.php",
                 method: "POST",
                 data: {
-                    sub2coder: "sub2codergautamonyoutube",
+                    sub2coder: config.secret,
                     id: id,
                     json: JSON.stringify(obj)
                 },
@@ -296,7 +301,7 @@ module.exports.getUser(id)
                 url: config.server+"/adduser.php",
                 method: "POST",
                 data: {
-                    sub2coder: "sub2codergautamonyoutube",
+                    sub2coder: secret,
                     id: id,
                     json: JSON.stringify(usertemplate)
                 },

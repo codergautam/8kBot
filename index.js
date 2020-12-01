@@ -10,7 +10,7 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 const process = require("process")
 let stats = ["8k bot", "8k!help"]
 let myArray = ["dnd", "available", "idle"]
-
+require('dotenv').config();
 client.on("ready", () => {
 client.guilds.cache.forEach(guild=> {
   console.log(guild.name)
@@ -235,8 +235,8 @@ msgcli(message)
 })
 
 //ORIGINAL
-client.login("NzgzMzQ2MjcwMjkwOTY4NjA2.X8ZaEA.5IvM1atTye8LzkszixdXqd8R4QI");
+//client.login(process.env.TOKENMAIN);
 //BETA
-//client.login("NzYxMjI5MTM5MzczMzI2MzM4.X3Xj4Q.0cNK_LtkvVL1MGVFvpFO2pjpZXo")
+client.login(process.env.TOKENBETA)
 //BETA 2
-//client.login("Nzc1NzU1ODQ4ODE4NDkxNDQz.X6q87w.aKQkXousaOnE37iPTg0qH8kR7O8");
+//client.login(process.env.TOKENBETA2);

@@ -12,7 +12,9 @@ let stats = ["8k bot", "8k!help"]
 let myArray = ["dnd", "available", "idle"]
 
 client.on("ready", () => {
-
+client.guilds.cache.forEach(guild=> {
+  console.log(guild.name)
+})
 setInterval(function() {
   let status = stats[Math.floor(Math.random()*stats.length)];
   var test = myArray[Math.floor(Math.random()*myArray.length)];
@@ -223,6 +225,9 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
   if(command == "ph" || command == "programmerhumor" || command ==  "programmerjoke") {
     client.commands.get('ph').execute(message, args)
   }
+  if(command == "ship") {
+    client.commands.get('ship').execute(message, args)
+  }
 
 } 
 msgcli(message)
@@ -230,7 +235,7 @@ msgcli(message)
 })
 
 //ORIGINAL
-client.login("NzU1MTQ2OTUxODU4ODQ3Nzk2.X1_DZw.HVvPsLDXyLz41H3Qf6myItytYEs");
+client.login("NzgzMzQ2MjcwMjkwOTY4NjA2.X8ZaEA.5IvM1atTye8LzkszixdXqd8R4QI");
 //BETA
 //client.login("NzYxMjI5MTM5MzczMzI2MzM4.X3Xj4Q.0cNK_LtkvVL1MGVFvpFO2pjpZXo")
 //BETA 2

@@ -32,7 +32,9 @@ module.exports = (message) => {
         if(message.content.toLowerCase() == "who is the best couple in the world") {
           message.channel.send("It's 🤍Serenity🤍 and 🤍Phoenix🤍 ofcourse")
         }
-   
+        if(message.content.toLowerCase() == "who is the best brother") {
+            message.channel.send("It's Kai ofcourse")
+          }
     api.getUser(message.author.id)
     .then((user) => {
 
@@ -136,7 +138,7 @@ setTimeout(() => {
     if(err.type == 0) {
         api.createUser(message.author.id, message.author.username)
         .then(() => {
-
+        
         })
         .catch(() => {
             

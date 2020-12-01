@@ -10,7 +10,7 @@ module.exports = {
          const embed = new Discord.MessageEmbed()
          .setTitle(m.title)
          .setImage(m.url)
-         .setFooter('Author: '+m.author)
+         .setFooter('Programmer joke by: '+m.author)
 
          message.channel.send(embed)
          message.channel.stopTyping()

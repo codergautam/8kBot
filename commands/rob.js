@@ -48,9 +48,8 @@ module.exports = {
                                     message.channel.send(embed)
                                 } else {
                       
-                        if(Math.random() <= 0.5) {
-                            var maxSteal = 500000
-                            var toSteal = Math.floor(Math.floor(Math.random()*10)+1 == 10 ? (taguser.bal >= maxSteal ? maxSteal:taguser.bal)*getRandomInt(5,8)/100 : (taguser.bal >= maxSteal ? maxSteal:taguser.bal)*(Math.floor(Math.random()*10)+1)/100)
+                        if(Math.random() <= 0.65) {
+                            var toSteal = Math.floor(getRandomInt(taguser.bal*0.02,  taguser.bal*0.3))
                             api.changeBal(message.author.id, toSteal)
                             .then(() => {
                                 api.changeBal(user.id, -toSteal) 

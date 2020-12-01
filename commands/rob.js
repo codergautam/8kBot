@@ -49,7 +49,7 @@ module.exports = {
                                 } else {
                       
                         if(Math.random() <= 0.65) {
-                            var toSteal = Math.floor(getRandomInt(taguser.bal*0.02,  taguser.bal*0.3))
+                            var toSteal = Math.floor(getRandomInt(taguser.bal*0.002,  taguser.bal*0.1))
                             api.changeBal(message.author.id, toSteal)
                             .then(() => {
                                 api.changeBal(user.id, -toSteal) 

@@ -70,7 +70,7 @@ module.exports = {
             message.channel.send("You need a laptop to code!\nYou can buy one buy typing `8k!buy laptop`")
         } else {
             var coded = ["A social media app", "A video game", "An operating system", "A chatting app"][Math.floor(Math.random() * 4)];
-            var users = getRandomInt(50000, 100000)
+            var users = getRandomInt(50000, 150000)
             var moneyEarn = Math.round(users / 10)
 
             api.changeBal(user.id, moneyEarn)

@@ -34,7 +34,7 @@ module.exports = {
            var moneyEarned = 1000 * amount
             var typ1e = "JACKPOT!!!!!💰💰💰"
         } else if(randm >= 75 && randm <=100) {
-           var moneyEarned = 100 * amount
+           var moneyEarned = 250 * amount
            var typ1e = "Quik Cash💵💵"
         } else {
          var   moneyEarned = 0

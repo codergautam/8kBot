@@ -25,13 +25,13 @@ module.exports = {
         api.getUser(user.id)
         .then((user) => {
             if(ofog ==1 ) {
-                user.bal += 500
-                message.channel.send("You got a yummy ice cream and gained another **500** coins.\nYour new balance is **"+user.bal+"** coins")
+                user.bal += 1000
+                message.channel.send("You got a yummy ice cream and gained another **1000** coins.\nYour new balance is **"+user.bal+"** coins")
                 api.addCool(user.id, "ice cream", 10000)
                 
             } else {
-                user.bal += 250                
-                message.channel.send("Oops ! You got a melted icecream and gained only **250** Coins.\nYour new balance is **"+user.bal+"** coins")                               
+                user.bal += 300                
+                message.channel.send("Oops ! You got a melted icecream and gained only **300** Coins.\nYour new balance is **"+user.bal+"** coins")                               
                 api.addCool(user.id, "ice cream", 10000)
             }
            user.inv["ice cream"].amount -= 1
@@ -41,7 +41,6 @@ module.exports = {
            
            api.modUser(user.id, user)
            .then(() => {
-            message.channel.send("success")
            })
            .catch(() => {
             message.channel.send("Error")

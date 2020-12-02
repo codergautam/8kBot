@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const api = require('../api')
 module.exports = {
-    
+
 	name: 'lottery',
 	use(message, userItem, user) {
         api.checkCool(message.author.id, "lottery")
@@ -10,7 +10,7 @@ module.exports = {
                 const embed = new Discord.MessageEmbed()
                 .setColor('#0099ff')
                 .setTitle("Cooldown")
-                .setDescription("You just tryed the lottery!\nYou can try it again in `"+api.convertMS(cooldown.msleft)+"`")
+                .setDescription("You just tried the lottery!\nYou can try it again in `"+api.convertMS(cooldown.msleft)+"`")
                 message.channel.send(embed)
             } else {
                 const embed = new Discord.MessageEmbed()

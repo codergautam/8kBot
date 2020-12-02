@@ -39,7 +39,6 @@ module.exports = {
                 } catch {
                     reject({type:-1})
                 }
-                console.log(json)
                 if(json.hasOwnProperty(id.toString())) {
                     resolve(json[id])
                      } else {

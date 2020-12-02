@@ -70,7 +70,7 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
   }
   //Currency game
   if(command === 'start') {
-    client.commands.get('start').execute(message, args, client);
+    message.channel.send("8k!start has been deprecated")
   }
   if(command === 'transfer'|| command === 'give') {
     client.commands.get('transfer').execute(message, args, client);

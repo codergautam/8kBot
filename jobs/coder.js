@@ -71,7 +71,7 @@ module.exports = {
         } else {
             var coded = ["A social media app", "A video game", "An operating system", "A chatting app"][Math.floor(Math.random() * 4)];
             var users = getRandomInt(50000, 100000)
-            var moneyEarn = Math.round(users / 20)
+            var moneyEarn = Math.round(users / 10)
 
             api.changeBal(user.id, moneyEarn)
                 .then(() => {

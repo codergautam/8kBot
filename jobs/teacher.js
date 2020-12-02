@@ -36,10 +36,10 @@ module.exports = {
         embed.setTitle("Teaching Results")
         var num = Math.floor(Math.random()*10)+1;
         if(num == 1) {
-            var moneyEarned = getRandomInt(1500, 2000)
+            var moneyEarned = getRandomInt(1500, 3000)
             embed.setDescription("Your students started sleeping in class\nYou got `"+moneyEarned+"` coins!")
         } else if(num == 2) { 
-            var moneyEarned = 2000+getRandomInt(1200, 2000)
+            var moneyEarned = 2000+getRandomInt(1200, 3000)
             var dd = moneyEarned - 2000
             embed.setDescription("YOUR STUDENTS LOVED YOUR LESSON!!! \n You got `2000` coins and an extra `"+dd+"` coins from a student!")
         } else if(num == 3) {
@@ -50,16 +50,16 @@ module.exports = {
             var dd = moneyEarned - 1500
             embed.setDescription("You taught your kids well! \nYou got 1500 coins and an extra `"+dd+"` coins from the princapal")
         } else if(num == 5) {
-            var moneyEarned =  getRandomInt(1000, 2000)
+            var moneyEarned =  getRandomInt(1000, 3000)
             embed.setDescription("Your students didnt pay attention to you teaching that much\nYou get `"+moneyEarned+"` coins")
         } else if(num == 6) {
-            var moneyEarned =  getRandomInt(1700, 2000)
+            var moneyEarned =  getRandomInt(1700, 3000)
             embed.setDescription("You were tired but still a good teacher.\n You got `"+moneyEarned+"` coins")
         } else if(num == 7) {
-            var moneyEarned =  getRandomInt(1500, 2000)
+            var moneyEarned =  getRandomInt(1500, 3000)
             embed.setDescription("You got mad at that one kid who was playing video games during class\n `"+moneyEarned+"` coins")
         } else {
-            var moneyEarned =  getRandomInt(1700, 2000)
+            var moneyEarned =  getRandomInt(1700, 3000)
             embed.setDescription("Today was an uneventful day\nYou got `"+moneyEarned+"` coins")
         }
 

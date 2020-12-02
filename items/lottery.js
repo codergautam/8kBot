@@ -30,11 +30,11 @@ module.exports = {
         if(randm == 1) {
             var moneyEarned = 100000 * amount
             var typ1e = "MEGA MEGA JACKPOT!!!!!🤑🤑🤑🤑"
-        } else if(randm >=2 && randm <= 5) {
-           var moneyEarned = 10000 * amount
-            var typ1e = "JACKPOT!!!!!💰💰💰"
-        } else if(randm >= 90 && randm <=100) {
+        } else if(randm >=2 && randm <= 9) {
            var moneyEarned = 1000 * amount
+            var typ1e = "JACKPOT!!!!!💰💰💰"
+        } else if(randm >= 80 && randm <=100) {
+           var moneyEarned = 100 * amount
            var typ1e = "Quik Cash💵💵"
         } else {
          var   moneyEarned = 0

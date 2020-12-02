@@ -88,7 +88,7 @@ setTimeout(() => {
 }, 30000);
         })
         .catch((err) => {
-            message.channel.send(err.toString())
+            console.log(err)
         })
 
 

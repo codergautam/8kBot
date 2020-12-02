@@ -39,7 +39,7 @@ module.exports = {
                 } catch {
                     reject({type:-1})
                 }
-        
+                console.log(json)
                 if(json.hasOwnProperty(id.toString())) {
                     resolve(json[id])
                      } else {
@@ -304,7 +304,7 @@ module.exports.getUser(id)
                 url: config.server+"/adduser.php",
                 method: "POST",
                 data: {
-                    sub2coder: secret,
+                    sub2coder: process.env.SECRET,
                     id: id,
                     json: JSON.stringify(usertemplate)
                 },

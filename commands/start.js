@@ -14,7 +14,8 @@ module.exports = {
                 .then(() => {
                     message.channel.send("Your 8k account has been created!!\nType `8k!help` to view all the commands!") 
                 })
-                .catch(() =>{
+                .catch((err) =>{
+                    console.log(err)
                     message.channel.send("Something went wrong in making your account...") 
                 })
     

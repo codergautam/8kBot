@@ -31,7 +31,7 @@ module.exports = {
                         jobfiles.get(user.job.name).work(message, (moneyEarned) => {
                             api.changeBal(message.author.id, moneyEarned)
                             .then(() => {
-                              api.addCool(message.author.id, "work", 1800000)
+                              api.addCool(message.author.id, "work", 900000)
                             })
                             .catch(() => {
                                 message.channel.send("Eror!")

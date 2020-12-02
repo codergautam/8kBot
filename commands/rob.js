@@ -49,7 +49,7 @@ module.exports = {
                                 } else {
                       
                         if(Math.random() <= 0.5) {
-                            var maxSteal = 1000000
+                            var maxSteal = 100000
                             var toSteal = Math.floor(Math.floor(Math.random()*10)+1 == 10 ? (taguser.bal >= maxSteal ? maxSteal:taguser.bal)*getRandomInt(5,8)/100 : (taguser.bal >= maxSteal ? maxSteal:taguser.bal)*(Math.floor(Math.random()*10)+1)/100)
                             api.changeBal(message.author.id, toSteal)
                             .then(() => {
@@ -67,7 +67,7 @@ module.exports = {
                         } else {
                           
 
-                            var moneyTaken = Math.floor(((Math.floor(Math.random()*5)+1)/100)*Math.floor(1000000 <= mainuser ? 1000000:mainuser.bal))
+                            var moneyTaken = Math.floor(((Math.floor(Math.random()*5)+1)/100)*Math.floor(10000 <= mainuser ? 10000:mainuser.bal))
                             
                             api.changeBal(message.author.id, -moneyTaken)
                             .then(() => {

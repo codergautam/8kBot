@@ -1,14 +1,11 @@
 const api = require("../api")
 const Discord = require("discord.js")
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-}
 function leaderboard(obj, page) {
     const sorted = Object.values(obj).sort((a, b) => a.bal - b.bal).reverse().slice((page*10)-10,page*10)
     
     var leaderboard = ""
     sorted.forEach((entry, i) => {
-        dk = numberWithCommas(entry.bal)
+        dk = api.numberWithCommas(entry.bal)
         if(i+(page-1)*10+1==1) {
             leaderboard = leaderboard+`🥇 **${entry.name}**- \`${dk}\` coins\n`
         } else if(i+(page-1)*10+1 ==2) {

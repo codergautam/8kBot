@@ -25,6 +25,9 @@ module.exports = {
             
         
     },
+    numberWithCommas(x) {
+        return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+    },
     getUser(id) {
    
         return new Promise((resolve, reject) => {

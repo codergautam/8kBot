@@ -24,7 +24,7 @@ module.exports = {
             const embed = new Discord.MessageEmbed()
             .setColor('#0099ff')
             .setTitle(user.name+"'s Balance")
-            .setDescription('This user has `'+user.bal+"` coins!")
+            .setDescription('This user has `'+api.numberWithCommas(user.bal)+"` coins!")
             message.channel.send(embed)
         })
         .catch((err) => {

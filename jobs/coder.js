@@ -71,7 +71,7 @@ module.exports = {
         } else {
             var coded = ["A social media app", "A video game", "An operating system", "A chatting app"][Math.floor(Math.random() * 4)];
             var users = getRandomInt(50000, 100000)
-            var moneyEarn = Math.round(users / 10)
+            var moneyEarn = Math.round(users / 20)
 
             api.changeBal(user.id, moneyEarn)
                 .then(() => {
@@ -88,7 +88,6 @@ module.exports = {
                         message.channel.send(`You made **${coded}** and gained **${users}** users!\nYou gained \`${moneyEarn}\` coins! Niceee application bro!`)
                         
                     }
-                    api.addCool(user.id, "laptop", 300000)
                     callback(moneyEarn)
 
                 })

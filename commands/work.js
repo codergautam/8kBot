@@ -2,7 +2,6 @@ const api = require("../api")
 const Discord = require('discord.js')
 
 const fs = require('fs');
-const { use } = require("../items/lottery");
 const jobfiles = new Discord.Collection();
 const jobarray = fs.readdirSync('./jobs/').filter(file => file.endsWith('.js'));
 for (const file of jobarray) {
@@ -32,7 +31,7 @@ module.exports = {
                         jobfiles.get(user.job.name).work(message, (moneyEarned) => {
                             api.changeBal(message.author.id, moneyEarned)
                             .then(() => {
-                              api.addCool(message.author.id, "work", 3600000)
+                              api.addCool(message.author.id, "work", 1800000)
                             })
                             .catch(() => {
                                 message.channel.send("Eror!")

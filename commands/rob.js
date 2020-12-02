@@ -1,10 +1,6 @@
 const api = require("../api")
 const Discord = require("discord.js")
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+
 module.exports = {
     name: "rob",
     execute(message, args) {
@@ -66,8 +62,8 @@ module.exports = {
                             
                         } else {
                           
-
-                            var moneyTaken = Math.floor(((Math.floor(Math.random()*5)+1)/100)*Math.floor(10000 <= mainuser ? 10000:mainuser.bal))
+                            var userbal = mainuser.bal
+                            var moneyTaken = Math.floor(Math.floor((Math.random()*+(Math.random()*100 / 100).toFixed(2))+1)/100*userbal>100000?100000:Math.floor((Math.random()*3)+1)/100*userbal)
                             
                             api.changeBal(message.author.id, -moneyTaken)
                             .then(() => {

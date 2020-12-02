@@ -6,11 +6,12 @@ module.exports = {
         var user1 = message.author
         var user2 = message.mentions.users.first()
     console.log(args[0])
-if(isNaN(Number(args[0])) || Number(args[0]) < 1 || !Number.isInteger(Number(args[0]))) {
+    var data1 = (args[0].startsWith("<")?args[1]:args[0])
+if(isNaN(Number(data1)) || Number(data1) < 1 || !Number.isInteger(Number(data1))) {
     message.channel.send("Please use command like this `8k!give <amount> <@user>`\n**Remember, 8k!give is for giving COINS, while 8k!gift is for giving ITEMS**")
 } else {
 
-        var moneytogive = Number(args[0])
+        var moneytogive = Number(data1)
         if(user2) {
             var user2id = user2.id
             if(user2.id == user1.id) {

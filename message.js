@@ -37,6 +37,14 @@ module.exports = (message) => {
           }
     api.getUser(message.author.id)
     .then((user) => {
+        //make sure name is current name
+        if(user.name != message.author.username) {
+            user.name = message.author.username
+            api.modUser(message.author.id, user)
+            .catch((err) => {
+                console.log(err)
+            })
+        }
 
 
 //levels

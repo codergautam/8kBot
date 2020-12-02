@@ -55,7 +55,7 @@ module.exports = {
         const banConfirmationEmbed = new Discord.MessageEmbed(data)
         .setColor('PINK')
         .setDescription(datajjk);
-
+// pokesci was here
         message.channel.send({
         embed: banConfirmationEmbed
         });

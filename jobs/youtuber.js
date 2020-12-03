@@ -60,12 +60,12 @@ module.exports = {
         } else if(num == 3 || num == 4 || num == 5 || num == 8) { 
             var subsGained = getRandomInt(0, 15)
             user.youtube.subs += subsGained
-            var moneyEarned = subsGained+getRandomInt(user.youtube.subs, user.youtube.subs*5)
+            var moneyEarned = subsGained+getRandomInt(user.youtube.subs, user.youtube.subs*3)
             embed.setDescription(`Your ${video} video got average views.\nYou gained \`${subsGained}\` subs!\nYour video got \`${api.numberWithCommas(moneyEarned)}\` views!`)
         } else if(num == 6 || num == 7 ) {
             var subsGained = getRandomInt(10, 100)
             user.youtube.subs += subsGained
-            var moneyEarned = subsGained+getRandomInt(user.youtube.subs*2, user.youtube.subs*7)
+            var moneyEarned = subsGained+getRandomInt(user.youtube.subs*2, user.youtube.subs*5)
             embed.setDescription(`Your ${video} video got pretty good views.\nYou gained \`${subsGained}\` subs!\nYour video got \`${api.numberWithCommas(moneyEarned)}\` views!`)
           }  else if( num == 9) {
                 var subsLost = getRandomInt(user.youtube.subs*0.05, user.youtube.subs)

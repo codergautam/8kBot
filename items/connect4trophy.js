@@ -20,7 +20,7 @@ module.exports = {
         message.channel.send("imagine selling the rarest trophy")
     },
     async gift(message) {
-        message.channel.send("imagine giving away the rarest trophy")
+        message.channel.send("imagine giving away the rarest trophy, can't relate haha")
     },
     async buy(message, userItem, user)
     {

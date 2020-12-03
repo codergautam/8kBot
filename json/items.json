@@ -4,5 +4,7 @@
     "moneybag": ["Moneybag", "A moneybag that you can throw💰", 1750, {"custom": false, "price": 1500}, {"custombuy": false, "shop": true}, {"customgive": false}],
     "laptop": ["Laptop", "A laptop which you can use for many things💻", 10000, {"custom": false, "price": 9000}, {"custombuy": false, "shop": true}, {"customgive": false}],
     "ice cream": ["Ice cream", "Some tasty ice cream🍨", 900, {"custom": true}, {"custombuy": false, "shop": true}, {"customgive": false}],
-    "connect 4 trophy": ["Connect 4 Trophy", "🏆A RARE TROPHY🏆", 69, {"custom": true}, {"custombuy": true, "shop": false}, {"customgive": true}]
+    "connect 4 trophy": ["Connect 4 Trophy", "🏆A RARE TROPHY🏆", 69, {"custom": true}, {"custombuy": true, "shop": false}, {"customgive": true}],
+    "headset": ["Headset", "A high-quality headset with speakers and built-in mic!🎧", 5000, {"custom": false, "price": 3500}, {"custombuy": false, "shop": true}, {"customgive": false}]
+    
 }

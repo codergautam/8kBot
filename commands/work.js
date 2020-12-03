@@ -1,6 +1,6 @@
 const api = require("../api")
 const Discord = require('discord.js')
-
+const jobjson = require("../json/jobs.json")
 const fs = require('fs');
 const jobfiles = new Discord.Collection();
 const jobarray = fs.readdirSync('./jobs/').filter(file => file.endsWith('.js'));
@@ -29,20 +29,19 @@ module.exports = {
                         message.channel.send(embed)
                     } else {
                         jobfiles.get(user.job.name).work(message, (moneyEarned) => {
-                            api.changeBal(message.author.id, moneyEarned)
+                            var dafunc = (typeof moneyEarned == "number" ? api.changeBal:api.modUser)
+                            dafunc(message.author.id, moneyEarned)
                             .then(() => {
-                              api.addCool(message.author.id, "work", 900000)
+                                api.addCool(message.author.id, "work", (jobjson.hasOwnProperty(user.job.name.toLowerCase())?jobjson[user.job.name][3]:900000))
                             })
-                            .catch(() => {
-                                message.channel.send("Eror!")
-                            })
+                        
                            
                           }, user)
                     }
                 })
                 .catch((err) =>{ 
                     console.log(err)
-                   message.channel.send("Something glitched") 
+                   message.channel.send("Something glitched\n```"+err.toString()+"```") 
                 })
 
             } else {

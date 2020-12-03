@@ -5,31 +5,45 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
 const msgcli = require('./message');
+const {version} = require("./package.json")
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-const process = require("process")
-let stats = ["8k bot", "8k!help"]
+const process = require("process");
+const api = require('./api');
+var stats = [`Version ${version}`, "8k!help"]
 let myArray = ["dnd", "available", "idle"]
 require('dotenv').config();
 client.on("ready", () => {
 client.guilds.cache.forEach(guild=> {
   console.log(guild.name)
 })
+
 setInterval(function() {
   let status = stats[Math.floor(Math.random()*stats.length)];
   var test = myArray[Math.floor(Math.random()*myArray.length)];
-  client.user.setPresence({ activity: { name: status , type: "WATCHING"},  status: test});
-  
+  api.getAll()
+  .then((data) => {
+    stats = [`Version ${version}`, "8k!help", `${api.numberWithCommas(Object.keys(data).length)} users!`]
+    client.user.setPresence({ activity: { name: status , type: "WATCHING"},  status: test});
+  })
+  .catch(() => {
+    client.user.setPresence({ activity: { name: status , type: "WATCHING"},  status: test});
+  })
 }, 5000)
 })
 
 process.on('SIGINT', () => {
-  console.log('Goodbye bot!');
+  //console.log('Goodbye, bot');
+    //Goodbye, bot! sounds creepy
+    //7 y/o girl voice: goodbye!
+    //demon voice: **BOT!**
+    //my imagination is weird
+  console.log('Logging off');
   process.exit()
 });
-
+//It keeps freaking me out of how it keeps saying 1 UNSAVED or 2 UNSAVED; It's like it's saying that if I don save, the world goes kaboom
 client.on("ready", () => {
-console.log("ready!")
+console.log("Logging on!")
 })
 
 
@@ -70,7 +84,7 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
   }
   //Currency game
   if(command === 'start') {
-    message.channel.send("8k!start has been deprecated")
+    message.channel.send("8k!start has been deprecated..\nIf you got an error saying to use this command it means:\n1- An error occured in the code\n2- You havent been added to the database\n\nUsually running the command again will fix this issue... Ty!")
   }
   if(command === 'transfer'|| command === 'give') {
     client.commands.get('transfer').execute(message, args, client);
@@ -217,6 +231,9 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
   if(command === 'connect4' || command === 'connectfour' || command === 'c4') {
     client.commands.get('connect4').execute(message, args);
   }
+  if(command === 'daily') {
+    client.commands.get('daily').execute(message, args);
+  }
   //fun random stuff
   
   if(command == "owo" || command == "uwuify" || command ==  "owofy" || command == "owoify") {
@@ -236,7 +253,5 @@ msgcli(message)
 
 //ORIGINAL
 client.login(process.env.TOKENMAIN);
-//BETA
-//client.login(process.env.TOKENBETA)
 //BETA 2
 //client.login(process.env.TOKENBETA2);

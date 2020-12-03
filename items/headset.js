@@ -7,51 +7,57 @@ function getRandomInt(min, max) {
 }
 module.exports = {
     
-	name: 'apple',
+	name: 'headset',
 	use(message, userItem, user) {
-		api.checkCool(message.author.id, "apple")
+		api.checkCool(message.author.id, "headset")
         .then((cooldown) => {
             if(cooldown.cooldown) {
                 const embed = new Discord.MessageEmbed()
                 .setColor('#0099ff')
                 .setTitle("Cooldown")
-                .setDescription("You just ate an apple!\nYou can eat another one in `"+api.convertMS(cooldown.msleft)+"`")
+                .setDescription("You just listened to songs on your headset!\nYou can listen again in `"+api.convertMS(cooldown.msleft)+"`")
                 message.channel.send(embed)
             } else {
-		if(getRandomInt(1,15) == 7) {
+		if(Math.floor(Math.random()*50+1 == 30)) {
 			var moneyEarn = 50000
-			var type = "LEGENDARY GOLDEN APPLE. YUM!"
+			var type = "AMAZING SONG!"
 		} else {
 			var dfgd = Math.floor(Math.random()*8+1)
 			if(dfgd == 1) {
 			var	moneyEarn = 0
-			var	type = "Rotten apple *bleh*"
+			var	type = "Bad song"
 			} else if(dfgd == 2) {
-			var	moneyEarn = 500
-			var	type = "Old apple.. "
+			var	moneyEarn = 1000
+			var	type = "Ok song"
 			} else if(dfgd == 3 || dfgd == 4 || dfgd == 5 || dfgd == 6) {
-			var	moneyEarn = 1100
-			var	type = "Sour apple. 🍏*nice* "
+			var	moneyEarn = 1500
+			var	type = "Nice song"
 			} else if(dfgd == 7 || dfgd == 8) {
 			var	moneyEarn = 2000
-			var	type = "Red apple. 🍎*yum* "
+			var	type = "Good song!"
 			}
-		}
-			user.inv.apple.amount = userItem.amount - 1
-			user.bal = user.bal + moneyEarn
-			if(user.inv.apple.amount == 0) {
-				delete user.inv.apple
+        }//ok
+        var destroy = false
+			if(getRandomInt(1, 10) == 5) {
+                user.inv.headset.amount -= 1
+                if(user.inv.headset.amount == 0) {
+                    delete user.inv.headset
+                    destroy = true
+				}
 			}
+			
+            user.bal += moneyEarn
+
 api.modUser(message.author.id, user)
 .then(() =>{ 
 	const embed = new Discord.MessageEmbed()
-		.setTitle("Ate apple")
-		.setDescription("That was a "+type+"\nYou got `"+moneyEarn+"` coins!")
+		.setTitle("Listened to music")
+		.setDescription("That was a "+type+"\nYou got `"+moneyEarn+"` coins!"+(destroy?"**Your headset broke get rekt ;(**":""))
 	
 		message.channel.send(embed)
-		api.addCool(message.author.id, "apple", 5000)
-		.catch(() => {
-			
+		api.addCool(message.author.id, "headset", 50000)
+        .catch(() => {
+			message.channel.send("Something went wrongg with cooldown")
 		})
 })
 			
@@ -62,3 +68,4 @@ api.modUser(message.author.id, user)
 			})
 		}
     }
+

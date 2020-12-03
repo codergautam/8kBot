@@ -30,7 +30,8 @@ commands = {
     xp: ["8k!xp", "View your XP card"],
     rank: ["8k!rank", "View your 8k rank!"],
     trivia: ["8k!trivia", "Play a game of trivia!"],
-    triviastats: ["8k!triviastats <@user>", "View the trivia game stats of <@user>!"]
+    triviastats: ["8k!triviastats <@user>", "View the trivia game stats of <@user>!"],
+    daily: ["8k!daily", "Get some daily coins!"]
 }
 genral = {
   start: ["8k!start", "Creates a 8k Currency Account"],

@@ -325,6 +325,11 @@ module.exports.getUser(id)
             })
         })
  
+    },
+    randomFromArray(array) {
+        
+           return array[Math.floor(Math.random()*array.length)];
+        
     }
         
     }

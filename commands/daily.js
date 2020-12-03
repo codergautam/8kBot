@@ -3,25 +3,23 @@ const api = require('../api')
 
 
 module.exports = {
-    name: 'beg',
-    aliases: ["beg", "ask"],
+    name: 'daily',
+    aliases: ["daily"],
     secret: false,
     category: "currency",
-    format: "8k!beg",
-    usage: ["8k!beg"],
-    description: "Beg for money, you can gain up to 1000 coins if you're lucky!", 
+    format: "8k!daily",
+    usage: ["8k!daily"],
+    description: "Get some daily money, offered by the 8k government!", 
 	execute(message, args) {
 
 
             var id = message.author.id
-            api.checkCool(id, "beg")
+            api.checkCool(id, "daily")
             .then((cooldown) => {
                 if(cooldown.cooldown) {
-                    const embed = new Discord.MessageEmbed()
-                    .setColor('#0099ff')
-                    .setTitle("Cooldown")
-                    .setDescription("Dont beg too much\nYou can beg again in `"+api.convertMS(cooldown.msleft)+"`")
-                    message.channel.send(embed)
+            
+                    
+                    message.channel.send("You already collected your daily money!\nTry again in `"+api.convertMS(cooldown.msleft)+"`")
                 } else {
               
                         x=true
@@ -32,16 +30,10 @@ module.exports = {
                         }
                    // api.addCool(id, "beg", 10000)
 
-                    api.changeBal(id, moneyEarned)
+                    api.changeBal(id, 5000)
                     .then((user) => {
-                            const embed = new Discord.MessageEmbed()
-                            .setColor('#0099ff')
-                            .setTitle("Beg Results for "+user.name)
-                            .setDescription("You gained `"+moneyEarned+"` coins!\nNow you have a total of `"+user.bal+"`coins!")
-                            message.channel.send(embed)
-                            api.addCool(id, "beg", 10000)
-                       
-     
+                            message.channel.send(user.name+" collected 5000 coins!")
+                            api.addCool(id, "daily", 86400000 )
                         
 
                     })
@@ -49,10 +41,10 @@ module.exports = {
                         if(err.type == 0) {
                             const embed = new Discord.MessageEmbed()
                             .setColor('#0099ff')
-                            .setTitle("You don't have an account! Create one by running `8k!start`")
+                            .setTitle("You don't have an account! Run this command again!")
                             message.channel.send(embed)
                         } else {
-                            message.channel.send("Something went wrong")
+                            message.channel.send("Something went wrong\n"+err.toString())
                         }
 
                        

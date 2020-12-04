@@ -4,12 +4,20 @@ const config = {
     server: process.env.SERVERURL,
     secret: process.env.SECRET
 }
-
+//const {production} =require("./package.json")
 const { JSDOM } = require( "jsdom" );
 const { window } = new JSDOM( "" );
 const $ = require( "jquery" )( window );
 module.exports = {
     name: 'api',
+    /*
+    log(msg) {
+        if(production) {
+            client.channels.cache.get(production?"":"784447943096401921").send('Hello here!')
+        } else  {
+
+        }
+    },*/
     convertMS(milliseconds) {
         
             var day, hour, minute, seconds;

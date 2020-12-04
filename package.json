@@ -1,10 +1,12 @@
 {
   "name": "8kbot", 
-  "version": "1.5.3a",
+  "version": "1.5.3b",
+  "production": true, 
   "description": "currency bot",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "coder gautam yt",
   "license": "ISC",

@@ -71,7 +71,7 @@ module.exports = {
                 var subsLost = getRandomInt(user.youtube.subs*0.05, user.youtube.subs)
                 user.youtube.subs -= subsLost
                 var moneyEarned = 0
-                embed.setDescription(`Your ${video} video WAS TERRIBLE\nYou LOST \`${api.numberWithCommas(moneyEarned)}\` subs bruh!\nYour video got \`0\` views!`)
+                embed.setDescription(`Your ${video} video WAS TERRIBLE\nYou LOST \`${api.numberWithCommas(subsLost)}\` subs bruh!\nYour video got \`0\` views!`)
         } else {
             var subsGained = (user.youtube.subs > 100000 ? getRandomInt(100, 2000):getRandomInt(10, 100))
             user.youtube.subs += subsGained

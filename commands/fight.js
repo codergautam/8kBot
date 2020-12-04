@@ -266,7 +266,7 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
                     }
 
                 } else if(user1f.weapon == "sniper") {
-                    if(randomInteger(1,3) == 2) {
+                    if(randomInteger(1,4) == 2) {
                         var damage = randomInteger(40,90)
                         const embed56 = new Discord.MessageEmbed()
                         .setTitle("Sniper Shot!")

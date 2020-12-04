@@ -74,7 +74,7 @@ if(!levels.has(message.author.id)) {
                 .then((msg) => {
                     setTimeout(() => {
                         msg.delete()
-                    }, 5000)
+                    }, 10000)
                 })
  
 

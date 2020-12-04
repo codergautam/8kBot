@@ -16,7 +16,7 @@ const talkedRecently = new Set();
 const levels = new Set();
 const api = require("./api")
 const Discord = require("discord.js")
-module.exports = (message) => {
+module.exports = (message, client) => {
     if(message.content.toLowerCase() == "who is your dad") {
         message.channel.send("💖It's Coder ofcourse💖")
       }
@@ -39,10 +39,14 @@ module.exports = (message) => {
     .then((user) => {
         //make sure name is current name
         if(user.name != message.author.username) {
+            var oldname = user.name
             user.name = message.author.username
             api.modUser(message.author.id, user)
+            .then(() =>{
+                api.log(`**NAME CHANGE!** **${oldname}** has changed their 8k name to **${message.author.username}**!`, client)
+            })
             .catch((err) => {
-                console.log(err)
+                
             })
         }
 
@@ -146,6 +150,10 @@ setTimeout(() => {
     if(err.type == 0) {
         api.createUser(message.author.id, message.author.username)
         .then(() => {
+            api.numOfUsers()
+            .then((count) => {
+                api.log(`**NEW USER!** Welcome to 8k bot, **${message.author.username}**! They are our \`${api.numberWithCommas(count)}${api.ordinal_suffix(count)} user!\``, client)
+            })
         
         })
         .catch(() => {

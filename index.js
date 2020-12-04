@@ -21,9 +21,9 @@ client.guilds.cache.forEach(guild=> {
 setInterval(function() {
   let status = stats[Math.floor(Math.random()*stats.length)];
   var test = myArray[Math.floor(Math.random()*myArray.length)];
-  api.getAll()
+  api.numOfUsers()
   .then((data) => {
-    stats = [`Version ${version}`, "8k!help", `${api.numberWithCommas(Object.keys(data).length)} users!`]
+    stats = [`Version ${version}`, "8k!help", `${api.numberWithCommas(data)} users!`]
     client.user.setPresence({ activity: { name: status , type: "WATCHING"},  status: test});
   })
   .catch(() => {
@@ -38,12 +38,17 @@ process.on('SIGINT', () => {
     //7 y/o girl voice: goodbye!
     //demon voice: **BOT!**
     //my imagination is weird
-  console.log('Logging off');
-  process.exit()
+    api.log(`**OFFLINE!** 8k bot is going offline! Probably down for maintainance or updates. I'll be back soon!`, client)
+    .then(() => {
+      console.log('Logging off');
+      process.exit()
+    })
+
 });
 //It keeps freaking me out of how it keeps saying 1 UNSAVED or 2 UNSAVED; It's like it's saying that if I don save, the world goes kaboom
 client.on("ready", () => {
 console.log("Logging on!")
+api.log(`**ONLINE!** 8k bot is now back online! RUNNING \`v${version}\`!`, client)
 })
 
 
@@ -55,6 +60,14 @@ for (const file of commandFiles) {
 
 var prefix = "8k!"
 
+client.on("guildCreate", (guild) => {
+  //bot added to new guild yey
+  api.log(`**NEW GUILD!** 8k Bot was added to \`${guild.name}\`, which has \`${api.numberWithCommas(guild.memberCount)}\` members! 8k is now in \`${api.numberWithCommas(client.guilds.size)}\` guilds!`, client)
+})
+
+client.on("guildDelete", (guild) => {
+  api.log(`**GUILD REMOVED!** 8k Bot was removed from \`${guild.name}\`, sucks to be them lol! 8k is now in \`${api.numberWithCommas(client.guilds.size)}\` guilds!`, client)
+})
 client.on("message", (message) => {
 /*
   var check = ["coder gautam", "gautam", "eightk", "8k!bot", "gautam", "8k bot", "bot", "lol", "xd", "lmao", "yeet", "js", "javascript", "coding", "code", "program", "halloween", "pumpkin", "haloween", "pumkin", "scary", "scare", "spooktober","ghost", "zombie", "witch", "spook", "spooky", "october", "sword", "spider", "candy", "trick", "or", "treat"]
@@ -247,7 +260,7 @@ if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
   }
 
 } 
-msgcli(message)
+msgcli(message, client)
   }
 })
 

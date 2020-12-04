@@ -4,20 +4,39 @@ const config = {
     server: process.env.SERVERURL,
     secret: process.env.SECRET
 }
-//const {production} =require("./package.json")
+const {production} =require("./package.json")
 const { JSDOM } = require( "jsdom" );
+const { resolve, reject } = require("node-superfetch");
 const { window } = new JSDOM( "" );
 const $ = require( "jquery" )( window );
 module.exports = {
     name: 'api',
-    /*
-    log(msg) {
-        if(production) {
-            client.channels.cache.get(production?"":"784447943096401921").send('Hello here!')
-        } else  {
-
+    ordinal_suffix(i) {
+        var j = i % 10,
+            k = i % 100;
+        if (j == 1 && k != 11) {
+            return "st";
         }
-    },*/
+        if (j == 2 && k != 12) {
+            return "nd";
+        }
+        if (j == 3 && k != 13) {
+            return  "rd";
+        }
+        return "th";
+    },
+    log(msg, client) {
+        return new Promise((resolve, reject) => {
+            client.channels.cache.get(production?"784448037350670376":"784447943096401921").send(msg)
+            .then(() => {
+                resolve()
+            })
+            .catch(() => {
+                resolve()
+            })
+        })
+            
+    },
     convertMS(milliseconds) {
         
             var day, hour, minute, seconds;
@@ -70,6 +89,22 @@ module.exports = {
     
         })
 
+        
+    },
+    numOfUsers() {
+        return new Promise((resolve, reject) => {
+            request.get(config.server+"/count.php")
+            .then((data) => {
+                var data = data.body.toString()
+                try {
+                    Number(data)
+                } catch {
+                    reject(data)
+                }
+                resolve(Number(data))
+            
+            })
+        })
         
     },
     modUser(id, obj) {

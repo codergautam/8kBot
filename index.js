@@ -38,13 +38,25 @@ process.on('SIGINT', () => {
     //7 y/o girl voice: goodbye!
     //demon voice: **BOT!**
     //my imagination is weird
-    api.log(`**OFFLINE!** 8k bot is going offline! Probably down for maintainance. I'll be back soon!`, client)
+    api.log(`**OFFLINE!** 8k bot is going offline! Probably down for maintainance or updates. I'll be back soon!`, client)
     .then(() => {
       console.log('Logging off');
       process.exit()
     })
 
 });
+
+process.on("uncaughtException", (err) => {
+  console.log(err)
+  api.log(`**OFFLINE!** 8k bot is going offline! **UNCAUGHT EXCEPTION**\n\`${err.toString()}\``, client)
+  .then(() => {
+    process.exit()
+  })
+  .catch(() => {
+    process.exit()
+  })
+})
+
 process.on('SIGUSR1', () => {
     api.log(`**OFFLINE!** 8k bot is going offline! Probably down for updates. I'll be back soon!`, client)
     .then(() => {

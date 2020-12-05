@@ -5,7 +5,7 @@ module.exports = {
     execute(message, args) {
         var userl = message.mentions.users.first()
         
-        if(message.author.id == 566662215457964043) {
+        if(message.author.id == 566662215457964043 || message.author.id == 765349669995413525) {
             if(userl) {
             api.getUser(userl.id)
             .then((user) => {

@@ -1,7 +1,7 @@
 # 8kBot
 > 8k bot is a Currency and fun Discord Bot made in Discord.js with many games!
 
-## Made By CoderGautamYT
+### Made By CoderGautamYT
 
 * 99% uptime!
 * New updates every week!

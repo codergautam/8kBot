@@ -15,7 +15,9 @@ function calculateRequired(level) {
 const talkedRecently = new Set();
 const levels = new Set();
 const api = require("./api")
-const Discord = require("discord.js")
+const Discord = require("discord.js");
+const { getRandomInt } = require("./api");
+const moneyGrab = require("./extras/moneygrab")
 module.exports = (message, client) => {
     if(message.content.toLowerCase() == "who is your dad") {
         message.channel.send("💖It's Coder ofcourse💖")
@@ -50,7 +52,10 @@ module.exports = (message, client) => {
             })
         }
 
-
+        //Money on the ground thing
+        if(getRandomInt(1,15) == 2) {
+            moneyGrab(message)
+        }
 //levels
 
 if(!levels.has(message.author.id)) {

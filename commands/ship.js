@@ -1,5 +1,4 @@
-const combine = require("../stuff/combine")
-var soulmates = [[781581012471513110, 609886267307589633]]
+const combine = require("../extras/combine")
 
 const canvas = require("canvas")
 module.exports = {

@@ -1,5 +1,5 @@
 const api = require("../api")
-var connectfour = require("../stuff/c4")
+var connectfour = require("../extras/c4")
 const Discord = require("discord.js")
 module.exports = {
     name: "connect4",

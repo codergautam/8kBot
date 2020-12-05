@@ -6,11 +6,15 @@ const config = {
 }
 const {production} =require("./package.json")
 const { JSDOM } = require( "jsdom" );
-const { resolve, reject } = require("node-superfetch");
 const { window } = new JSDOM( "" );
 const $ = require( "jquery" )( window );
 module.exports = {
     name: 'api',
+    getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    },
     ordinal_suffix(i) {
         var j = i % 10,
             k = i % 100;

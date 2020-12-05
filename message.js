@@ -156,8 +156,8 @@ setTimeout(() => {
             })
         
         })
-        .catch(() => {
-            
+        .catch((err) => {
+            console.log(err)
         })
     }
 })

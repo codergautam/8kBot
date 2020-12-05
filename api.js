@@ -352,7 +352,7 @@ module.exports.getUser(id)
                 },
                 success: function(data) {
                   if(JSON.parse(data).success) {
-                   resolve
+                   resolve()
                   } else {
                     reject(1)
                   }

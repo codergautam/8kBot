@@ -53,7 +53,7 @@ module.exports = (message, client) => {
         }
 
         //Money on the ground thing
-        if(getRandomInt(1,75) == 2) {
+        if(getRandomInt(1,100) == 69) {
             moneyGrab(message)
         }
 //levels

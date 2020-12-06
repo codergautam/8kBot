@@ -78,6 +78,14 @@ client.on("ready", () => {
 console.log("Logging on!")
 api.log(`**ONLINE!** 8k bot is now back online! RUNNING \`v${version}\`!`, client)
 })
+process.on("exit", () => {
+  api.log(`**OFFLINE!** 8k bot is going offline! Probably down for updates. I'll be back soon!`, client)
+  .then(() => {
+    console.log('Logging off');
+    process.exit()
+  })
+
+});
 
 
 for (const file of commandFiles) {

@@ -48,7 +48,7 @@ module.exports = {
         } else {
         const categories = ["Among Us", "cat", "Minecraft", "makeup", "coding", "counting to 10", "nursery rhyme", "advertising coder gautam", "tech review", "boring", "hacking", "8k bot fan"]
         const embed = new Discord.MessageEmbed();
-        embed.setTitle("Teaching Results")
+        embed.setTitle("Youtuber Results")
         var num =getRandomInt(1, 10 );
         if(!user.hasOwnProperty("youtube")) user.youtube = {subs: 0}
         var video = api.randomFromArray(categories)

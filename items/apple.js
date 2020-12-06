@@ -18,7 +18,7 @@ module.exports = {
                 .setDescription("You just ate an apple!\nYou can eat another one in `"+api.convertMS(cooldown.msleft)+"`")
                 message.channel.send(embed)
             } else {
-		if(getRandomInt(1,15) == 7) {
+		if(getRandomInt(1,50) == 7) {
 			var moneyEarn = 50000
 			var type = "LEGENDARY GOLDEN APPLE. YUM!"
 		} else {

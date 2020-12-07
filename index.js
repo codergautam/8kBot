@@ -5,13 +5,12 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
 const msgcli = require('./message');
-const {version, production} = require("./package.json")
+const {version, production, maintanence} = require("./package.json")
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 const process = require("process");
 const api = require('./api');
 var stats = [`Version ${version}`, "8k!help"]
-let myArray = ["dnd", "available", "idle"]
 require('dotenv').config();
 client.on("ready", () => {
 client.guilds.cache.forEach(guild=> {
@@ -19,20 +18,21 @@ client.guilds.cache.forEach(guild=> {
 })
 
 setInterval(function() {
+  if(maintanence) return client.user.setPresence({ activity: { name: "Maintainance Mode..." , type: "WATCHING"},  status: "dnd"});
   let status = stats[Math.floor(Math.random()*stats.length)];
-  var test = myArray[Math.floor(Math.random()*myArray.length)];
   api.numOfUsers()
   .then((data) => {
     stats = [`Version ${version}`, "8k!help", `${api.numberWithCommas(data)} users!`]
-    client.user.setPresence({ activity: { name: status , type: "WATCHING"},  status: test});
+    client.user.setPresence({ activity: { name: status , type: "WATCHING"},  status: "available"});
   })
   .catch(() => {
-    client.user.setPresence({ activity: { name: status , type: "WATCHING"},  status: test});
+    client.user.setPresence({ activity: { name: status , type: "WATCHING"},  status: "available"});
   })
 }, 5000)
 })
 
 process.on('SIGINT', () => {
+  if(!maintanence) {
   //console.log('Goodbye, bot');
     //Goodbye, bot! sounds creepy
     //7 y/o girl voice: goodbye!
@@ -43,10 +43,12 @@ process.on('SIGINT', () => {
       console.log('Logging off');
       process.exit()
     })
+  }
 
 });
 
 process.on("uncaughtException", (err) => {
+  if(!maintanence) {
   console.log(err)
   api.log(`**OFFLINE!** 8k bot is going offline! **UNCAUGHT EXCEPTION**\n\`${err.toString()}\``, client)
   .then(() => {
@@ -55,6 +57,7 @@ process.on("uncaughtException", (err) => {
   .catch(() => {
     process.exit()
   })
+}
 })
 
 process.on('SIGUSR1', () => {
@@ -76,7 +79,11 @@ process.on('SIGUSR2', () => {
 //It keeps freaking me out of how it keeps saying 1 UNSAVED or 2 UNSAVED; It's like it's saying that if I don save, the world goes kaboom
 client.on("ready", () => {
 console.log("Logging on!")
+if(!maintanence) {
 api.log(`**ONLINE!** 8k bot is now back online! RUNNING \`v${version}\`!`, client)
+} else {
+  api.log(`**8k bot is down for maintanence!! Commands wont work sryyy**`, client)
+}
 })
 process.on("exit", () => {
   api.log(`**OFFLINE!** 8k bot is going offline! Probably down for updates. I'll be back soon!`, client)
@@ -122,6 +129,7 @@ if(message.author.bot) return;
   const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();
 if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
+if(maintanence && message.guild.id.toString() != "769597572410900500") return message.channel.send("8k bot is in maintainance mode sry")
   if(command === 'question') {
     client.commands.get('question').execute(message, args, client);
   }

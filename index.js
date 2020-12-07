@@ -98,11 +98,11 @@ var prefix = "8k!"
 
 client.on("guildCreate", (guild) => {
   //bot added to new guild yey
-  api.log(`**NEW GUILD!** 8k Bot was added to \`${guild.name}\`, which has \`${api.numberWithCommas(guild.memberCount)}\` members! 8k is now in \`${api.numberWithCommas(client.guilds.size)}\` guilds!`, client)
+  api.log(`**NEW GUILD!** 8k Bot was added to \`${guild.name}\`, which has \`${api.numberWithCommas(guild.memberCount)}\` members! 8k is now in \`${api.numberWithCommas(client.guilds.cache.size)}\` guilds!`, client)
 })
 
 client.on("guildDelete", (guild) => {
-  api.log(`**GUILD REMOVED!** 8k Bot was removed from \`${guild.name}\`, sucks to be them lol! 8k is now in \`${api.numberWithCommas(client.guilds.size)}\` guilds!`, client)
+  api.log(`**GUILD REMOVED!** 8k Bot was removed from \`${guild.name}\`, sucks to be them lol! 8k is now in \`${api.numberWithCommas(client.guilds.cache.size)}\` guilds!`, client)
 })
 client.on("message", (message) => {
 /*

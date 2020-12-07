@@ -3,6 +3,7 @@
   "version": "1.5.3k",
   "production": true,
   "maintanence": true,
+  "self": true,
   "description": "currency bot",
   "main": "index.js",
   "scripts": {
@@ -19,6 +20,7 @@
     "connectfour-discord": "^0.1.17",
     "discord.js": "^12.3.1",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "ffmpeg": "0.0.4",
     "ffmpeg-static": "^4.2.7",
     "gifencoder": "^2.0.1",

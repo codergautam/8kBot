@@ -5,14 +5,16 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
 const msgcli = require('./message');
-const {version, production, maintanence} = require("./package.json")
+const {version, production, maintanence, self} = require("./package.json")
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 const process = require("process");
 const api = require('./api');
 var stats = [`Version ${version}`, "8k!help"]
+const dbl = require("./extras/dbl")
 require('dotenv').config();
 client.on("ready", () => {
+  dbl(client)
   if(maintanence) return client.user.setPresence({ activity: { name: "Maintainance Mode..." , type: "WATCHING"},  status: "dnd"});
 
 setInterval(function() {
@@ -30,7 +32,7 @@ setInterval(function() {
 })
 
 process.on('SIGINT', () => {
-  if(!maintanence) {
+  if(!maintanence && !self) {
   //console.log('Goodbye, bot');
     //Goodbye, bot! sounds creepy
     //7 y/o girl voice: goodbye!
@@ -41,12 +43,14 @@ process.on('SIGINT', () => {
       console.log('Logging off');
       process.exit()
     })
+  } else {
+    process.exit()
   }
 
 });
 
 process.on("uncaughtException", (err) => {
-  if(!maintanence) {
+  if(!maintanence && !self) {
   console.log(err)
   api.log(`**OFFLINE!** 8k bot is going offline! **UNCAUGHT EXCEPTION**\n\`${err.toString()}\``, client)
   .then(() => {
@@ -55,6 +59,8 @@ process.on("uncaughtException", (err) => {
   .catch(() => {
     process.exit()
   })
+}else {
+  process.exit()
 }
 })
 
@@ -77,7 +83,7 @@ process.on('SIGUSR2', () => {
 //It keeps freaking me out of how it keeps saying 1 UNSAVED or 2 UNSAVED; It's like it's saying that if I don save, the world goes kaboom
 client.on("ready", () => {
 console.log("Logging on!")
-if(!maintanence) {
+if(!maintanence && !self) {
 api.log(`**ONLINE!** 8k bot is now back online! RUNNING \`v${version}\`!`, client)
 } else {
   api.log(`**8k bot is down for maintanence!! Commands wont work sryyy**`, client)
@@ -127,8 +133,8 @@ if(message.author.bot) return;
   const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();
 if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
-if(maintanence && message.guild.id.toString() != "769597572410900500") return message.channel.send("8k bot is in maintainance mode sry")
-if(maintanence) return
+if(maintanence && message.guild.id.toString() != "769597572410900500" && !self) return message.channel.send("8k bot is in maintainance mode sry")
+if(maintanence && message.guild.id.toString() != "769597572410900500" && self ) return
   if(command === 'question') {
     client.commands.get('question').execute(message, args, client);
   }

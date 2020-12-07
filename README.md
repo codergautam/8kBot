@@ -10,4 +10,6 @@
 Add it here:
 https://discord.com/oauth2/authorize?client_id=783346270290968606&permissions=8&scope=bot
 
+https://top.gg/bot/783346270290968606
+
 

@@ -13,12 +13,10 @@ const api = require('./api');
 var stats = [`Version ${version}`, "8k!help"]
 require('dotenv').config();
 client.on("ready", () => {
-client.guilds.cache.forEach(guild=> {
-  console.log(guild.name)
-})
+  if(maintanence) return client.user.setPresence({ activity: { name: "Maintainance Mode..." , type: "WATCHING"},  status: "dnd"});
 
 setInterval(function() {
-  if(maintanence) return client.user.setPresence({ activity: { name: "Maintainance Mode..." , type: "WATCHING"},  status: "dnd"});
+ 
   let status = stats[Math.floor(Math.random()*stats.length)];
   api.numOfUsers()
   .then((data) => {
@@ -130,6 +128,7 @@ if(message.author.bot) return;
 	const command = args.shift().toLowerCase();
 if(message.content.startsWith("8k!") || message.content.startsWith("8K!")) {
 if(maintanence && message.guild.id.toString() != "769597572410900500") return message.channel.send("8k bot is in maintainance mode sry")
+if(maintanence) return
   if(command === 'question') {
     client.commands.get('question').execute(message, args, client);
   }

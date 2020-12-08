@@ -80,6 +80,7 @@ module.exports = {
         }
         embed.setFooter(`Your channel has ${user.youtube.subs} subs!\n(1 view = 1 coin)`)
         message.channel.send(embed)
+        user.bal += moneyEarned
         callback(user)
     }
     }

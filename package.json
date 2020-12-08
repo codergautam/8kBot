@@ -2,8 +2,8 @@
   "name": "8kbot",
   "version": "1.5.3k",
   "production": true,
-  "maintanence": true,
-  "self": true,
+  "maintanence": false,
+  "self": false,
   "description": "currency bot",
   "main": "index.js",
   "scripts": {

@@ -11,10 +11,9 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 const process = require("process");
 const api = require('./api');
 var stats = [`Version ${version}`, "8k!help"]
-const dbl = require("./extras/dbl")
+//const dbl = require("./extras/dbl")
 require('dotenv').config();
 client.on("ready", () => {
-  dbl(client)
   if(maintanence) return client.user.setPresence({ activity: { name: "Maintainance Mode..." , type: "WATCHING"},  status: "dnd"});
 
 setInterval(function() {
@@ -48,7 +47,23 @@ process.on('SIGINT', () => {
   }
 
 });
+process.on('SIGTERM', () => {
+  if(!maintanence && !self) {
+  //console.log('Goodbye, bot');
+    //Goodbye, bot! sounds creepy
+    //7 y/o girl voice: goodbye!
+    //demon voice: **BOT!**
+    //my imagination is weird
+    api.log(`**OFFLINE!** 8k bot is going offline! Probably down for maintainance or updates. I'll be back soon!`, client)
+    .then(() => {
+      console.log('Logging off');
+      process.exit()
+    })
+  } else {
+    process.exit()
+  }
 
+});
 process.on("uncaughtException", (err) => {
   if(!maintanence && !self) {
   console.log(err)

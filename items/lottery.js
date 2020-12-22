@@ -28,10 +28,10 @@ module.exports = {
                     if(userItem.amount >= amount) {
         var randm = Math.floor(Math.random()*100)+1
         if(randm == 1) {
-            var moneyEarned = 100000 * amount
+            var moneyEarned = 10000 * amount
             var typ1e = "MEGA MEGA JACKPOT!!!!!🤑🤑🤑🤑"
         } else if(randm >=2 && randm <= 9) {
-           var moneyEarned = 1000 * amount
+           var moneyEarned = 500 * amount
             var typ1e = "JACKPOT!!!!!💰💰💰"
         } else if(randm >= 70 && randm <=100) {
            var moneyEarned = 250 * amount

@@ -11,17 +11,18 @@ module.exports = (message) => {
             if(!x) {
 
             if(message43.content.toLowerCase() == "catch" ||message43.content.toLowerCase() == "take" || message43.content.toLowerCase() == "pick") {
-
+                        x=true;
                     //catch
                     var moneyetn = getRandomInt(10000,20000)
                     
                     api.changeBal(message43.author.id, moneyetn)
                     .then((use22r) => {
-                        x=true;
+
                         message.channel.send(`${use22r.name} picked \`${moneyetn}\` coins from the ground nice job xd!`)
                         jdjg6.edit(`Look theres some money on the ground!!! \n**EDIT**: ${use22r.name} already picked it up!`)
                     })
                     .catch((err) => {
+                        x=false;
                         if(err.type != 0) {
                             message43.channel.send("Something went wrong")
                         }

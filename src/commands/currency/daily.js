@@ -14,7 +14,7 @@ module.exports = new simpleCommand(
         aliases: ["daily"],
         cooldown: 86400000,
         cooldownMessage: "You already collected your daily money!\nTry again in **{timeleft}**!",
-        perms: ["SEND_MESSAGES", "ATTACH_FILES"],
+        perms: ["SEND_MESSAGES"],
         description: "Get some daily money! Offered by the 8k government!"
     }
 )

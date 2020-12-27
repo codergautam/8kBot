@@ -4,6 +4,6 @@ const commands = require('fs').readdirSync(__dirname)
 
 module.exports = {
     commands,
-    name: '🎮 Games',
+    name: '🎲 Games',
     id: 'games'
 }

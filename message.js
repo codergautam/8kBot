@@ -26,16 +26,13 @@ module.exports = (message, client) => {
         message.channel.send("i dont have one... yet...")
       }
         if(message.content.toLowerCase() == "who is your grandpa") {
-          message.channel.send("✨It's Phoenix ofcourse✨")
+          message.channel.send("Dont have one-")
         }
         if(message.content.toLowerCase() == "who is your grandma") {
-          message.channel.send("🥰It's Serenity ofcourse🥰")
-        }
-        if(message.content.toLowerCase() == "who is the best couple in the world") {
-          message.channel.send("It's 🤍Serenity🤍 and 🤍Phoenix🤍 ofcourse")
+          message.channel.send("Dont have one-")
         }
         if(message.content.toLowerCase() == "who is the best brother") {
-            message.channel.send("It's Kai ofcourse")
+            message.channel.send("I dont have one...")
           }
     api.getUser(message.author.id)
     .then((user) => {

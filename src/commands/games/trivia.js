@@ -116,7 +116,7 @@ const wrongmsg = async(message, body, user, addCD) => {
         .setTitle("Wrong!")
         .setColor("RED")
         .setDescription(`The correct answer was \`${body.correct_answer.toLowerCase()}\`\n\nYou gained 0 coins lol and your streak is 0`)
-        .setFooter(`Type 8k!triviastats to see your trivia stats!`)
+        .setFooter(`Type 8k!trivia stats to see your trivia stats!`)
     message.channel.send(embed)
 
 
@@ -134,7 +134,7 @@ const correctmsg = async(message, body, user, addCD) => {
         .setTitle("Correct!")
         .setColor("GREEN")
         .setDescription(`You got the answer right! Nice job!!\n\nYou gained \`${moneygain}\` coins and your new streak is ${user.trivia.streak}!`)
-        .setFooter(`Type 8k!triviastats to see your trivia stats!`)
+        .setFooter(`Type 8k!trivia stats to see your trivia stats!`)
     message.channel.send(embed)
     api.addCool(message.author.id, "trivia", 20000)
 

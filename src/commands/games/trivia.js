@@ -6,65 +6,97 @@ const html = new(require("html-entities").XmlEntities)
 
 module.exports = new simpleCommand(
     async(message, args, client, addCD) => {
-        var user = await api.getUser(message.author.id)
+        if (args[0].toLowerCase() == "stats") {
+            var dauser = (message.mentions.members.first() ? message.mentions.members.first() : message.author)
+            var avatar = (dauser.user ? dauser.user.avatarURL() : dauser.avatarURL())
+            api.getUser(dauser.id)
+                .then((user) => {
+                    if (!user.hasOwnProperty("trivia")) {
+                        user.trivia = {
+                            streak: 0,
+                            highstreak: 0,
+                            correct: {
+                                easy: 0,
+                                medium: 0,
+                                hard: 0
+                            },
+                            wrong: {
+                                easy: 0,
+                                medium: 0,
+                                hard: 0
+                            }
+                        }
+                    }
+                    var trivia = user.trivia
+                    var total = trivia.correct.easy + trivia.correct.medium + trivia.correct.hard + trivia.wrong.easy + trivia.wrong.medium + trivia.wrong.hard
+                    var wrong = trivia.wrong.easy + trivia.wrong.medium + trivia.wrong.hard
+                    var right = trivia.correct.easy + trivia.correct.medium + trivia.correct.hard
+                    const embed = new Discord.MessageEmbed()
+                        .setAuthor(user.name, avatar)
+                        .setTitle("Trivia Stats!")
+                        .setDescription(`**Total trivia games played: ${total}**\n**Highest streak: ${trivia.highstreak}**\n\nTotal correct answers: ${right}\nTotal wrong answers: ${wrong}\nCurrent streak: ${trivia.streak}`)
+                    message.channel.send(embed)
+                })
+        } else {
+            var user = await api.getUser(message.author.id)
 
-        if (!user.hasOwnProperty("trivia")) {
-            user.trivia = {
-                streak: 0,
-                highstreak: 0,
-                correct: {
-                    easy: 0,
-                    medium: 0,
-                    hard: 0
-                },
-                wrong: {
-                    easy: 0,
-                    medium: 0,
-                    hard: 0
+            if (!user.hasOwnProperty("trivia")) {
+                user.trivia = {
+                    streak: 0,
+                    highstreak: 0,
+                    correct: {
+                        easy: 0,
+                        medium: 0,
+                        hard: 0
+                    },
+                    wrong: {
+                        easy: 0,
+                        medium: 0,
+                        hard: 0
+                    }
                 }
             }
-        }
 
-        var data = await fetch.get("https://opentdb.com/api.php?amount=1&type=boolean")
-        var body = data.body.results[0]
+            var data = await fetch.get("https://opentdb.com/api.php?amount=1&type=boolean")
+            var body = data.body.results[0]
 
 
-        body.question = html.decode(body.question)
-        var correct = body.correct_answer.toLowerCase() == "true"
+            body.question = html.decode(body.question)
+            var correct = body.correct_answer.toLowerCase() == "true"
 
-        const embed = new Discord.MessageEmbed()
-            .setTitle("Trivia!")
-            .setDescription(`**${body.question}**\n\nRespond with \`true\` or \`false\`\nYou have 30 seconds to answer!`)
-            .setFooter(`Category: ${body.category}\nDifficulty: ${body.difficulty}`)
-        message.channel.send(embed)
-            //create collector
-        const collector = message.channel.createMessageCollector(m => m.author.id == message.author.id, { time: 30000 })
-        var collected = false
-        collector.on("collect", (msg) => {
-            if (msg.content.toLowerCase() == "true" || msg.content.toLowerCase() == "false") {
-                var answered = msg.content.toLowerCase() == "true"
-                if (answered ? correct : !correct) {
-                    //right
-                    collected = true
-                    correctmsg(message, body, user, addCD)
-                    collector.stop()
+            const embed = new Discord.MessageEmbed()
+                .setTitle("Trivia!")
+                .setDescription(`**${body.question}**\n\nRespond with \`true\` or \`false\`\nYou have 30 seconds to answer!`)
+                .setFooter(`Category: ${body.category}\nDifficulty: ${body.difficulty}`)
+            message.channel.send(embed)
+                //create collector
+            const collector = message.channel.createMessageCollector(m => m.author.id == message.author.id, { time: 30000 })
+            var collected = false
+            collector.on("collect", (msg) => {
+                if (msg.content.toLowerCase() == "true" || msg.content.toLowerCase() == "false") {
+                    var answered = msg.content.toLowerCase() == "true"
+                    if (answered ? correct : !correct) {
+                        //right
+                        collected = true
+                        correctmsg(message, body, user, addCD)
+                        collector.stop()
+                    } else {
+                        //wrong
+                        collected = true
+                        wrongmsg(message, body, user, addCD)
+                        collector.stop()
+                    }
                 } else {
-                    //wrong
-                    collected = true
-                    wrongmsg(message, body, user, addCD)
-                    collector.stop()
+                    message.channel.send(`${message.member}, You can only respond with **true** or **false**!`)
                 }
-            } else {
-                message.channel.send(`${message.member}, You can only respond with **true** or **false**!`)
-            }
-        })
-        collector.on("end", async() => {
-            if (!collected) {
-                message.channel.send(`${message.member}, Time is up!\nThe correct answer was: \`${body.correct_answer.toLowerCase()}\``)
-                await addCD()
-            }
-        })
-
+            })
+            collector.on("end", async() => {
+                if (!collected) {
+                    message.channel.send(`${message.member}, Time is up!\nThe correct answer was: \`${body.correct_answer.toLowerCase()}\``)
+                    await addCD()
+                }
+            })
+        }
     }, {
         name: "trivia",
         aliases: ["trivia", "quiz"],

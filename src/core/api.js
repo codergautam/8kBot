@@ -3,45 +3,49 @@ const request = require("node-superfetch")
 require('dotenv').config()
 const { Database } = require("quickmongo");
 const db = new Database(process.env.MONGO);
-const {production} =require("../../package.json")
+const { production } = require("../../package.json")
 db.on("ready", () => {
     console.log("Connected to MongoDB!")
 })
 module.exports = {
-    name: 'api',
-    getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    },
-    ordinal_suffix(i) {
-        var j = i % 10,
-            k = i % 100;
-        if (j == 1 && k != 11) {
-            return "st";
-        }
-        if (j == 2 && k != 12) {
-            return "nd";
-        }
-        if (j == 3 && k != 13) {
-            return  "rd";
-        }
-        return "th";
-    },
-    log(msg, client) {
-        return new Promise((resolve, reject) => {
-            client.channels.cache.get(production?"784448037350670376":"784447943096401921").send(msg)
-            .then(() => {
-                resolve()
+        name: 'api',
+        getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        },
+        ordinal_suffix(i) {
+            var j = i % 10,
+                k = i % 100;
+            if (j == 1 && k != 11) {
+                return "st";
+            }
+            if (j == 2 && k != 12) {
+                return "nd";
+            }
+            if (j == 3 && k != 13) {
+                return "rd";
+            }
+            return "th";
+        },
+        log(msg, client) {
+            return new Promise((resolve, reject) => {
+                if (production) {
+                    client.channels.cache.get(production ? "784448037350670376" : "784447943096401921").send(msg)
+                        .then(() => {
+                            resolve()
+                        })
+                        .catch(() => {
+                            resolve()
+                        })
+                } else {
+                    resolve()
+                }
             })
-            .catch(() => {
-                resolve()
-            })
-        })
-            
-    },
-    convertMS(milliseconds) {
-        
+
+        },
+        convertMS(milliseconds) {
+
             var day, hour, minute, seconds;
             seconds = Math.floor(milliseconds / 1000);
             minute = Math.floor(seconds / 60);
@@ -50,9 +54,9 @@ module.exports = {
             minute = minute % 60;
             day = Math.floor(hour / 24);
             hour = hour % 24;
-            if(day+hour+minute==0) seconds = this.roundNumber(milliseconds/1000, 2)
-            
-        return(`${(day == 0 ? `` : `${day} days `)}${(hour == 0 ? `` : `${hour} hrs `)}${(minute == 0 ? `` : `${minute} mins `)}${seconds} secs`)
+            if (day + hour + minute == 0) seconds = this.roundNumber(milliseconds / 1000, 2)
+
+            return (`${(day == 0 ? `` : `${day} days `)}${(hour == 0 ? `` : `${hour} hrs `)}${(minute == 0 ? `` : `${minute} mins `)}${seconds} secs`)
             
         
         
@@ -314,4 +318,3 @@ module.exports.getUser(id)
     }
         
     }
-

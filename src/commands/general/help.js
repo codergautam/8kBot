@@ -24,7 +24,11 @@ module.exports = new simpleCommand(
                     var desc = `${(category.desc?category.desc:`Here are a list of the **${category.id}** commands!`)}\nView more details of a command by typing **8k!help <commandname>**\n\n`
                var arr = []
                category.commands.forEach(command => {
-               arr[arr.length] = command.props.name
+                if(command.props.hasOwnProperty("hidden")) {
+                    if(!command.props.hidden) arr[arr.length] = command.props.name
+                } else {
+                    arr[arr.length] = command.props.name
+                }    
                })
                desc= desc+`\`${arr.join("`, `")}\``
             const embed = new Discord.MessageEmbed()

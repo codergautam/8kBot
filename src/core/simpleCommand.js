@@ -11,12 +11,13 @@ module.exports = class simpleCommand {
      * @param {String} props.description Command description showed in help page
      * @param {String} props.usage Usage for command
      * @param {String} props.name Name of command
+     * @param {Boolean} props.hidden If true command will not be shown on help page
      */
-    constructor (fn, props) {
-      this.fn = fn
-      this.passedProps = props
+    constructor(fn, props) {
+        this.fn = fn
+        this.passedProps = props
     }
-    
+
     /**
      * 
      * @param {*} message Message object
@@ -25,22 +26,22 @@ module.exports = class simpleCommand {
      * @param {*} addCool cooldown function
      * @param {*} categories categories object(for help cmd)
      */
-    async run (message, args, client, addCool) {
-      if (this.props.missingArgs && !args[0]) {
-        return this.props.missingArgs
-      }
-      this.fn(message, args, client, addCool)
-      return true
+    async run(message, args, client, addCool) {
+        if (this.props.missingArgs && !args[0]) {
+            return this.props.missingArgs
+        }
+        this.fn(message, args, client, addCool)
+        return true
     }
-  
-    get props () {
+
+    get props() {
         return Object.assign({
             usage: '{prefix}{command}',
             cooldown: 3000,
             ownerOnly: false,
             cooldownMessage: "This command is in cooldown try again in **{timeleft}**"
-          }, this.passedProps, {
+        }, this.passedProps, {
             perms: ['SEND_MESSAGES', 'EMBED_LINKS'].concat(this.passedProps.perms || [])
-          })
-  }
+        })
+    }
 }

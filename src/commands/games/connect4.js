@@ -1,6 +1,7 @@
 const api = require("../../core/api")
 const simpleCommand = require("../../core/simpleCommand")
 var connectfour = require("../../extras/c4")
+const Discord = require("discord.js")
 module.exports = new simpleCommand(
     async(message, args, client, addCD) => {
         if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) return message.channel.send("I need the manage messages permission to play this game")

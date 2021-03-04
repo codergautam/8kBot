@@ -25,5 +25,6 @@ module.exports = new simpleCommand(
         cooldownMessage: "Dont beg too much!\nYou can beg again in **{timeleft}**",
         perms: ["SEND_MESSAGES"],
         description: "Beg for some money!"
+
     }
 )

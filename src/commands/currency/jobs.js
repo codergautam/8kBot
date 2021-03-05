@@ -15,7 +15,7 @@ module.exports = new simpleCommand(
             .setDescription(datatt)
         message.channel.send(embed)
     }, {
-        name: "daily",
+        name: "jobs",
         aliases: ["jobs", "job", "joblist"],
         cooldown: 0,
         cooldownMessage: "",

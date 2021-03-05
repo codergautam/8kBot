@@ -7,7 +7,7 @@ module.exports = new simpleCommand(
     async(message, args, client, addCD) => {
 
         if (args.length > 1) {
-            message.channel.send(combine(args[0] + args[1]))
+            message.channel.send(combine(args[0], args[1]))
         } else {
             message.channel.send("You didnt enter 2 words to combine")
         }

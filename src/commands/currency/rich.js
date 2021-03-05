@@ -1,4 +1,8 @@
-function leaderboard(obj, page) {
+function leaderboard(obj1, page) {
+    obj = []
+    obj1.forEach(user => {
+        obj[obj.length] = user.data
+    })
     const sorted = Object.values(obj).sort((a, b) => a.bal - b.bal).reverse().slice((page * 10) - 10, page * 10)
 
     var leaderboard = ""

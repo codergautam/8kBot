@@ -1,10 +1,4 @@
 const { memeAsync } = require('memejs');
-module.exports = {
-    name: 'ph',
-    async execute(message, args) {
-
-    }
-}
 const simpleCommand = require("../../core/simpleCommand")
 const Discord = require("discord.js")
 

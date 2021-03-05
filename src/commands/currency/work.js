@@ -1,20 +1,13 @@
 const Discord = require('discord.js')
-const jobjson = require("../json/jobs.json")
+const jobjson = require("../../json/jobs.json")
 const fs = require('fs');
 const jobfiles = new Discord.Collection();
-const jobarray = fs.readdirSync('./jobs/').filter(file => file.endsWith('.js'));
+
+const jobarray = fs.readdirSync("./src/jobs").filter(file => file.endsWith('.js'));
 for (const file of jobarray) {
-    const jobdata = require(`../jobs/${file}`);
+    const jobdata = require(`../../jobs/${file}`);
     jobfiles.set(jobdata.name, jobdata);
 }
-
-module.exports = {
-    name: "work",
-    execute(message, args) {
-
-    }
-}
-
 const api = require("../../core/api")
 const simpleCommand = require("../../core/simpleCommand")
 
@@ -54,8 +47,8 @@ module.exports = new simpleCommand(
         }
 
     }, {
-        name: "",
-        aliases: [""],
+        name: "work",
+        aliases: ["work"],
         cooldown: 0,
         cooldownMessage: "",
         perms: ["SEND_MESSAGES"],

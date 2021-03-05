@@ -18,7 +18,11 @@ module.exports = new simpleCommand(
             }
 
         }
-        var obj = await api.getAll()
+        var obj1 = await api.getAll()
+        obj = []
+        obj1.forEach(user => {
+            obj[obj.length] = user.data
+        })
         const sortedxp = Object.values(obj).sort((a, b) => (!a.levels ? 0 : a.levels.xp) - (!b.levels ? 0 : b.levels.xp)).reverse()
         var ranknumxp = sortedxp.findIndex(user => user.id == id.id) + 1
 

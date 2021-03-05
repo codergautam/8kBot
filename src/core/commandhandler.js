@@ -8,10 +8,17 @@ const { owners } = require("../../package.json")
 
 
 
-function isAO(val) {
-    return val instanceof Array || val instanceof Object ? true : false;
+function isAO(str) {
+    try {
+        if (str.toString() == "[object Object]") {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (e) {
+        return false;
+    }
 }
-
 module.exports = (message, client) => {
     var prefix = "8k!"
 
@@ -28,7 +35,7 @@ module.exports = (message, client) => {
             if (!message.guild.me.hasPermission("EMBED_LINKS")) return message.channel.send("Make sure I have `Embed Links` permission!\nYou can give me this by click Server settings > My role and check Embed Links!")
             if (commandobj.props.perms.some(perm => !message.guild.me.hasPermission(perm))) {
                 const neededPerms = commandobj.props.perms.filter(perm => !message.guild.me.hasPermission(perm))
-                message.channel.send(neededPerms.join(" "))
+                message.channel.send("I need the following perms to run this command\n" + neededPerms.join(" "))
             } else {
                 message.channel.startTyping()
                 api.checkCool(message.author.id, commandobj.props.name)
@@ -48,15 +55,17 @@ module.exports = (message, client) => {
                                 return api.addCool(message.author.id, commandobj.props.name, commandobj.props.cooldown)
                             }
                             try {
-                                commandobj.run(message, args, client, addCD)
+                                commandobj.fn(message, args, client, addCD)
                                     .catch(e => {
                                         message.channel.send(new Discord.MessageEmbed().setTitle("oh noe").setDescription(`An error has occured, if this keeps coming again and again contact the owner\n\`\`\`${(isAO(e)?JSON.stringify(e):e.toString())}\`\`\``))
                                         message.channel.stopTyping()
+                                        console.log(e)
                                     })
+
                                 message.channel.stopTyping()
                             } catch (e) {
 
-
+                                console.log(e)
                                 message.channel.send(new Discord.MessageEmbed().setTitle("oh noe").setDescription(`An error has occured, if this keeps coming again and again contact the owner\n\`\`\`${(isAO(e)?JSON.stringify(e):e.toString())}\`\`\``))
                                 message.channel.stopTyping()
                             }

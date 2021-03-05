@@ -1,10 +1,18 @@
 const api = require("../../core/api")
 const simpleCommand = require("../../core/simpleCommand");
 const Discord = require("discord.js");
-
+const jobs = require('../../json/jobs.json')
+const fs = require("fs")
+const jobfiles = new Discord.Collection();
+const jobarray = fs.readdirSync('./src/jobs/').filter(file => file.endsWith('.js'));
+for (const file of jobarray) {
+    const jobdata = require(`../../jobs/${file}`);
+    jobfiles.set(jobdata.name, jobdata);
+    console.log("Initialized " + `./jobs/${file}`)
+}
 module.exports = new simpleCommand(
     async(message, args, client, addCD) => {
-        api.getUser(message.author.id)
+        var user = await api.getUser(message.author.id)
 
         var job = args.join(' ').toLowerCase()
         if (jobs.hasOwnProperty(job)) {

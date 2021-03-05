@@ -40,6 +40,7 @@ module.exports = (client) => {
             process.exit()
         }
     })
+
     process.on("unhandledRejection", (err, origin) => {
         console.log("UNHANDLED REJECTION!")
         console.log(err)

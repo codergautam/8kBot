@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const simpleCommand = require("../../core/simpleCommand")
-
+const request = require("request")
 module.exports = new simpleCommand(
     async(message, args, client, addCD) => {
         request("https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json&json=?", (er, res, body) => {

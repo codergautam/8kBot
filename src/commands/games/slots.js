@@ -7,9 +7,9 @@ module.exports = new simpleCommand(
         var int = api.getRandomInt(1, 100)
         var emojis = ["😂", "😭", "🥺", "🤣", "✨", "😍", "🙏", "😊", "🥰"]
         if (int < 50) {
-            if (int == 1) var win = 1000000
-            if (int > 1 && int < 10) var win = 1000000
-            if (int > 9 && int < 20) var win = 10000
+            if (int == 1) var win = 100000
+            if (int > 1 && int < 10) var win = 10000
+            if (int > 9 && int < 20) var win = 1000
             if (int > 19) var win = api.getRandomInt(10, 1000)
         } else {
             var win = 0

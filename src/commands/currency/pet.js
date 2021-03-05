@@ -1,24 +1,4 @@
 const pets = require('../../json/pets.json')
-module.exports = {
-    name: "pet",
-    aliases: ["pet", "pets"],
-    secret: false,
-    category: "currency",
-    format: "<@user | petname>",
-    usage: ["@Coder Gautam", "Coder"],
-    description: "This command shows the list of pets a mentioned user has! If no user mentioned, it shows your pets\nYou can also view a specific pets data by typing `8k!pets <petname>`\nType `8k!help pet petname` for more details!",
-    subcommands: [{
-        name: ["petname", "petdata"],
-        thisfile: true,
-        format: "8k!pe petname>",
-        usage: ["@Coder Gautam", "Coder"],
-        description: "This command shows the list of pets a mentioned user has! If no user mentioned, it shows your pets\nYou can also view a specific pets data by typing `8k!pets <petname>`\nType `8k!help pet petname` for more details!"
-    }],
-    execute(message, args) {
-
-    }
-}
-
 const api = require("../../core/api")
 const simpleCommand = require("../../core/simpleCommand")
 const Discord = require("discord.js")

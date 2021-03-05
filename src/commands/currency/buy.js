@@ -11,7 +11,7 @@ for (const file of itemarray) {
 }
 const items = require('../../json/items.json')
 
-module.exports = new simpleCommand((message, args, client, addCD) => {
+module.exports = new simpleCommand(async(message, args, client, addCD) => {
     api.getUser(message.author.id)
         .then((user) => {
             var item = args.join(' ').toLowerCase()

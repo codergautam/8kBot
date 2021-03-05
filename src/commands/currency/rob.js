@@ -86,7 +86,7 @@ module.exports = new simpleCommand(
                                     if (err.type == 0) {
                                         const embed = new Discord.MessageEmbed()
                                             .setColor('#0099ff')
-                                            .setTitle("The user you tagged doesnt have an account! They can one by running `8k!start`")
+                                            .setTitle("The user you tagged isnt in our database! Make them say something and then try again")
                                         message.channel.send(embed)
                                     } else {
                                         message.channel.send("Something went wrong. Pls try again")

@@ -18,22 +18,6 @@ module.exports = class simpleCommand {
         this.passedProps = props
     }
 
-    /**
-     * 
-     * @param {*} message Message object
-     * @param {*} args Arguments array
-     * @param {*} client client object
-     * @param {*} addCool cooldown function
-     * @param {*} categories categories object(for help cmd)
-     */
-    async run(message, args, client, addCool) {
-        if (this.props.missingArgs && !args[0]) {
-            return this.props.missingArgs
-        }
-        this.fn(message, args, client, addCool)
-        return true
-    }
-
     get props() {
         return Object.assign({
             usage: '{prefix}{command}',

@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
-const api = require("../../api")
+
+const api = require('../core/api');
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);

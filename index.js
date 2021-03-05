@@ -58,10 +58,23 @@ getDirectories("./src/commands").forEach(category => {
     client.categories.set(categoryobj.id, categoryobj)
 
     categoryobj.commands.forEach(command => {
-        command.props.aliases.forEach(alias => {
-            client.commands.set(alias, command)
-        })
-        console.log(`${command.props.name} command initialized!`)
+        try {
+            client.commands.set(command.props.name, command)
+            if (command.props.hasOwnProperty("aliases")) {
+                command.props.aliases.forEach(alias => {
+                    if (!client.commands.has(alias)) {
+                        client.commands.set(alias, command)
+                    }
+                })
+            }
+            console.log(`${command.props.name} command initialized!`)
+        } catch (e) {
+            console.log("-------------ERROR----------")
+            console.log(command)
+            console.log("Failed to load")
+            console.log(e)
+            console.log("-------------ERROR----------")
+        }
     })
 })
 

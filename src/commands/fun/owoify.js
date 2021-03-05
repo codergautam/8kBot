@@ -17,6 +17,9 @@ function OwoifyText(v) {
 
 module.exports = new simpleCommand(
     async(message, args, client, addCD) => {
+        if (args.length < 1) {
+            return message.channel.send("You didnt enter a message to owofy!\n for more info, type `8k!help owoify`")
+        }
         message.channel.send(OwoifyText(Discord.Util.cleanContent(args.join(" "), message)))
     }, {
         name: "owoify",

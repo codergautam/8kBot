@@ -6,7 +6,7 @@ const html = new(require("html-entities").XmlEntities)
 
 module.exports = new simpleCommand(
     async(message, args, client, addCD) => {
-        if (args[0].toLowerCase() == "stats") {
+        if (args.length > 0 && args[0].toLowerCase() == "stats") {
             var dauser = (message.mentions.members.first() ? message.mentions.members.first() : message.author)
             var avatar = (dauser.user ? dauser.user.avatarURL() : dauser.avatarURL())
             api.getUser(dauser.id)

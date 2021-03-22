@@ -4,7 +4,6 @@
 ### Made By CoderGautamYT
 
 * 99% uptime!
-* New updates every week!
 * Bugs fixed quickly
 
 Add it here:
@@ -12,4 +11,7 @@ https://discord.com/oauth2/authorize?client_id=783346270290968606&permissions=8&
 
 https://top.gg/bot/783346270290968606
 
+>Note
+>8k bot will not be updated anymore due to lack of motivation
+>I will update if the bot is broken or any of the core features are not working
 

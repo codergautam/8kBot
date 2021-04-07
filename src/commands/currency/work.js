@@ -18,27 +18,15 @@ module.exports = new simpleCommand(
             user.job = { exists: false }
         }
         if (user.job.exists) {
-            var cooldown = await api.checkCool(message.author.id, "work")
-            if (cooldown.cooldown) {
-
-                const embed = new Discord.MessageEmbed()
-                    .setColor('#0099ff')
-                    .setTitle("Cooldown")
-                    .setDescription("Too much work is a bad thing\nYou can work again in `" + api.convertMS(cooldown.msleft) + "`")
-                message.channel.send(embed)
-            } else {
-                jobfiles.get(user.job.name).work(message, (moneyEarned) => {
-                    var dafunc = (typeof moneyEarned == "number" ? api.changeBal : api.modUser)
-                    dafunc(message.author.id, moneyEarned)
-                        .then(() => {
-                            api.addCool(message.author.id, "work", (jobjson.hasOwnProperty(user.job.name.toLowerCase()) ? jobjson[user.job.name][3] : 900000))
-                        })
+            jobfiles.get(user.job.name).work(message, (moneyEarned) => {
+                var dafunc = (typeof moneyEarned == "number" ? api.changeBal : api.modUser)
+                dafunc(message.author.id, moneyEarned)
+                    .then(() => {
+                        api.addCool(message.author.id, "work", (jobjson.hasOwnProperty(user.job.name.toLowerCase()) ? jobjson[user.job.name][3] : 900000))
+                    })
 
 
-                }, user)
-            }
-
-
+            }, user)
         } else {
             const embed = new Discord.MessageEmbed()
                 .setColor('#0099ff')
@@ -50,7 +38,7 @@ module.exports = new simpleCommand(
         name: "work",
         aliases: ["work"],
         cooldown: 0,
-        cooldownMessage: "",
+        cooldownMessage: "Too much work is a bad thing, you can work again in **{timeleft}**",
         perms: ["SEND_MESSAGES"],
         usage: "{prefix}{cmd}",
         description: "Lets you work at your job, you can get a job by typing `8k!joblist`"

@@ -2,7 +2,7 @@ const simpleCommand = require("../../core/simpleCommand")
 
 module.exports = new simpleCommand(
     async(message, args, client, addCD) => {
-        message.channel.send(message.author.username + " ate some cheese!")
+        message.channel.send(message.author.username + " ate sum cheese")
     }, {
         name: "eatcheese",
         aliases: ["eatcheese", "eetcheese", "eatchez"],

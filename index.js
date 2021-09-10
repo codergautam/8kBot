@@ -37,7 +37,9 @@ const {
 //Importing core modules
 const msgcli = require('./src/core/messagecli');
 const processHandler = require("./src/core/processhandler")
-const clientHandler = require("./src/core/clienthandler")
+const clientHandler = require("./src/core/clienthandler");
+const messagecli = require('./src/core/messagecli');
+const api = require('./src/core/api');
 
 //Getting values from .env file
 require('dotenv').config();
@@ -88,12 +90,33 @@ client.on("ready", () => {
 
 //Message event
 client.on("message", (message) => {
-    var prefix = "8k!"
-    if (message.author.bot) return;
-    if (!message.content.toLowerCase().startsWith(prefix)) return
-    if (maintanence && message.guild.id.toString() != "769597572410900500" && !self) return message.channel.send("8k bot is in maintainance mode sry")
-    if (maintanence && message.guild.id.toString() != "769597572410900500" && self) return
-    msgcli(message, client)
+    api.getUser(message.author.id)
+        .then((user) => {
+            var prefix = "8k!"
+            if (message.author.bot) return;
+            if (!message.content.toLowerCase().startsWith(prefix)) return
+            if (maintanence && message.guild.id.toString() != "769597572410900500" && !self) return message.channel.send("8k bot is in maintainance mode sry")
+            if (maintanence && message.guild.id.toString() != "769597572410900500" && self) return
+            messagecli(message, client, user)
+
+        })
+        .catch((err) => {
+            console.log(err)
+            if (err.type == 0) {
+                api.createUser(message.author.id, message.author.username)
+                    .then((user) => {
+                        messagecli(message, client, user)
+                        api.numOfUsers()
+                            .then((count) => {
+                                api.log(`**NEW USER!** Welcome to 8k bot, **${message.author.username}**! They are our \`${api.numberWithCommas(count)}${api.ordinal_suffix(count)} user!\``, client)
+                            })
+
+                    })
+                    .catch((err) => {
+                        console.log(err)
+                    })
+            }
+        })
 })
 
 //Logging bot with token

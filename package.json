@@ -1,7 +1,7 @@
 {
     "name": "8kbot",
-    "version": "2.0.0c",
-    "production": false,
+    "version": "2.0.0d",
+    "production": true,
     "maintanence": false,
     "self": false,
     "owners": [

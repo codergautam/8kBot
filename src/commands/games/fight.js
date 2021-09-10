@@ -153,6 +153,12 @@ module.exports = new simpleCommand(
     }
 )
 
+function randomInteger(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, betmoney) {
 
     var orig1 = user1
@@ -230,8 +236,13 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
       
             } else if (coolmesgade.content.toLowerCase() == "attack" || coolmesgade.content.toLowerCase() == "fight") {
                 if(user1f.weapon == "axe") {
-                    var hit = randomInteger(0,3)
-                    var damage = hit*randomInteger(5,20)
+                    var hit = randomInteger(0,5)
+                    if(hit < 2) {
+                        hit = 0
+                    } else {
+                        hit= hit - 1
+                    }
+                    var damage = hit*randomInteger(2,15)
                     if(damage != 0) {
                         const embed56 = new Discord.MessageEmbed()
                         .setTitle("Axe Results!")

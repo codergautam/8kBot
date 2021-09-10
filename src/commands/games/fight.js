@@ -61,7 +61,7 @@ module.exports = new simpleCommand(
                                     const embed1 = new Discord.MessageEmbed()
                                         .setColor('#0099ff')
                                         .setTitle(`${user1d.name}, Select your weapon!`)
-                                        .setDescription(`\`ak47\` - ︻╦╤─ Fast fire, but less accuracy\n\`axe\` - 🪓Deadly, medium fire, but low accuracy\n\`sniper\` - ▄︻̷̿┻̿═━一 Deadly, good accuracy, but low fire rate\``)
+                                        .setDescription(`\`ak47\` - ︻╦╤─ Less damage, but high chance of hit\n\`axe\` - 🪓Deadly, but low accuracy\n\`sniper\` - ▄︻̷̿┻̿═━一 High damage, medium accuracy\``)
                                         .setFooter(user1d.name + ", Respond with a weapon name\nPlease respond within 20 seconds")
                                     message.channel.send(embed1)
                                     xyuj = false
@@ -236,13 +236,11 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
       
             } else if (coolmesgade.content.toLowerCase() == "attack" || coolmesgade.content.toLowerCase() == "fight") {
                 if(user1f.weapon == "axe") {
-                    var hit = randomInteger(0,5)
-                    if(hit < 2) {
+                    var hit = randomInteger(0,6)
+                    if(hit < 5) {
                         hit = 0
-                    } else {
-                        hit= hit - 1
                     }
-                    var damage = hit*randomInteger(2,15)
+                    var damage = hit*randomInteger(10,30)
                     if(damage != 0) {
                         const embed56 = new Discord.MessageEmbed()
                         .setTitle("Axe Results!")
@@ -258,8 +256,8 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
                     }
 
                 } else if(user1f.weapon == "sniper") {
-                    if(randomInteger(1,4) == 2) {
-                        var damage = randomInteger(40,90)
+                    if(randomInteger(1,3) == 2) {
+                        var damage = randomInteger(40,95)
                         const embed56 = new Discord.MessageEmbed()
                         .setTitle("Sniper Shot!")
                         .setDescription("**"+user1d.name+" Hits "+user2d.name+" With SNIPER**\n\n"+" __**DAMAGE DEALT:  **__`" +damage+"`\n __** "+user2d.name+"**__ now has `"+(user2f.health - damage < 0 ? "0" : user2f.health - damage)+"` health!\n")
@@ -273,7 +271,7 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
                         message.channel.send(embed56)
                     }
                 } else if(user1f.weapon == "ak47") {
-                    var hit = randomInteger(0,30)
+                    var hit = randomInteger(0,20)
                     var damage = hit*randomInteger(1,3)
                     if(damage != 0) {
                         const embed56 = new Discord.MessageEmbed()

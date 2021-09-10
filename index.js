@@ -90,10 +90,11 @@ client.on("ready", () => {
 
 //Message event
 client.on("message", (message) => {
+    if (message.author.bot) return;
     api.getUser(message.author.id)
         .then((user) => {
             var prefix = "8k!"
-            if (message.author.bot) return;
+
             if (!message.content.toLowerCase().startsWith(prefix)) return
             if (maintanence && message.guild.id.toString() != "769597572410900500" && !self) return message.channel.send("8k bot is in maintainance mode sry")
             if (maintanence && message.guild.id.toString() != "769597572410900500" && self) return

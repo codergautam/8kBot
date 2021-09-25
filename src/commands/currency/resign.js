@@ -25,6 +25,7 @@ module.exports = new simpleCommand(
                 if (coolmesgae.content.toLowerCase() == "yes" || coolmesgae.content.toLowerCase() == "y") {
                     var fhghfgh = user.job.name
                     user.job = { exists: false }
+                    if (user.hasOwnProperty("youtube")) delete user.youtube
                     await api.modUser(message.author.id, user)
                     const embe45d = new Discord.MessageEmbed()
                         .setColor('GREEN')

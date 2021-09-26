@@ -48,7 +48,7 @@ module.exports = {
         if (!user.inv.hasOwnProperty("laptop") || !user.inv.hasOwnProperty("headset")) {
             message.channel.send("You need a laptop AND a headset to work as a YouTuber!\nYou can buy them buy typing `8k!buy laptop` and `8k!buy headset`")
         } else {
-            const categories = ["Among Us", "cat", "Minecraft", "makeup", "coding", "counting to 10", "nursery rhyme", "advertising coder gautam", "tech review", "boring", "hacking", "8k bot fan"]
+            const categories = ["Among Us", "cat", "Minecraft", "makeup", "coding", "counting to 10", "nursery rhyme", "advertising coder gautam", "tech review", "boring", "hacking", "8k bot fan", "io game", "reaction", "tutorial", "top 10", "comedy", "challenge", "reaction", "q&a", "asmr", "sports", "storytelling", "scary", "technology", "explaining", "giving away money"]
             const embed = new Discord.MessageEmbed();
             embed.setTitle("Youtuber Results")
             var num = getRandomInt(1, 10);
@@ -70,17 +70,17 @@ module.exports = {
                 var moneyEarned = subsGained + getRandomInt(user.youtube.subs * 2, user.youtube.subs * 5)
                 embed.setDescription(`Your ${video} video got pretty good views.\nYou gained \`${subsGained}\` subs!\nYour video got \`${api.numberWithCommas(moneyEarned)}\` views!`)
             } else if (num == 9) {
-                var subsLost = getRandomInt(user.youtube.subs * 0.05, user.youtube.subs * 0.15)
+                var subsLost = getRandomInt(user.youtube.subs * 0.05, user.youtube.subs * 0.25)
                 user.youtube.subs -= subsLost
                 var moneyEarned = 0
-                embed.setDescription(`Your ${video} video WAS TERRIBLE\nYou LOST \`${api.numberWithCommas(subsLost)}\` subs bruh!\nYour video got \`0\` views!`)
+                embed.setDescription(`Your ${video} video WAS TERRIBLE\nYou LOST \`${api.numberWithCommas(subsLost)}\` subs bruh!`)
             } else {
-                var subsGained = (user.youtube.subs > 10000 ? getRandomInt(user.youtube.subs / 20, user.youtube.subs) : getRandomInt(10, 1000))
+                var subsGained = (user.youtube.subs > 10000 ? getRandomInt(user.youtube.subs / 20, user.youtube.subs / 2) : getRandomInt(10, 1000))
                 user.youtube.subs += subsGained
-                var moneyEarned = subsGained + getRandomInt(user.youtube.subs * 5, user.youtube.subs * 20)
+                var moneyEarned = subsGained + getRandomInt(user.youtube.subs * 5, user.youtube.subs * 30)
                 embed.setDescription(`Your ${video} video WENT VIRAL!!.\nYou gained \`${api.numberWithCommas(subsGained)}\` subs!\nYour video got AN AMAZING\`${api.numberWithCommas(moneyEarned)}\` views!\nNiceee video broooo`)
             }
-            var moneyMultiplier = (Math.floor(user.youtube.subs / 10000) == 0 ? 1 : Math.floor(user.youtube.subs / 10000))
+            var moneyMultiplier = (Math.floor(user.youtube.subs / 20000) == 0 ? 1 : Math.floor(user.youtube.subs / 20000))
             user.bal += moneyEarned * moneyMultiplier
 
             embed.setFooter(`Your channel has ${user.youtube.subs} subs!\n(1 view = ${moneyMultiplier} coin)`)

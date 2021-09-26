@@ -60,7 +60,7 @@ module.exports = {
                 embed.setDescription(`Your ${video} video didnt attract any new viewers.\nYou got \`${api.numberWithCommas(moneyEarned)}\` views`)
 
             } else if (num == 3 || num == 4 || num == 5) {
-                var subsGained = getRandomInt(0, user.youtube)
+                var subsGained = getRandomInt(0, user.youtube.subs)
                 user.youtube.subs += subsGained
                 var moneyEarned = subsGained + getRandomInt(user.youtube.subs / 2, user.youtube.subs * 1.1)
                 embed.setDescription(`Your ${video} video got average views.\nYou gained \`${subsGained}\` subs!\nYour video got \`${api.numberWithCommas(moneyEarned)}\` views!`)

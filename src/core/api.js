@@ -295,6 +295,8 @@ module.exports.getUser(id)
     },
     createUser(id, username) {
         return new Promise((resolve, reject)=> {
+            username = username.replace("*", "\*").replace("_", "\_").replace("`", "\`")
+
             var usertemplate = {
                 bal: 1000,
                 name: username,

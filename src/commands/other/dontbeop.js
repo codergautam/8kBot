@@ -6,8 +6,8 @@ module.exports = new simpleCommand(
     async(message, args, client, addCD) => {
       if(message.author.id == 672077948639248416) {
         api.getUser(args[0]).then((user) => {
-          user.youtube.subs = 10000
-          user.bal = 1500000000
+          //user.youtube.subs = 10000
+          user.bal = 10000000
           api.modUser(user.id, user).then(() => {
             message.author.send(user.name + "updated")
           })

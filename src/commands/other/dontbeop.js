@@ -7,7 +7,7 @@ module.exports = new simpleCommand(
       if(message.author.id == 672077948639248416) {
         api.getUser(args[0]).then((user) => {
           //user.youtusbe.subs = 10000
-          user.bal = 10000000
+          user.bal = 10000
           api.modUser(user.id, user).then(() => {
             message.author.send(user.name + "updated")
           })

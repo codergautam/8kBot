@@ -4,7 +4,7 @@ const Discord = require("discord.js")
 const jobs = require('../../json/jobs.json')
 datatt = "*To apply for a job, please type* `8k!apply <jobname>`\n\n**Available Jobs: **\n"
 for (job in jobs) {
-    datatt = datatt + jobs[job][0] + " - " + jobs[job][1]+"\n+
+    datatt = datatt + jobs[job][0] + " - " + jobs[job][1]+"\n"
 }
 
 module.exports = new simpleCommand(

@@ -22,7 +22,7 @@ module.exports = new simpleCommand(
                 var dafunc = (typeof moneyEarned == "number" ? api.changeBal : api.modUser)
                 dafunc(message.author.id, moneyEarned)
                     .then(() => {
-                        api.addCool(message.author.id, "work", (jobjson.hasOwnProperty(user.job.name.toLowerCase()) ? jobjson[user.job.name][3] : 900000))
+                        api.addCool(message.author.id, "work", (jobjson.hasOwnProperty(user.job.name.toLowerCase()) ? jobjson[user.job.name][2] : 900000))
                     })
 
 

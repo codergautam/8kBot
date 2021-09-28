@@ -71,14 +71,14 @@ module.exports = {
             if(!user.hasOwnProperty("appusers")) {
                 user.appusers = 0
             }
-            var coded = ["A social media app", "A video game", "An operating system", "A chatting app", "A health app", "A fitness tracker app"][Math.floor(Math.random() * 4)];
+            var coded = ["A social media app", "A video game", "An operating system", "A chatting app", "A health app", "A fitness tracker app"][Math.floor(Math.random() * 6)];
             var users = getRandomInt(50000, 150000)
            
             var moneyEarn = Math.round(users / 10)
             var extraEarn = getRandomInt(0, user.appusers)
             var extraText = ""
             if(extraEarn != 0) {
-                var extratext = `You also gained \`${extraEarn}\` coins from your previous creations!\n`
+                var extratext = `You also gained \`${api.numberWithCommas(extraEarn)}\` coins from your previous creations!\n`
             }
              user.appusers += Math.round(users / 3)
             api.changeBal(user.id, moneyEarn+extraEarn)
@@ -90,10 +90,10 @@ module.exports = {
                         }
                         api.modUser(user.id, user)
                             .then(() => {
-                                message.channel.send(`You made **${coded}** and gained **${users}** users!\nYou gained \`${moneyEarn}\` coins! \n${extraText}**But one sad thing, You're laptop broke... ;(**`)
+                                message.channel.send(`You made **${coded}** and gained **${api.numberWithCommas(users)}** users!\nYou gained \`${api.numberWithCommas(moneyEarn)}\` coins! \n${extraText}**But one sad thing, You're laptop broke... ;(**`)
                             })
                     } else {
-                        message.channel.send(`You made **${coded}** and gained **${users}** users!\nYou gained \`${moneyEarn}\` coins!\n${extraText}Niceee application bro!`)
+                        message.channel.send(`You made **${coded}** and gained **${api.numberWithCommas(users)}** users!\nYou gained \`${api.numberWithCommas(moneyEarn)}\` coins!\n${extraText}Niceee application bro!`)
 
                     }
                     callback(moneyEarn)

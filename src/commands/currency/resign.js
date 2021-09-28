@@ -13,6 +13,7 @@ module.exports = new simpleCommand(
             user.job = { exists: false }
         }
 
+
         if (user.job.exists) {
             const embed = new Discord.MessageEmbed()
                 .setColor('#0099ff')
@@ -26,6 +27,8 @@ module.exports = new simpleCommand(
                     var fhghfgh = user.job.name
                     user.job = { exists: false }
                     if (user.hasOwnProperty("youtube")) delete user.youtube
+                            if (!user.hasOwnProperty("appusers")) delete user.appusers
+        
                     await api.modUser(message.author.id, user)
                     const embe45d = new Discord.MessageEmbed()
                         .setColor('GREEN')

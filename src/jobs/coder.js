@@ -97,10 +97,6 @@ module.exports = {
                     }
                     callback(user)
 
-                
-                .catch(() => {
-                    message.channel.send("Error")
-                })
         }
     }
 }

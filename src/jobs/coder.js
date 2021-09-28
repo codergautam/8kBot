@@ -81,26 +81,23 @@ module.exports = {
                 var extratext = `You also gained \`${api.numberWithCommas(extraEarn)}\` coins from your previous creations!\n`
             }
              user.appusers += Math.round(users / 3)
-            api.changeBal(user.id, moneyEarn+extraEarn)
-                .then(() => {
+            user.bal += moneyEarn+extraEarn
+
                     if (getRandomInt(1, 8) == 3) {
                         user.inv.laptop.amount -= 1
                         if (user.inv.laptop.amount == 0) {
                             delete user.inv.laptop
                         }
-                        api.modUser(user.id, user)
-                            .then(() => {
-                                message.channel.send(`You made **${coded}** and gained **${api.numberWithCommas(users)}** users!\nYou gained \`${api.numberWithCommas(moneyEarn)}\` coins! \n${extraText}**But one sad thing, You're laptop broke... ;(**`)
-                            })
-                    } else {
-                      api.modUser(user.id, user)
-                            .then(() => {
-                        message.channel.send(`You made **${coded}** and gained **${api.numberWithCommas(users)}** users!\nYou gained \`${api.numberWithCommas(moneyEarn)}\` coins!\n${extraText}Niceee application bro!`)
-                      })
-                    }
-                    callback(moneyEarn)
 
-                })
+                                message.channel.send(`You made **${coded}** and gained **${api.numberWithCommas(users)}** users!\nYou gained \`${api.numberWithCommas(moneyEarn)}\` coins! \n${extraText}**But one sad thing, You're laptop broke... ;(**`)
+                            
+                    } else {
+                        message.channel.send(`You made **${coded}** and gained **${api.numberWithCommas(users)}** users!\nYou gained \`${api.numberWithCommas(moneyEarn)}\` coins!\n${extraText}Niceee application bro!`)
+                      
+                    }
+                    callback(user)
+
+                
                 .catch(() => {
                     message.channel.send("Error")
                 })

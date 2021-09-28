@@ -28,7 +28,7 @@ module.exports = (message, client, user) => {
         user.name = message.author.username.replace("*", "\\*").replace("_", "\\_").replace("`", "\\`")
         api.modUser(message.author.id, user)
             .then(() => {
-                api.log(`**NAME CHANGE!** **${oldname}** has changed their 8k name to **${message.author.username}**!`, client)
+                api.log(`**NAME CHANGE!** **${oldname}** has changed their 8k name to **${user.name}**!`, client)
             })
             .catch((err) => {
 

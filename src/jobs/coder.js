@@ -75,7 +75,7 @@ module.exports = {
             var users = getRandomInt(50000, 150000)
            
             var moneyEarn = Math.round(users / 10)
-            var extraEarn = getRandomInt(0, user.appusers)
+            var extraEarn = getRandomInt(0, user.appusers/10)
             var extraText = ""
             if(extraEarn != 0) {
                 extraText = `You also gained \`${api.numberWithCommas(extraEarn)}\` coins from your previous creations!\n`

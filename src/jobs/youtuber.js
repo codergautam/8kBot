@@ -76,16 +76,16 @@ module.exports = {
                 embed.setDescription(`Your ${video} video didn't do well\nYou LOST \`${api.numberWithCommas(subsLost)}\` subs bruh!`)
 
             } else if (num == 9) {
-                if (getRandomInt(1, 5) == 3) {
+                if (getRandomInt(1, 8) == 3) {
                     var subChange = getRandomInt(user.youtube.subs / 4, user.youtube.subs)
                     if (getRandomInt(1, 3) == 2) {
                         user.youtube.subs -= subChange
                         var moneyEarned = 0
-                        embed.setDescription(`Your ${video} video caused a controvercy\nYou LOST \`${api.numberWithCommas(subsLost)}\` subs!`)
+                        embed.setDescription(`Your ${video} video caused a controvercy\nYou LOST \`${api.numberWithCommas(subChange)}\` subs!`)
                     } else {
                         user.youtube.subs += subChange
                         var moneyEarned = 0
-                        embed.setDescription(`Your ${video} video caused a controvercy\nYou GAINED \`${api.numberWithCommas(subsLost)}\` subs!`)
+                        embed.setDescription(`Your ${video} video caused a controvercy\nYou GAINED \`${api.numberWithCommas(subChange)}\` subs!`)
                     }
                 } else {
                     var subsLost = getRandomInt(user.youtube.subs * 0.05, user.youtube.subs * 0.35)

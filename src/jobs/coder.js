@@ -68,34 +68,34 @@ module.exports = {
         if (!user.inv.hasOwnProperty("laptop")) {
             message.channel.send("You need a laptop to code!\nYou can buy one buy typing `8k!buy laptop`")
         } else {
-            if(!user.hasOwnProperty("appusers")) {
+            if (!user.hasOwnProperty("appusers")) {
                 user.appusers = 0
             }
             var coded = ["A social media app", "A video game", "An operating system", "A chatting app", "A health app", "A fitness tracker app"][Math.floor(Math.random() * 6)];
             var users = getRandomInt(50000, 150000)
-           
+
             var moneyEarn = Math.round(users / 10)
-            var extraEarn = getRandomInt(0, user.appusers/10)
+            var extraEarn = getRandomInt(user.appusers / 20, user.appusers / 6)
             var extraText = ""
-            if(extraEarn != 0) {
+            if (extraEarn != 0) {
                 extraText = `You got an **EXTRA** \`${api.numberWithCommas(extraEarn)}\` coins from your previous creations!\n`
             }
-             user.appusers += Math.round(users / 3)
-            user.bal += moneyEarn+extraEarn
+            user.appusers += Math.round(users / 3)
+            user.bal += moneyEarn + extraEarn
 
-                    if (getRandomInt(1, 8) == 3) {
-                        user.inv.laptop.amount -= 1
-                        if (user.inv.laptop.amount == 0) {
-                            delete user.inv.laptop
-                        }
+            if (getRandomInt(1, 8) == 3) {
+                user.inv.laptop.amount -= 1
+                if (user.inv.laptop.amount == 0) {
+                    delete user.inv.laptop
+                }
 
-                                message.channel.send(`You made **${coded}** and gained **${api.numberWithCommas(users)}** users!\nYou got \`${api.numberWithCommas(moneyEarn)}\` coins! \n${extraText}**But one sad thing, You're laptop broke... ;(**`)
-                            
-                    } else {
-                        message.channel.send(`You made **${coded}** and gained **${api.numberWithCommas(users)}** users!\nYou got \`${api.numberWithCommas(moneyEarn)}\` coins!\n${extraText}Niceee application bro!`)
-                      
-                    }
-                    callback(user)
+                message.channel.send(`You made **${coded}** and gained **${api.numberWithCommas(users)}** users!\nYou got \`${api.numberWithCommas(moneyEarn)}\` coins! \n${extraText}**But one sad thing, You're laptop broke... ;(**`)
+
+            } else {
+                message.channel.send(`You made **${coded}** and gained **${api.numberWithCommas(users)}** users!\nYou got \`${api.numberWithCommas(moneyEarn)}\` coins!\n${extraText}Niceee application bro!`)
+
+            }
+            callback(user)
 
         }
     }

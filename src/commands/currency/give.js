@@ -36,7 +36,7 @@ module.exports = new simpleCommand(
                                                         const embed = new Discord.MessageEmbed()
                                                             .setColor('#0099ff')
                                                             .setTitle("Success!")
-                                                            .setDescription(user.name + " gave `" + moneytogive + "` coins to " + user2.name)
+                                                            .setDescription(user.name + " gave `" + api.numberWithCommas(moneytogive) + "` coins to " + user2.name)
                                                         message.channel.send(embed)
                                                     })
                                                     .catch(() => {

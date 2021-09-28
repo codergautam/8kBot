@@ -32,7 +32,7 @@ module.exports = new simpleCommand(
         const embed = new Discord.MessageEmbed()
             .setTitle(`${user.name}'s Rank!`)
             .setFooter(`Gain more XP by talking more\nGain more coins by using 8k bot!`)
-            .setDescription(`**Money**\nCoins: \`${user.bal}\`\nRank: #${ranknumrich}\n\n**Active**\nXP: \`${user.levels.xp}\`\nLevel: \`${user.levels.level}\`\nRank: #${ranknumxp}`)
+            .setDescription(`**Money**\nCoins: \`${api.numberWithCommas(user.bal)}\`\nRank: #${api.numberWithCommas(ranknumrich)}\n\n**Active**\nXP: \`${api.numberWithCommas(user.levels.xp)}\`\nLevel: \`${api.numberWithCommas(user.levels.level)}\`\nRank: #${api.numberWithCommas(ranknumxp)}`)
         message.channel.send(embed)
 
 

@@ -15,7 +15,7 @@ module.exports = new simpleCommand(
         const embed = new Discord.MessageEmbed()
             .setColor('#0099ff')
             .setTitle("Beg Results for " + user.name)
-            .setDescription("You gained `" + moneyEarned + "` coins!\nNow you have a total of `" + user.bal + "`coins!")
+            .setDescription("You gained `" + moneyEarned + "` coins!")
         message.channel.send(embed)
 
     }, {

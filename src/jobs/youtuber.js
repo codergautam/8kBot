@@ -103,7 +103,7 @@ module.exports = {
             var moneyMultiplier = (Math.floor(user.youtube.subs / 20000) == 0 ? 1 : Math.floor(user.youtube.subs / 20000))
             user.bal += moneyEarned * moneyMultiplier
 
-            embed.setFooter(`Your channel has ${user.youtube.subs} subs!\n(1 view = ${moneyMultiplier} coin)`)
+            embed.setFooter(`Your channel has ${api.numberWithCommas(user.youtube.subs)} subs!\n(1 view = ${moneyMultiplier} coin)`)
             message.channel.send(embed)
 
             callback(user)

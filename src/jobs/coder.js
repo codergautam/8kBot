@@ -93,8 +93,10 @@ module.exports = {
                                 message.channel.send(`You made **${coded}** and gained **${api.numberWithCommas(users)}** users!\nYou gained \`${api.numberWithCommas(moneyEarn)}\` coins! \n${extraText}**But one sad thing, You're laptop broke... ;(**`)
                             })
                     } else {
+                      api.modUser(user.id, user)
+                            .then(() => {
                         message.channel.send(`You made **${coded}** and gained **${api.numberWithCommas(users)}** users!\nYou gained \`${api.numberWithCommas(moneyEarn)}\` coins!\n${extraText}Niceee application bro!`)
-
+                      })
                     }
                     callback(moneyEarn)
 

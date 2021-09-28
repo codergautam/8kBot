@@ -78,7 +78,7 @@ module.exports = {
             var extraEarn = getRandomInt(0, user.appusers/10)
             var extraText = ""
             if(extraEarn != 0) {
-                extraText = `You also gained \`${api.numberWithCommas(extraEarn)}\` coins from your previous creations!\n`
+                extraText = `You got an **EXTRA** \`${api.numberWithCommas(extraEarn)}\` coins from your previous creations!\n`
             }
              user.appusers += Math.round(users / 3)
             user.bal += moneyEarn+extraEarn
@@ -89,10 +89,10 @@ module.exports = {
                             delete user.inv.laptop
                         }
 
-                                message.channel.send(`You made **${coded}** and gained **${api.numberWithCommas(users)}** users!\nYou gained \`${api.numberWithCommas(moneyEarn)}\` coins! \n${extraText}**But one sad thing, You're laptop broke... ;(**`)
+                                message.channel.send(`You made **${coded}** and gained **${api.numberWithCommas(users)}** users!\nYou got \`${api.numberWithCommas(moneyEarn)}\` coins! \n${extraText}**But one sad thing, You're laptop broke... ;(**`)
                             
                     } else {
-                        message.channel.send(`You made **${coded}** and gained **${api.numberWithCommas(users)}** users!\nYou gained \`${api.numberWithCommas(moneyEarn)}\` coins!\n${extraText}Niceee application bro!`)
+                        message.channel.send(`You made **${coded}** and gained **${api.numberWithCommas(users)}** users!\nYou got \`${api.numberWithCommas(moneyEarn)}\` coins!\n${extraText}Niceee application bro!`)
                       
                     }
                     callback(user)

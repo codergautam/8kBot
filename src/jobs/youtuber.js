@@ -59,7 +59,7 @@ module.exports = {
                 var moneyEarned = getRandomInt(0, user.youtube.subs)
                 embed.setDescription(`Your ${video} video didnt attract any new viewers.\nYou got \`${api.numberWithCommas(moneyEarned)}\` views`)
 
-            } else if (num == 3 || num == 4 || num == 5) {
+            } else if (num == 3 || num == 4 || num == 5 || num ==8) {
                 var subsGained = (user.youtube.subs > 1000 ? getRandomInt(user.youtube.subs / 150, user.youtube.subs / 20) : getRandomInt(1, 10))
                 user.youtube.subs += subsGained
                 var moneyEarned = subsGained + getRandomInt(user.youtube.subs / 2, user.youtube.subs * 1.1)
@@ -69,12 +69,6 @@ module.exports = {
                 user.youtube.subs += subsGained
                 var moneyEarned = subsGained + getRandomInt(user.youtube.subs, user.youtube.subs * 2)
                 embed.setDescription(`Your ${video} video got pretty good views.\nYou gained \`${subsGained}\` subs!\nYour video got \`${api.numberWithCommas(moneyEarned)}\` views!`)
-            } else if (num == 8) {
-                var subsLost = getRandomInt(user.youtube.subs * 0.01, user.youtube.subs * 0.15)
-                user.youtube.subs -= subsLost
-                var moneyEarned = 0
-                embed.setDescription(`Your ${video} video didn't do well\nYou LOST \`${api.numberWithCommas(subsLost)}\` subs bruh!`)
-
             } else if (num == 9) {
                 if (getRandomInt(1, 8) == 3) {
                     var subChange = getRandomInt(user.youtube.subs / 4, user.youtube.subs)
@@ -88,10 +82,17 @@ module.exports = {
                         embed.setDescription(`Your ${video} video caused a controvercy\nYou GAINED \`${api.numberWithCommas(subChange)}\` subs!`)
                     }
                 } else {
+                    if(getRandomInt(1,2) == 2) {
                     var subsLost = getRandomInt(user.youtube.subs * 0.05, user.youtube.subs * 0.35)
                     user.youtube.subs -= subsLost
                     var moneyEarned = 0
                     embed.setDescription(`Your ${video} video WAS TERRIBLE\nYou LOST \`${api.numberWithCommas(subsLost)}\` subs bruh!`)
+                    } else {
+                var subsLost = getRandomInt(user.youtube.subs * 0.01, user.youtube.subs * 0.15)
+                user.youtube.subs -= subsLost
+                var moneyEarned = 0
+                embed.setDescription(`Your ${video} video didn't do well\nYou LOST \`${api.numberWithCommas(subsLost)}\` subs bruh!`)
+                    }
                 }
 
             } else {

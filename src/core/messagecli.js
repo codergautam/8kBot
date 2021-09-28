@@ -23,12 +23,12 @@ module.exports = (message, client, user) => {
 
     commandHandler(message, client)
         //make sure name is current name
-    if (user.name != message.author.username) {
+    if (user.name.replace("*", "\\*").replace("_", "\\_").replace("`", "\\`") != message.author.username.replace("*", "\\*").replace("_", "\\_").replace("`", "\\`")) {
         var oldname = user.name
         user.name = message.author.username.replace("*", "\\*").replace("_", "\\_").replace("`", "\\`")
         api.modUser(message.author.id, user)
             .then(() => {
-                api.log(`**NAME CHANGE!** **${oldname}** has changed their 8k name to **${user.name}**!`, client)
+                api.log(`**NAME CHANGE!** **${oldname}** has changed their 8k name to **${message.author.username}**!`, client)
             })
             .catch((err) => {
 

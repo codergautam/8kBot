@@ -68,11 +68,20 @@ module.exports = {
         if (!user.inv.hasOwnProperty("laptop")) {
             message.channel.send("You need a laptop to code!\nYou can buy one buy typing `8k!buy laptop`")
         } else {
-            var coded = ["A social media app", "A video game", "An operating system", "A chatting app"][Math.floor(Math.random() * 4)];
+            if(!user.hasOwnProperty("appusers")) {
+                user.appusers = 0
+            }
+            var coded = ["A social media app", "A video game", "An operating system", "A chatting app", "A health app", "A fitness tracker app"][Math.floor(Math.random() * 4)];
             var users = getRandomInt(50000, 150000)
+           
             var moneyEarn = Math.round(users / 10)
-
-            api.changeBal(user.id, moneyEarn)
+            var extraEarn = getRandomInt(0, user.appusers)
+            var extraText = ""
+            if(extraEarn != 0) {
+                var extratext = `You also gained \`${extraEarn}\` coins from your previous creations!\n`
+            }
+             user.appusers += Math.round(users / 3)
+            api.changeBal(user.id, moneyEarn+extraEarn)
                 .then(() => {
                     if (getRandomInt(1, 8) == 3) {
                         user.inv.laptop.amount -= 1
@@ -81,10 +90,10 @@ module.exports = {
                         }
                         api.modUser(user.id, user)
                             .then(() => {
-                                message.channel.send(`You made **${coded}** and gained **${users}** users!\nYou gained \`${moneyEarn}\` coins! \n**But one sad thing, You're laptop broke... ;(**`)
+                                message.channel.send(`You made **${coded}** and gained **${users}** users!\nYou gained \`${moneyEarn}\` coins! \n${extraText}**But one sad thing, You're laptop broke... ;(**`)
                             })
                     } else {
-                        message.channel.send(`You made **${coded}** and gained **${users}** users!\nYou gained \`${moneyEarn}\` coins! Niceee application bro!`)
+                        message.channel.send(`You made **${coded}** and gained **${users}** users!\nYou gained \`${moneyEarn}\` coins!\n${extraText}Niceee application bro!`)
 
                     }
                     callback(moneyEarn)

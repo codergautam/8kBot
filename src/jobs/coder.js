@@ -78,7 +78,7 @@ module.exports = {
             var extraEarn = getRandomInt(0, user.appusers)
             var extraText = ""
             if(extraEarn != 0) {
-                extratext = `You also gained \`${api.numberWithCommas(extraEarn)}\` coins from your previous creations!\n`
+                extraText = `You also gained \`${api.numberWithCommas(extraEarn)}\` coins from your previous creations!\n`
             }
              user.appusers += Math.round(users / 3)
             user.bal += moneyEarn+extraEarn

@@ -1,5 +1,5 @@
 {
-    "teacher": ["Teacher", "Teach some kids. 🧑‍🏫", 3000, 60000],
-    "coder": ["Coder", "Code awesome applications 🧑‍💻", 15000, 600000],
-    "youtuber": ["Youtuber", "Make youtube videos▶️", "???", 90000]
+    "teacher": ["Teacher", "Teach some kids. 🧑‍🏫", 30000],
+    "coder": ["Coder", "Code awesome applications 🧑‍💻", 300000],
+    "youtuber": ["Youtuber", "Make youtube videos▶️", 90000]
 }

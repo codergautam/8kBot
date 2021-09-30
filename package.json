@@ -1,6 +1,6 @@
 {
     "name": "8kbot",
-    "version": "2.0.1e",
+    "version": "2.0.2",
     "production": true,
     "maintanence": false,
     "self": false,
@@ -39,6 +39,7 @@
         "top.gg": "^2.3.2",
         "translation-google": "^0.2.1",
         "yt-search": "^2.10.1",
-        "ytdl-core": "^4.9.1"
+        "ytdl-core": "^4.9.1",
+        "discord.js-akinator": "^3.2.1"
     }
 }

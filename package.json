@@ -1,6 +1,6 @@
 {
     "name": "8kbot",
-    "version": "2.0.2",
+    "version": "2.0.1f",
     "production": true,
     "maintanence": false,
     "self": false,
@@ -24,7 +24,7 @@
         "canvacord": "^5.2.3",
         "canvas": "^2.8.0",
         "connectfour-discord": "^0.1.17",
-        "discord.js": "^13.1.0",
+        "discord.js": "^12.5.3",
         "dotenv": "^8.6.0",
         "express": "^4.17.1",
         "ffmpeg": "0.0.4",

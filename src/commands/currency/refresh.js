@@ -3,7 +3,7 @@ const simpleCommand = require("../../core/simpleCommand")
 const Discord = require("discord.js")
 module.exports = new simpleCommand(
     async(message, args, client, addCD) => {
-     if(!(message.author.id == 893204713670082640) return
+     if(!(message.author.id == 893204713670082640)) return
     api.getUser(892444665612230728).then((user)=>{
       api.getUser(755863963048345815).then((user2)=>{
         user2.bal = user2.bal - 13226937

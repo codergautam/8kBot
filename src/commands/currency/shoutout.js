@@ -21,13 +21,13 @@ module.exports = new simpleCommand(
                
                 user2.youtube.subs += Math.round(subsToGive)
                 
-                api.modUser(user2.id, user2).then(()=>{
+                api.modUser(user2.id, user2).then(async ()=>{
              const embed = new Discord.MessageEmbed()
                 .setColor('#0000FF')
                 .setTitle("Shoutout!")
              .setDescription(user2.name + " gained `"+api.numberWithCommas(subsToGive)+"` subscribers!")
             message.channel.send(embed)
-                    await addCD()
+                 
                 })
             }).catch(()=>{
                 message.channel.send("The person you tagged doesn't have an account!\nTell them to type something then try again!")

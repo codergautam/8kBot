@@ -33,7 +33,7 @@ module.exports = new simpleCommand(
             })
         })
         
-        }
+        
     }, {
         name: "shoutout",
         aliases: ["shoutout", "promote"],

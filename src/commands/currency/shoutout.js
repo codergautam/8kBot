@@ -22,8 +22,8 @@ module.exports = new simpleCommand(
     }, {
         name: "shoutout",
         aliases: ["shoutout", "promote"],
-        cooldown: 0,
-        cooldownMessage: "",
+        cooldown: 604800000,
+        cooldownMessage: "You just gave someone a shoutout! You can do it again in **{timeleft}**.",
         perms: ["SEND_MESSAGES"],
         usage: "{prefix}{cmd} <@user>",
         description: "Give @user a YouTube shoutout! (gets them some free subs)"

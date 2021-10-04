@@ -54,7 +54,7 @@ module.exports = new simpleCommand(
 
     }, {
         name: "resign",
-        aliases: ["resign"],
+        aliases: ["resign", "unapply", "quitjob", "retire"],
         cooldown: 43200000,
         cooldownMessage: "You just resigned your old job, you can resign again in `{timeleft}`",
         perms: ["SEND_MESSAGES"],

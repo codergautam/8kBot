@@ -27,7 +27,7 @@ module.exports = new simpleCommand(
                 .setTitle("Shoutout!")
              .setDescription(user2.name + " gained `"+api.numberWithCommas(subsToGive)+"` subscribers!")
             message.channel.send(embed)
-                 
+                 await addCD()
                 })
             }).catch(()=>{
                 message.channel.send("The person you tagged doesn't have an account!\nTell them to type something then try again!")

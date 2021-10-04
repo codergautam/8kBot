@@ -11,7 +11,9 @@ function getRandomInt(min, max) {
 module.exports = {
 
     name: 'ice cream',
-
+    async buy(message, userItem, user) {
+        message.channel.send("I'm sorry but this item is no longer available for sale")
+    },
     async use(message, userItem, user) {
         api.checkCool(message.author.id, "ice cream")
             .then((cooldown) => {
@@ -34,13 +36,15 @@ module.exports = {
                                 message.channel.send("Oops ! You got a melted icecream and gained only **300** Coins.\nYour new balance is **" + user.bal + "** coins")
                                 api.addCool(user.id, "ice cream", 10000)
                             }
+
                             user.inv["ice cream"].amount -= 1
+                            console.log(user.inv)
                             if (user.inv["ice cream"].amount == 0) {
                                 delete user.inv["ice cream"]
                             }
 
                             api.modUser(user.id, user)
-                                .then(() => {})
+                                .then((user) => { console.log(user) })
                                 .catch(() => {
                                     message.channel.send("Error")
                                 })
@@ -51,8 +55,5 @@ module.exports = {
                     var ofog = getRandomInt(1, 2)
                 }
             })
-    },
-    async sell(message) {
-        message.channel.send("You cant sell your Ice cream!!!")
     }
 }

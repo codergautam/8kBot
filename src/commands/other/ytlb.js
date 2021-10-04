@@ -5,10 +5,9 @@ const Discord = require("discord.js")
 function leaderboard(obj1, page) {
     obj = []
     obj1.forEach(user => {
-        obj[obj.length] = user.data
+        if (user.data.hasOwnProperty("youtube")) obj[obj.length] = user.data
     })
     const sorted = Object.values(obj).sort((a, b) => (!a.youtube ? 0 : a.youtube.subs) - (!b.youtube ? 0 : b.youtube.subs)).reverse().slice((page * 10) - 10, page * 10)
-
     var leaderboard = ""
     sorted.forEach((entry, i) => {
         dk = api.numberWithCommas((!entry.youtube.subs ? 0 : entry.youtube.subs))

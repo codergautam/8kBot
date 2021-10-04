@@ -18,8 +18,18 @@ module.exports = new simpleCommand(
                 if(user1.youtube.subs < user2.youtube.subs) return message.channel.send("You can't give a shoutout to someone who has more subs than you!")
                 
                 var subsToGive = (user1.youtube.subs < 10000 ? getRandomInt(user1.youtube.subs/100, user1.youtube.subs/10) : getRandomInt(user1.youtube.subs/1000, user1.youtube.subs/100))
+               
+                user2.youtube.subs += subsToGive
                 
-                
+                api.modUser(user2.id, user2).then(()=>{
+             const embed = new Discord.MessageEmbed()
+                .setColor('#0000FF')
+                .setTitle("Shoutout!")
+             .setDescription(user2.name + " gained `"+api.numberWithCommas(subsToGive)+"` subscribers!")
+            message.channel.send(embed)
+                })
+            }).catch(()=>{
+                message.channel.send("The person you tagged doesn't have an account!\nTell them to type something then try again!")
             })
         })
         

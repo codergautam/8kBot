@@ -1,9 +1,12 @@
 const api = require("../../core/api")
 const simpleCommand = require("../../core/simpleCommand")
 const Discord = require("discord.js")
-
+function getRandomInt(min, max) {
+    return min + Math.floor(Math.random() * (max - min + 1));
+}
 module.exports = new simpleCommand(
     async(message, args, client, addCD) => {
+        
         var user1 = message.author
         var user2 = message.mentions.users.first()
         if (args.length < 1) return message.channel.send("You didnt mention anyone to give a shoutout to!\nFor more info, type `8k!help shoutout`")
@@ -14,7 +17,9 @@ module.exports = new simpleCommand(
                 if(!(user2.hasOwnProperty("youtube") && user2.youtube.hasOwnProperty("subs"))) return message.channel.send(user2.name + " is not a youtuber!")
                 if(user1.youtube.subs < user2.youtube.subs) return message.channel.send("You can't give a shoutout to someone who has more subs than you!")
                 
-                var subsToGive = (user1.youtube.subs < 10000 ? 
+                var subsToGive = (user1.youtube.subs < 10000 ? getRandomInt(user1.youtube.subs/100, user1.youtube.subs/10) : getRandomInt(user1.youtube.subs/1000, user1.youtube.subs/100))
+                
+                
             })
         })
         

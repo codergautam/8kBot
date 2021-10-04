@@ -101,7 +101,10 @@ module.exports = {
                 var moneyEarned = subsGained + getRandomInt(user.youtube.subs * 5, user.youtube.subs * 30)
                 embed.setDescription(`Your ${video} video WENT VIRAL!!.\nYou gained \`${api.numberWithCommas(subsGained)}\` subs!\nYour video got AN AMAZING\`${api.numberWithCommas(moneyEarned)}\` views!\nNiceee video broooo`)
             }
+            
+            user.youtube.subs = Math.ceil(user.youtube.subs)
             var moneyMultiplier = (Math.floor(user.youtube.subs / 10000) == 0 ? 1 : Math.floor(user.youtube.subs / 10000))
+            if(user.youtube.subs > 9999) moneyMultiplier += 1
             user.bal += moneyEarned * moneyMultiplier
 
             embed.setFooter(`Your channel has ${api.numberWithCommas(user.youtube.subs)} subs!\n(1 view = ${moneyMultiplier} coin)`)

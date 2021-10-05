@@ -126,4 +126,4 @@ client.on("message", (message) => {
 })
 
 //Logging bot with token
-client.login(production ? process.env.TOKENMAIN : process.env.TOKENBETA2);
+//client.login(production ? process.env.TOKENMAIN : process.env.TOKENBETA2);

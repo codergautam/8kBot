@@ -261,7 +261,7 @@ function fight(message, user1, user2, user1d, user2d, user1f, user2f, turn, xf, 
                         const embed56 = new Discord.MessageEmbed()
                         .setTitle("Sniper Shot!")
                         .setDescription("**"+user1d.name+" Hits "+user2d.name+" With SNIPER**\n\n"+" __**DAMAGE DEALT:  **__`" +damage+"`\n __** "+user2d.name+"**__ now has `"+(user2f.health - damage < 0 ? "0" : user2f.health - damage)+"` health!\n")
-                        .setFooter("\"ha i sniped him\" - "+user1d.name)
+                        .setFooter("\"360 No Scope!!!!\" - "+user1d.name)
                         message.channel.send(embed56)
                     } else {
                         var damage = 0

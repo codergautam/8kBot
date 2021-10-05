@@ -3,7 +3,7 @@
 
 ### Made By CoderGautamYT
 
-* 99% uptime!
+* 98% uptime!
 * Bugs fixed quickly
 
 Add it here:

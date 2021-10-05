@@ -1,5 +1,6 @@
 {
     "apple": ["Apple", "A tasty red apple!🍎", 1000, { "custom": false, "price": 900 }, { "custombuy": false, "shop": true }, { "customgive": false }],
+    "watermelon": ["Watermelon", "A tasty watermelon!🍉", 10000, { "custom": false, "price": 9000 }, { "custombuy": false, "shop": true }, { "customgive": false }],
     "lottery": ["Lottery", "A lottery ticket, used for entering the lottery!🎟️", 150, { "custom": false, "price": 10 }, { "custombuy": false, "shop": true }, { "customgive": false }],
     "moneybag": ["Moneybag", "A moneybag that you can throw💰", 1750, { "custom": false, "price": 1500 }, { "custombuy": false, "shop": true }, { "customgive": false }],
     "laptop": ["Laptop", "A laptop which you can use for many things💻", 10000, { "custom": false, "price": 9000 }, { "custombuy": false, "shop": true }, { "customgive": false }],

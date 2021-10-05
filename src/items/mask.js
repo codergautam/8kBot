@@ -10,7 +10,7 @@ module.exports = {
       user.inv.mask.amount -= 1
       if(user.inv.mask.amount == 0) delete user.inv.mask
       api.modUser(message.author.id, user).then(()=>{
-        message.channel.send("You put your mask on...\nThis gives you a better chance at robbing people\n\n*lasts for one rob!*
+        message.channel.send("You put your mask on...\nThis gives you a better chance at robbing people\n\n*lasts for one rob!*")
       })
     }
 }

@@ -52,11 +52,12 @@ module.exports = new simpleCommand(
                                                         if(mainuser.mask)
                                                         {
                                                             mask = true
+                                                            mainuser.mask = false
                                                             multiplier = getRandomInt(1,3)
                                                             toSteal = toSteal * multiplier
                                                         }
-                                                        //CHANGE TO MODUSER THANKS!
-                                                        api.changeBal(message.author.id, toSteal)
+                                                        mainuser.bal += toSteal
+                                                        api.modUser(message.author.id, mainuser)
                                                             .then(() => {
                                                                 api.changeBal(user.id, -toSteal)
                                                                     .then(() => {
@@ -65,8 +66,7 @@ module.exports = new simpleCommand(
                                                                             .setTitle("Steal Results for " + mainuser.name)
                                                                             .setDescription("You stole `" + api.numberWithCommas(toSteal) + "` coins!");
                                                                             
-                                                                        if(mainuser.mask) {
-                                                                            mainuser.mask = false
+                                                                        if(mask) {
                                                                             embed.setFooter("Your coins multiplied by "+toSteal+" because of your Mask!")
                                                                         }
                                                                         message.channel.send(embed)

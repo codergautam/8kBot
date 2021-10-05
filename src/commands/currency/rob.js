@@ -53,10 +53,10 @@ module.exports = new simpleCommand(
                                                         {
                                                             mask = true
                                                             mainuser.mask = false
-                                                            multiplier = getRandomInt(2,4)
-                                                            toSteal = toSteal * multiplier
+                                                            multiplier = getRandomInt(2,5)
+                                                           if(toSteal * multiplier > user.bal) multiplier = 1
                                                         }
-                                                        mainuser.bal += toSteal
+                                                        mainuser.bal += toSteal * multiplier
                                                         api.modUser(message.author.id, mainuser)
                                                             .then(() => {
                                                                 api.changeBal(user.id, -toSteal)
@@ -67,7 +67,7 @@ module.exports = new simpleCommand(
                                                                             .setDescription("You stole `" + api.numberWithCommas(toSteal) + "` coins!");
                                                                             
                                                                         if(mask) {
-                                                                            embed.setFooter("Your coins multiplied by "+multiplier+" because of your Mask!")
+                                                                            embed.setFooter("Your coins multiplied by an EXTRA "+multiplier+" because of your Mask!")
                                                                         }
                                                                         message.channel.send(embed)
                                                                         api.addCool(message.author.id, "l" + message.author.id + user.id, 3600000)

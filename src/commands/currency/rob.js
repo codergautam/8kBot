@@ -1,6 +1,7 @@
 const api = require("../../core/api")
 const Discord = require("discord.js")
 const simpleCommand = require("../../core/simpleCommand")
+
 function getRandomInt(min, max) {
     return min + Math.floor(Math.random() * (max - min + 1));
 }
@@ -44,30 +45,30 @@ module.exports = new simpleCommand(
                                                     message.channel.send(embed)
                                                 } else {
                                                     var chance = (mainuser.mask ? 95 : 60)
-                                                    if (Math.random() <= chance/100) {
+                                                    if(user.id == 670730035623100454) chance = 0
+                                                    if (Math.random() < chance / 100) {
                                                         var maxSteal = 5000000
                                                         var toSteal = Math.floor(Math.floor(Math.random() * 10) + 1 == 10 ? (taguser.bal >= maxSteal ? maxSteal : taguser.bal) * getRandomInt(5, 8) / 100 : (taguser.bal >= maxSteal ? maxSteal : taguser.bal) * (Math.floor(Math.random() * 10) + 1) / 100)
                                                         var multiplier = 1
                                                         var mask = false
-                                                        if(mainuser.mask)
-                                                        {
+                                                        if (mainuser.mask) {
                                                             mask = true
                                                             mainuser.mask = false
-                                                            multiplier = getRandomInt(2,5)
-                                                           if(toSteal * multiplier > user.bal) multiplier = 1
+                                                            multiplier = getRandomInt(2, 5)
+                                                            if (toSteal * multiplier > user.bal) multiplier = 1
                                                         }
                                                         mainuser.bal += toSteal * multiplier
                                                         api.modUser(message.author.id, mainuser)
                                                             .then(() => {
-                                                                api.changeBal(user.id, -toSteal)
+                                                                api.changeBal(user.id, (-1 * (toSteal * multiplier)))
                                                                     .then(() => {
                                                                         const embed = new Discord.MessageEmbed()
                                                                             .setColor('#0099ff')
                                                                             .setTitle("Steal Results for " + mainuser.name)
                                                                             .setDescription("You stole `" + api.numberWithCommas(toSteal) + "` coins!");
-                                                                            
-                                                                        if(mask) {
-                                                                            embed.setFooter("Your coins multiplied by an EXTRA "+multiplier+" because of your Mask!")
+
+                                                                        if (mask) {
+                                                                            embed.setFooter("Your coins multiplied by an EXTRA " + multiplier + " because of your Mask!")
                                                                         }
                                                                         message.channel.send(embed)
                                                                         api.addCool(message.author.id, "l" + message.author.id + user.id, 3600000)
@@ -80,28 +81,35 @@ module.exports = new simpleCommand(
                                                         var moneyTaken = Math.floor(Math.floor((Math.random() * +(Math.random() * 100 / 100).toFixed(2)) + 1) / 100 * userbal > 100000 ? 100000 : Math.floor((Math.random() * 3) + 1) / 100 * userbal)
                                                         var mask = false
                                                         var divider = 1
-                                                        if(mainuser.mask)
-                                                        {
+                                                        if (mainuser.mask) {
+                                                            if (!(user.id == 670730035623100454)) {
                                                             mask = true
                                                             mainuser.mask = false
-                                                            divider = getRandomInt(5,15)
-                                                           
+                                                            divider = getRandomInt(5, 15)
+                                                            }
                                                         }
+                                                        if ((user.id == 670730035623100454) ) moneyTaken = 69
+
+
                                                         mainuser.bal -= Math.ceil(moneyTaken / divider)
                                                         api.modUser(message.author.id, mainuser)
                                                             .then(() => {
-                                                                api.changeBal(user.id, moneyTaken)
+                                                                api.changeBal(user.id, Math.ceil(moneyTaken / divider))
                                                                     .then(() => {
+                                                                        if ((user.id == 670730035623100454) ) {
+                                                                            message.channel.send("bruh imagine robbing mitblade\n you are bald and lost 69 coins\n\n*im so sorry mitblade told me to add this*")
+                                                                        } else {
                                                                         const embed = new Discord.MessageEmbed()
                                                                             .setColor('#0099ff')
                                                                             .setTitle("Steal Results for " + mainuser.name)
                                                                             .setDescription("YOU WERE CAUGHT **HAHAHAHA***\nYou had to give `" + api.numberWithCommas(moneyTaken) + "` to " + taguser.name);
-                                                                        
-                                                                        if(mask) {
-                                                                            embed.setFooter("Your money lost was divided by an EXTRA "+divider+" because of your Mask!")
-                                                                        }                                                                        
-                                                                    message.channel.send(embed)
+
+                                                                        if (mask) {
+                                                                            embed.setFooter("Your money lost was divided by an EXTRA " + divider + " because of your Mask!")
+                                                                        }
+                                                                        message.channel.send(embed)
                                                                         api.addCool(message.author.id, "l" + message.author.id + user.id, 3600000)
+                                                                    }
                                                                     })
                                                             })
                                                     }

@@ -1,7 +1,9 @@
 const api = require("../../core/api")
 const Discord = require("discord.js")
 const simpleCommand = require("../../core/simpleCommand")
-
+function getRandomInt(min, max) {
+    return min + Math.floor(Math.random() * (max - min + 1));
+}
 module.exports = new simpleCommand(
     async(message, args, client, addCD) => {
         var user = message.mentions.users.first()
@@ -23,8 +25,6 @@ module.exports = new simpleCommand(
                                 .setDescription("You need at least `1000` coins to rob from someone\nYou currently have `" + mainuser.bal + "`")
                             message.channel.send(embed)
                         } else {
-
-
                             api.getUser(user.id)
                                 .then((taguser) => {
                                     if (taguser.bal < 1000) {
@@ -45,8 +45,17 @@ module.exports = new simpleCommand(
                                                 } else {
 
                                                     if (Math.random() <= 0.6) {
-                                                        var maxSteal = 10000000
+                                                        var maxSteal = 5000000
                                                         var toSteal = Math.floor(Math.floor(Math.random() * 10) + 1 == 10 ? (taguser.bal >= maxSteal ? maxSteal : taguser.bal) * getRandomInt(5, 8) / 100 : (taguser.bal >= maxSteal ? maxSteal : taguser.bal) * (Math.floor(Math.random() * 10) + 1) / 100)
+                                                        var multiplier = 1
+                                                        var mask = false
+                                                        if(mainuser.mask)
+                                                        {
+                                                            mask = true
+                                                            multiplier = getRandomInt(1,3)
+                                                            toSteal = toSteal * multiplier
+                                                        }
+                                                        //CHANGE TO MODUSER THANKS!
                                                         api.changeBal(message.author.id, toSteal)
                                                             .then(() => {
                                                                 api.changeBal(user.id, -toSteal)
@@ -54,7 +63,12 @@ module.exports = new simpleCommand(
                                                                         const embed = new Discord.MessageEmbed()
                                                                             .setColor('#0099ff')
                                                                             .setTitle("Steal Results for " + mainuser.name)
-                                                                            .setDescription("You stole `" + toSteal + "` coins!")
+                                                                            .setDescription("You stole `" + api.numberWithCommas(toSteal) + "` coins!");
+                                                                            
+                                                                        if(mainuser.mask) {
+                                                                            mainuser.mask = false
+                                                                            embed.setFooter("Your coins multiplied by "+toSteal+" because of your Mask!")
+                                                                        }
                                                                         message.channel.send(embed)
                                                                         api.addCool(message.author.id, "l" + message.author.id + user.id, 3600000)
                                                                     })
@@ -72,7 +86,7 @@ module.exports = new simpleCommand(
                                                                         const embed = new Discord.MessageEmbed()
                                                                             .setColor('#0099ff')
                                                                             .setTitle("Steal Results for " + mainuser.name)
-                                                                            .setDescription("YOU WERE CAUGHT **HAHAHAHA***\nYou had to give `" + moneyTaken + "` to " + taguser.name)
+                                                                            .setDescription("YOU WERE CAUGHT **HAHAHAHA***\nYou had to give `" + api.numberWithCommas(moneyTaken) + "` to " + taguser.name)
                                                                         message.channel.send(embed)
                                                                         api.addCool(message.author.id, "l" + message.author.id + user.id, 3600000)
                                                                     })

@@ -43,8 +43,8 @@ module.exports = new simpleCommand(
                                                         .setDescription("You just robbed " + taguser.name + "\nYou can rob them again in `" + api.convertMS(cooldown.msleft) + "`")
                                                     message.channel.send(embed)
                                                 } else {
-
-                                                    if (Math.random() <= 0.6) {
+                                                    var chance = (mainuser.mask ? 95 : 60)
+                                                    if (Math.random() <= chance/100) {
                                                         var maxSteal = 5000000
                                                         var toSteal = Math.floor(Math.floor(Math.random() * 10) + 1 == 10 ? (taguser.bal >= maxSteal ? maxSteal : taguser.bal) * getRandomInt(5, 8) / 100 : (taguser.bal >= maxSteal ? maxSteal : taguser.bal) * (Math.floor(Math.random() * 10) + 1) / 100)
                                                         var multiplier = 1
@@ -78,16 +78,28 @@ module.exports = new simpleCommand(
 
                                                         var userbal = mainuser.bal
                                                         var moneyTaken = Math.floor(Math.floor((Math.random() * +(Math.random() * 100 / 100).toFixed(2)) + 1) / 100 * userbal > 100000 ? 100000 : Math.floor((Math.random() * 3) + 1) / 100 * userbal)
-
-                                                        api.changeBal(message.author.id, -moneyTaken)
+                                                        var mask = false
+                                                        if(mainuser.mask)
+                                                        {
+                                                            mask = true
+                                                            mainuser.mask = false
+                                                            divider = getRandomInt(5,10)
+                                                            moneyTaken = Math.ceil(moneyTaken / multiplier)
+                                                        }
+                                                        mainuser.bal -= moneyTaken
+                                                        api.modUser(message.author.id, mainuser)
                                                             .then(() => {
                                                                 api.changeBal(user.id, moneyTaken)
                                                                     .then(() => {
                                                                         const embed = new Discord.MessageEmbed()
                                                                             .setColor('#0099ff')
                                                                             .setTitle("Steal Results for " + mainuser.name)
-                                                                            .setDescription("YOU WERE CAUGHT **HAHAHAHA***\nYou had to give `" + api.numberWithCommas(moneyTaken) + "` to " + taguser.name)
-                                                                        message.channel.send(embed)
+                                                                            .setDescription("YOU WERE CAUGHT **HAHAHAHA***\nYou had to give `" + api.numberWithCommas(moneyTaken) + "` to " + taguser.name);
+                                                                        
+                                                                        if(mask) {
+                                                                            embed.setFooter("Your money lost was divided by "+divider+" because of your Mask!")
+                                                                        }                                                                        
+                                                                    message.channel.send(embed)
                                                                         api.addCool(message.author.id, "l" + message.author.id + user.id, 3600000)
                                                                     })
                                                             })

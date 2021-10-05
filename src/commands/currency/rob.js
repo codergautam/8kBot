@@ -79,14 +79,15 @@ module.exports = new simpleCommand(
                                                         var userbal = mainuser.bal
                                                         var moneyTaken = Math.floor(Math.floor((Math.random() * +(Math.random() * 100 / 100).toFixed(2)) + 1) / 100 * userbal > 100000 ? 100000 : Math.floor((Math.random() * 3) + 1) / 100 * userbal)
                                                         var mask = false
+                                                        var divider = 1
                                                         if(mainuser.mask)
                                                         {
                                                             mask = true
                                                             mainuser.mask = false
-                                                            divider = getRandomInt(5,10)
-                                                            moneyTaken = Math.ceil(moneyTaken / multiplier)
+                                                            divider = getRandomInt(5,15)
+                                                           
                                                         }
-                                                        mainuser.bal -= moneyTaken
+                                                        mainuser.bal -= Math.ceil(moneyTaken / divider)
                                                         api.modUser(message.author.id, mainuser)
                                                             .then(() => {
                                                                 api.changeBal(user.id, moneyTaken)
@@ -97,7 +98,7 @@ module.exports = new simpleCommand(
                                                                             .setDescription("YOU WERE CAUGHT **HAHAHAHA***\nYou had to give `" + api.numberWithCommas(moneyTaken) + "` to " + taguser.name);
                                                                         
                                                                         if(mask) {
-                                                                            embed.setFooter("Your money lost was divided by "+divider+" because of your Mask!")
+                                                                            embed.setFooter("Your money lost was divided by an EXTRA "+divider+" because of your Mask!")
                                                                         }                                                                        
                                                                     message.channel.send(embed)
                                                                         api.addCool(message.author.id, "l" + message.author.id + user.id, 3600000)

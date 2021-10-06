@@ -58,43 +58,34 @@ module.exports = {
                 var moneyEarned = getRandomInt(0, user.gamerxp)
                 embed.setDescription(`You played pretty bad\nYou got 0 xp\nYou earned ${moneyEarned} coins`)
 
-            } else if (num == 3 || num == 4 || num == 5 || num == 8) {
+            } else if (num == 3 || num == 4 || num == 5) {
                 var xpGained = getRandomInt(5,100)
                 user.gamerxp += xpGained
                 var moneyEarned = xpGained + getRandomInt(user.gamerxp / 3, user.gamerxp)
                 embed.setDescription(`You played averagely. \nYou gained \`${xpGained}\` xp!\nYou got \`${api.numberWithCommas(moneyEarned)}\` coins!`)
             } else if (num == 6 || num == 7) {
                 var xpGained = getRandomInt(100,1000)
-                user.youtube.subs += subsGained
-                var moneyEarned = subsGained + getRandomInt(user.youtube.subs, user.youtube.subs * 2)
-                embed.setDescription(`Your ${video} video got pretty good views.\nYou gained \`${subsGained}\` subs!\nYour video got \`${api.numberWithCommas(moneyEarned)}\` views!`)
-            } else if (num == 9) {
-                    if (getRandomInt(1, 2) == 2) {
-                        var subsLost = getRandomInt(user.youtube.subs * 0.05, user.youtube.subs * 0.35)
-                        user.youtube.subs -= subsLost
-                        var moneyEarned = 0
-                        embed.setDescription(`Your ${video} video WAS TERRIBLE\nYou LOST \`${api.numberWithCommas(subsLost)}\` subs bruh!`)
-                    } else {
-                        var subsLost = getRandomInt(user.youtube.subs * 0.01, user.youtube.subs * 0.15)
-                        user.youtube.subs -= subsLost
-                        var moneyEarned = 0
-                        embed.setDescription(`Your ${video} video didn't do well\nYou LOST \`${api.numberWithCommas(subsLost)}\` subs bruh!`)
-                    
-                }
-
+                user.gamerxp += xpGained
+                var moneyEarned = xpGained + getRandomInt(user.gamerxp/2, user.gamerxp * 1.1)
+                embed.setDescription(`Your played pretty well!\nYou gained \`${api.numberWithCommas(xpGained)}\` xp!\nYou got \`${api.numberWithCommas(moneyEarned)}\` coins!`)
+            } else if (num == 8 || num == 9) {
+            
+                var xpLost = getRandomInt(user.gamerxp/3,user.gamerxp/1.5)
+                user.gamerxp -= xpLost
+                var moneyEarned = 0
+                embed.setDescription(`Your gaming skills WAS TRASH!\nYou LOST \`${api.numberWithCommas(xpLost)}\` xp!\nYou got \`${api.numberWithCommas(moneyEarned)}\` coins!\nTerribleeeee plays lol`)
+            
             } else {
-                var subsGained = (user.youtube.subs > 10000 ? getRandomInt(user.youtube.subs / 100, user.youtube.subs / 10) : getRandomInt(10, 1000))
-                user.youtube.subs += subsGained
-                var moneyEarned = subsGained + getRandomInt(user.youtube.subs * 5, user.youtube.subs * 30)
-                embed.setDescription(`Your ${video} video WENT VIRAL!!.\nYou gained \`${api.numberWithCommas(subsGained)}\` subs!\nYour video got AN AMAZING\`${api.numberWithCommas(moneyEarned)}\` views!\nNiceee video broooo`)
+                var xpGained = getRandomInt(1000,10000)
+                user.gamerxp += xpGained
+                var moneyEarned = xpGained + getRandomInt(user.gamerxp * 5, user.gamerxp * 15)
+                embed.setDescription(`You played LIKE A GOD!!.\nYou gained \`${api.numberWithCommas(xpGained)}\` xp!\nYou got 0 coins!\nInsaneee plays lol`)
             }
             
-            user.youtube.subs = Math.ceil(user.youtube.subs)
-            var moneyMultiplier = (Math.floor(user.youtube.subs / 10000) == 0 ? 1 : Math.floor(user.youtube.subs / 10000))
-            if(user.youtube.subs > 9999) moneyMultiplier += 1
-            user.bal += moneyEarned * moneyMultiplier
+            user.gamerxp = Math.ceil(user.gamerxp)
+            user.bal += moneyEarned 
 
-            embed.setFooter(`Your channel has ${api.numberWithCommas(user.youtube.subs)} subs!\n(1 view = ${moneyMultiplier} coin)`)
+            embed.setFooter(`You have ${api.numberWithCommas(user.gamerxp)} xp!`)
             message.channel.send(embed)
 
             callback(user)

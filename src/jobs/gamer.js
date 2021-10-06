@@ -69,18 +69,6 @@ module.exports = {
                 var moneyEarned = subsGained + getRandomInt(user.youtube.subs, user.youtube.subs * 2)
                 embed.setDescription(`Your ${video} video got pretty good views.\nYou gained \`${subsGained}\` subs!\nYour video got \`${api.numberWithCommas(moneyEarned)}\` views!`)
             } else if (num == 9) {
-                if (getRandomInt(1, 8) == 3) {
-                    var subChange = getRandomInt(user.youtube.subs / 4, user.youtube.subs)
-                    if (getRandomInt(1, 2) == 2) {
-                        user.youtube.subs -= subChange
-                        var moneyEarned = 0
-                        embed.setDescription(`Your ${video} video caused a controvercy\nYou LOST \`${api.numberWithCommas(subChange)}\` subs!`)
-                    } else {
-                        user.youtube.subs += subChange
-                        var moneyEarned = 0
-                        embed.setDescription(`Your ${video} video caused a controvercy\nYou GAINED \`${api.numberWithCommas(subChange)}\` subs!`)
-                    }
-                } else {
                     if (getRandomInt(1, 2) == 2) {
                         var subsLost = getRandomInt(user.youtube.subs * 0.05, user.youtube.subs * 0.35)
                         user.youtube.subs -= subsLost
@@ -91,7 +79,7 @@ module.exports = {
                         user.youtube.subs -= subsLost
                         var moneyEarned = 0
                         embed.setDescription(`Your ${video} video didn't do well\nYou LOST \`${api.numberWithCommas(subsLost)}\` subs bruh!`)
-                    }
+                    
                 }
 
             } else {

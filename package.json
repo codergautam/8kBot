@@ -1,11 +1,11 @@
 {
     "name": "8kbot",
-    "version": "2.0.2b",
+    "version": "2.0.2c",
     "production": true,
     "maintanence": false,
     "self": false,
     "owners": [
-        "765349669995413525"
+        "875067761557127178"
     ],
     "description": "currency bot",
     "main": "index.js",

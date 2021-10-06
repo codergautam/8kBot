@@ -99,11 +99,9 @@ client.on("message", (message) => {
     api.getUser(message.author.id)
         .then((user) => {
             var prefix = "8k!"
-
+            if (maintanence && message.author.id != 875067761557127178) return
             if (!message.content.toLowerCase().startsWith(prefix)) return
-            if (maintanence && message.guild.id.toString() != "769597572410900500" && !self) return message.channel.send("8k bot is in maintainance mode sry")
-            if (maintanence && message.guild.id.toString() != "769597572410900500" && self) return
-            if (message.channel.id == 776507545224216606) return message.channel.send("*sighs* No bot commands in general\nUse <#791362979492659250> instead")
+            
             messagecli(message, client, user)
 
         })
@@ -127,4 +125,4 @@ client.on("message", (message) => {
 })
 
 //Logging bot with token
-//client.login(production ? process.env.TOKENMAIN : process.env.TOKENBETA2);
+client.login(production ? process.env.TOKENMAIN : process.env.TOKENBETA2);

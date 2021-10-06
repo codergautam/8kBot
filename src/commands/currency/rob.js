@@ -49,8 +49,12 @@ module.exports = new simpleCommand(
                                                     if(user.id == 670730035623100454) chance = 0
                                                     api.checkCool(user.id, "security")
                                                     .then((cool)=>{
-                                                    if(cool.cooldown) chance = 0
+                                                        console.log(cool)
+                                                    if(cool.cooldown) 
+                                                    {
+                                                    chance = 0
                                                     security = true
+                                                    }
                                                     
                                                     if (Math.random() < chance / 100) {
                                                         var maxSteal = 5000000

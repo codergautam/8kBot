@@ -20,8 +20,10 @@ const { getRandomInt } = require("./api");
 const moneyGrab = require("../extras/moneygrab")
 const commandHandler = require("./commandhandler")
 module.exports = (message, client, user) => {
-
-    commandHandler(message, client)
+    if (message.channel.id == 776507545224216606) { message.channel.send("*sighs* No bot commands in general\nUse <#791362979492659250> instead") } 
+    else {
+    commandHandler(message, client) 
+    }
         //make sure name is current name
     if (user.name != message.author.username.replace("*", "\\*").replace("_", "\\_").replace("`", "\\`")) {
         var oldname = user.name

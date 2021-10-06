@@ -7,5 +7,6 @@
     "ice cream": ["Ice cream", "Some tasty ice cream🍨", 900, { "custom": false, "price": 500 }, { "custombuy": true, "shop": false }, { "customgive": false }],
     "connect 4 trophy": ["Connect 4 Trophy", "🏆A RARE TROPHY🏆", 69, { "custom": true }, { "custombuy": true, "shop": false }, { "customgive": true }],
     "headset": ["Headset", "A high-quality headset with speakers and built-in mic!🎧", 5000, { "custom": false, "price": 3500 }, { "custombuy": false, "shop": true }, { "customgive": false }],
-    "mask": ["Mask", "Covers your face! Great for robbers. 🎭", 15000, { "custom": false, "price": 10000 }, { "custombuy": false, "shop": true }, { "customgive": false }]
+    "mask": ["Mask", "Covers your face! Great for robbers. 🎭", 15000, { "custom": false, "price": 10000 }, { "custombuy": false, "shop": true }, { "customgive": false }],
+    "security camera": ["Security Camera", "You can't get robbed! 📷", 30000, { "custom": false, "price": 29000 }, { "custombuy": false, "shop": true }, { "customgive": false }]
 }   

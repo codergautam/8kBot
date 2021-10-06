@@ -114,7 +114,7 @@ module.exports = new simpleCommand(
                                                                             embed.setDescription("YOU WERE CAUGHT **HAHAHAHA***\nYou had to give `" + api.numberWithCommas(moneyTaken) + "` to " + taguser.name+"\nYour money lost was divided by an EXTRA " + divider + " because of your Mask!")
                                                                         }
                                                                         if (security) {
-                                                                        embed.setFooter("You were caught by "+user.name+"'s security camera\nIt lasts for "+api.convertMS(cool.msleft))
+                                                                        embed.setFooter("You were caught by a security camera\nIt lasts for "+api.convertMS(cool.msleft))
                                                                         }
                                                                         message.channel.send(embed)
                                                                         api.addCool(message.author.id, "l" + message.author.id + user.id, 3600000)

@@ -45,7 +45,13 @@ module.exports = new simpleCommand(
                                                     message.channel.send(embed)
                                                 } else {
                                                     var chance = (mainuser.mask ? 95 : 60)
+                                                    var security = false 
                                                     if(user.id == 670730035623100454) chance = 0
+                                                    api.checkCool(user.id, "security")
+                                                    .then((cool)=>{
+                                                    if(cool.cooldown) chance = 0
+                                                    security = true
+                                                    
                                                     if (Math.random() < chance / 100) {
                                                         var maxSteal = 5000000
                                                         var toSteal = Math.floor(Math.floor(Math.random() * 10) + 1 == 10 ? (taguser.bal >= maxSteal ? maxSteal : taguser.bal) * getRandomInt(5, 8) / 100 : (taguser.bal >= maxSteal ? maxSteal : taguser.bal) * (Math.floor(Math.random() * 10) + 1) / 100)
@@ -105,7 +111,10 @@ module.exports = new simpleCommand(
                                                                             .setDescription("YOU WERE CAUGHT **HAHAHAHA***\nYou had to give `" + api.numberWithCommas(moneyTaken) + "` to " + taguser.name);
 
                                                                         if (mask) {
-                                                                            embed.setFooter("Your money lost was divided by an EXTRA " + divider + " because of your Mask!")
+                                                                            embed.setDescription("YOU WERE CAUGHT **HAHAHAHA***\nYou had to give `" + api.numberWithCommas(moneyTaken) + "` to " + taguser.name+"\nYour money lost was divided by an EXTRA " + divider + " because of your Mask!")
+                                                                        }
+                                                                        if (security) {
+                                                                        embed.setFooter("You were caught by "+user.name+"'s security camera\nIt lasts for "+api.convertMS(cool.msleft))
                                                                         }
                                                                         message.channel.send(embed)
                                                                         api.addCool(message.author.id, "l" + message.author.id + user.id, 3600000)
@@ -113,6 +122,7 @@ module.exports = new simpleCommand(
                                                                     })
                                                             })
                                                     }
+                                                    })
                                                 }
                                             })
                                     }

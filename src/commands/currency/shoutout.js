@@ -26,7 +26,10 @@ module.exports = new simpleCommand(
                     const embed = new Discord.MessageEmbed()
                         .setColor('#0000FF')
                         .setTitle("Shoutout!")
-                        .setDescription(user2.name + " gained `" + api.numberWithCommas(subsToGive) + "` subscribers!")
+                        .setDescription(user2.name + " gained `" + api.numberWithCommas(subsToGive) + "` subscribers!");
+                    if(user1.id == user2.id) {
+                        embed.setDescription("how can you shoutout yourself lmao\neaster egg?")
+                    }
                     message.channel.send(embed)
                     await addCD()
                 })

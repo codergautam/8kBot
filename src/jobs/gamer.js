@@ -46,26 +46,25 @@ module.exports = {
 
         }
         if (!user.inv.hasOwnProperty("laptop") || !user.inv.hasOwnProperty("headset")) {
-            message.channel.send("You need a laptop AND a headset to work as a YouTuber!\nYou can buy them buy typing `8k!buy laptop` and `8k!buy headset`")
+            message.channel.send("You need a laptop AND a headset to work as a Gamer!\nYou can buy them buy typing `8k!buy laptop` and `8k!buy headset`")
         } else {
-            const categories = ["Among Us", "cat", "Minecraft", "makeup", "coding", "counting to 10", "nursery rhyme", "advertising coder gautam", "tech review", "boring", "hacking", "8k bot fan", "io game", "reaction", "tutorial", "top 10", "comedy", "challenge", "reaction", "q&a", "asmr", "sports", "storytelling", "scary", "technology", "explaining", "giving away money"]
+            
             const embed = new Discord.MessageEmbed();
-            embed.setTitle("Youtuber Results")
+            embed.setTitle("Gamer Results")
             var num = getRandomInt(1, 10);
-            if (!user.hasOwnProperty("youtube")) user.youtube = { subs: 0 }
-            var video = api.randomFromArray(categories)
+            if (!user.hasOwnProperty("gamerxp")) user.gamerxp = 0
             if (num == 1 || num == 2) {
 
-                var moneyEarned = getRandomInt(0, user.youtube.subs)
-                embed.setDescription(`Your ${video} video didnt attract any new viewers.\nYou got \`${api.numberWithCommas(moneyEarned)}\` views`)
+                var moneyEarned = getRandomInt(0, user.gamerxp)
+                embed.setDescription(`You played pretty bad\nYou got 0 xp\nYou earned ${moneyEarned} coins`)
 
             } else if (num == 3 || num == 4 || num == 5 || num == 8) {
-                var subsGained = (user.youtube.subs > 1000 ? getRandomInt(user.youtube.subs / 150, user.youtube.subs / 20) : getRandomInt(1, 10))
-                user.youtube.subs += subsGained
-                var moneyEarned = subsGained + getRandomInt(user.youtube.subs / 2, user.youtube.subs * 1.1)
-                embed.setDescription(`Your ${video} video got average views.\nYou gained \`${subsGained}\` subs!\nYour video got \`${api.numberWithCommas(moneyEarned)}\` views!`)
+                var xpGained = getRandomInt(5,100)
+                user.gamerxp += xpGained
+                var moneyEarned = xpGained + getRandomInt(user.gamerxp / 3, user.gamerxp)
+                embed.setDescription(`You played averagely. \nYou gained \`${xpGained}\` xp!\nYou got \`${api.numberWithCommas(moneyEarned)}\` coins!`)
             } else if (num == 6 || num == 7) {
-                var subsGained = (user.youtube.subs > 1000 ? getRandomInt(user.youtube.subs / 75, user.youtube.subs / 7) : getRandomInt(50, 150))
+                var xpGained = getRandomInt(100,1000)
                 user.youtube.subs += subsGained
                 var moneyEarned = subsGained + getRandomInt(user.youtube.subs, user.youtube.subs * 2)
                 embed.setDescription(`Your ${video} video got pretty good views.\nYou gained \`${subsGained}\` subs!\nYour video got \`${api.numberWithCommas(moneyEarned)}\` views!`)

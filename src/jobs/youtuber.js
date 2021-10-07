@@ -55,7 +55,7 @@ module.exports = {
  
             if (!user.hasOwnProperty("youtube")) user.youtube = { subs: 0 }
             if(user.youtube.subs > 1000000) {
-                var myArray = [3, 9,9,9 1,2,6 ];   
+                var myArray = [3, 9,9,9 ,1,2,6 ];   
             }
             var video = api.randomFromArray(categories)
             if (num == 1 || num == 2) {

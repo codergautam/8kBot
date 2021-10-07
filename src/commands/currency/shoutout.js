@@ -17,7 +17,9 @@ module.exports = new simpleCommand(
                 if (!(user1.hasOwnProperty("youtube") && user1.youtube.hasOwnProperty("subs"))) return message.channel.send("You don't have a youtube channel! \n You can be one by typing `8k!apply youtuber`")
                 if (!(user2.hasOwnProperty("youtube") && user2.youtube.hasOwnProperty("subs"))) return message.channel.send(user2.name + " is not a youtuber!")
                 if (user1.youtube.subs < user2.youtube.subs) return message.channel.send("You can't give a shoutout to someone who has more subs than you!")
-
+                    if(user1.id == user2.id) {
+                        return message.channel.send("nope!")
+                    }
                 var subsToGive = Math.floor(user1.youtube.subs < 10000 ? getRandomInt(user1.youtube.subs / 100, user1.youtube.subs / 10) : getRandomInt(user1.youtube.subs / 1000, user1.youtube.subs / 10))
 
                 user2.youtube.subs += Math.floor(subsToGive)
@@ -27,9 +29,7 @@ module.exports = new simpleCommand(
                         .setColor('#0000FF')
                         .setTitle("Shoutout!")
                         .setDescription(user2.name + " gained `" + api.numberWithCommas(subsToGive) + "` subscribers!");
-                    if(user1.id == user2.id) {
-                        embed.setDescription("how can you shoutout yourself lmao\neaster egg?")
-                    }
+
                     message.channel.send(embed)
                     await addCD()
                 })

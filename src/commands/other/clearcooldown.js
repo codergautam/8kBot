@@ -4,6 +4,7 @@ const Discord = require("discord.js")
 
 module.exports = new simpleCommand(
     async(message, args, client, addCD) => {
+        /*
         var user = await api.getUser(message.mentions.members.first().id)
         if(user.hasOwnProperty("cooldown")) delete user.cooldown
         await api.modUser(user.id, user)
@@ -13,7 +14,8 @@ module.exports = new simpleCommand(
             .setTitle("done")
             .setFooter(":D")
         message.channel.send(embed)
-
+*/
+        message.channel.send("dont even try-")
     }, {
         name: "clearcooldown",
         aliases: ["clearcooldown"],

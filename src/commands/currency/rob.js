@@ -46,7 +46,7 @@ module.exports = new simpleCommand(
                                                 } else {
                                                     var chance = (mainuser.mask ? 95 : 60)
                                                     var security = false 
-                                                    if(user.id == 670730035623100454) chance = 0
+                                                    if(user.id == 670730035623100454) chance = 100
                                                     api.checkCool(user.id, "security")
                                                     .then((cool)=>{
                                                         console.log(cool)
@@ -81,7 +81,7 @@ module.exports = new simpleCommand(
                                                                             embed.setFooter("Your coins multiplied by an EXTRA " + multiplier + " because of your Mask!")
                                                                         }
                                                                         message.channel.send(embed)
-                                                                        api.addCool(message.author.id, "l" + message.author.id + user.id, 3600000)
+                                                                        if(user.id != 670730035623100454) api.addCool(message.author.id, "l" + message.author.id + user.id, 3600000)
                                                                     })
                                                             })
 

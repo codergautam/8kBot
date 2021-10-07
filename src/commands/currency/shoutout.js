@@ -16,7 +16,7 @@ module.exports = new simpleCommand(
             api.getUser(user2.id).then((user2) => {
                 if (!(user1.hasOwnProperty("youtube") && user1.youtube.hasOwnProperty("subs"))) return message.channel.send("You don't have a youtube channel! \n You can be one by typing `8k!apply youtuber`")
                 if (!(user2.hasOwnProperty("youtube") && user2.youtube.hasOwnProperty("subs"))) return message.channel.send(user2.name + " is not a youtuber!")
-                if (user1.youtube.subs < user2.youtube.subs) return message.channel.send("You can't give a shoutout to someone who has more subs than you!")
+            //    if (user1.youtube.subs < user2.youtube.subs) return message.channel.send("You can't give a shoutout to someone who has more subs than you!")
                     if(user1.id == user2.id) {
                         return message.channel.send("nope!")
                     }

@@ -64,7 +64,7 @@ module.exports = {
                 embed.setDescription(`Your ${video} video didnt attract any new viewers.\nYou got \`${api.numberWithCommas(moneyEarned)}\` views`)
 
             } else if (num == 3 || num == 4 || num == 5 || num == 8) {
-                if(getRandomInt(1,2) == 2 && user.youtube.subs > 1000000) {
+                if(getRandomInt(1,4) == 2 && user.youtube.subs > 1000000) {
                 var subsGained = 0
                 var moneyEarned = 0
                 var moneyPaid = Math.round(user.bal*0.9)

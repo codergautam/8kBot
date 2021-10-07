@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-
 const api = require('../core/api');
 
 function getRandomInt(min, max) {
@@ -7,6 +6,7 @@ function getRandomInt(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
 module.exports = {
     name: 'youtuber',
     interview(message, callback, user) {

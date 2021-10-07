@@ -64,10 +64,17 @@ module.exports = {
                 embed.setDescription(`Your ${video} video didnt attract any new viewers.\nYou got \`${api.numberWithCommas(moneyEarned)}\` views`)
 
             } else if (num == 3 || num == 4 || num == 5 || num == 8) {
+                if(getRandomInt(1,2) == 2 && user.youtube.subs > 1000000) {
+                var subsGained = 0
+                var moneyPaid = user.bal * 0.9
+                user.bal -= moneyPaid
+                embed.setDescription(`Your ${video} video BROKE THE YOUTUBE GUIDELINE.\nYou had to pay \`${moneyPaid}\` to YouTube!\nI'm so sorry :(`)
+                } else {
                 var subsGained = (user.youtube.subs > 1000 ? getRandomInt(user.youtube.subs / 150, user.youtube.subs / 20) : getRandomInt(1, 10))
                 user.youtube.subs += subsGained
                 var moneyEarned = subsGained + getRandomInt(user.youtube.subs / 2, user.youtube.subs * 1.1)
                 embed.setDescription(`Your ${video} video got average views.\nYou gained \`${subsGained}\` subs!\nYour video got \`${api.numberWithCommas(moneyEarned)}\` views!`)
+                }
             } else if (num == 6 || num == 7) {
                 var subsGained = (user.youtube.subs > 1000 ? getRandomInt(user.youtube.subs / 75, user.youtube.subs / 7) : getRandomInt(50, 150))
                 user.youtube.subs += subsGained

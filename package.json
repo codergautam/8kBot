@@ -5,7 +5,7 @@
     "maintanence": false,
     "self": false,
     "owners": [
-        "875067761557127178"
+        875067761557127178
     ],
     "description": "currency bot",
     "main": "index.js",

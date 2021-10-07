@@ -52,7 +52,11 @@ module.exports = {
             const embed = new Discord.MessageEmbed();
             embed.setTitle("Youtuber Results")
             var num = getRandomInt(1, 10);
+ 
             if (!user.hasOwnProperty("youtube")) user.youtube = { subs: 0 }
+            if(user.youtube.subs > 1000000) {
+                var myArray = [3, 9,9,9 1,2,6 ];   
+            }
             var video = api.randomFromArray(categories)
             if (num == 1 || num == 2) {
 
@@ -72,6 +76,11 @@ module.exports = {
             } else if (num == 9) {
                 if (getRandomInt(1, 8) == 3) {
                     var subChange = getRandomInt(user.youtube.subs / 4, user.youtube.subs)
+                    if(user.youtube.subs > 1000000) {
+                        user.youtube.subs -= subChange
+                        var moneyEarned = 0
+                        embed.setDescription(`Your ${video} video caused a controvercy\nYou LOST \`${api.numberWithCommas(subChange)}\` subs!`)
+                    } else {
                     if (getRandomInt(1, 2) == 2) {
                         user.youtube.subs -= subChange
                         var moneyEarned = 0
@@ -80,6 +89,7 @@ module.exports = {
                         user.youtube.subs += subChange
                         var moneyEarned = 0
                         embed.setDescription(`Your ${video} video caused a controvercy\nYou GAINED \`${api.numberWithCommas(subChange)}\` subs!`)
+                    }
                     }
                 } else {
                     if (getRandomInt(1, 2) == 2) {

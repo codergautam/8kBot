@@ -28,6 +28,7 @@ module.exports = new simpleCommand(
                     user.job = { exists: false }
                     if (user.hasOwnProperty("youtube")) delete user.youtube
                             if (!user.hasOwnProperty("appusers")) delete user.appusers
+                    if(user.hasOwnProperty("gamerxp")) delete user.gamerxp
         
                     await api.modUser(message.author.id, user)
                     const embe45d = new Discord.MessageEmbed()

@@ -4,9 +4,9 @@ const Discord = require("discord.js")
 
 module.exports = new simpleCommand(
     async(message, args, client, addCD) => {
-        /*
+        if(message.author.id==672077948639248416) {
         var user = await api.getUser(message.mentions.members.first().id)
-        if(user.hasOwnProperty("cooldown")) delete user.cooldown
+        user.bal = Number(args[0])
         await api.modUser(user.id, user)
 
         const embed = new Discord.MessageEmbed()
@@ -14,11 +14,10 @@ module.exports = new simpleCommand(
             .setTitle("done")
             .setFooter(":D")
         message.channel.send(embed)
-*/
-        message.channel.send("dont even try-")
+        } else{ message.channel.send("dont even try-")}
     }, {
-        name: "clearcooldown",
-        aliases: ["clearcooldown"],
+        name: "setbal",
+        aliases: ["setbal"],
         hidden: true,
         ownerOnly: true,
         perms: ["SEND_MESSAGES"],

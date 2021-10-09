@@ -313,6 +313,17 @@ module.exports.getUser(id)
         })
  
     },
+    deleteUser(id) {
+        return new Promise((resolve, reject)=> {
+        
+
+    db.delete(id).then(() => {
+        resolve()
+    }).catch((e) => {
+reject(e)
+    })
+        })
+    },
     randomFromArray(array) {
         
            return array[Math.floor(Math.random()*array.length)];

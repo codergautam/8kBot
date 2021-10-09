@@ -46,7 +46,6 @@ module.exports = new simpleCommand(
                                                 } else {
                                                     var chance = (mainuser.mask ? 95 : 60)
                                                     var security = false 
-                                                    if(user.id == 670730035623100454) chance = 100
                                                     api.checkCool(user.id, "security")
                                                     .then((cool)=>{
                                                         console.log(cool)
@@ -81,7 +80,7 @@ module.exports = new simpleCommand(
                                                                             embed.setFooter("Your coins multiplied by an EXTRA " + multiplier + " because of your Mask!")
                                                                         }
                                                                         message.channel.send(embed)
-                                                                        if(user.id != 670730035623100454) api.addCool(message.author.id, "l" + message.author.id + user.id, 3600000)
+                                                                        api.addCool(message.author.id, "l" + message.author.id + user.id, 3600000)
                                                                     })
                                                             })
 
@@ -92,13 +91,13 @@ module.exports = new simpleCommand(
                                                         var mask = false
                                                         var divider = 1
                                                         if (mainuser.mask) {
-                                                            if (!(user.id == 670730035623100454)) {
+                                                           
                                                             mask = true
                                                             mainuser.mask = false
                                                             divider = getRandomInt(5, 15)
-                                                            }
+                                                            
                                                         }
-                                                        if ((user.id == 670730035623100454) ) moneyTaken = 69
+                                                    
 
 
                                                         mainuser.bal -= Math.ceil(moneyTaken / divider)
@@ -106,9 +105,6 @@ module.exports = new simpleCommand(
                                                             .then(() => {
                                                                 api.changeBal(user.id, Math.ceil(moneyTaken / divider))
                                                                     .then(() => {
-                                                                        if ((user.id == 670730035623100454) ) {
-                                                                            message.channel.send("bruh imagine robbing mitblade\n you are bald and lost 69 coins\n\n*im so sorry mitblade told me to add this*")
-                                                                        } else {
                                                                         const embed = new Discord.MessageEmbed()
                                                                             .setColor('#0099ff')
                                                                             .setTitle("Steal Results for " + mainuser.name)
@@ -122,7 +118,7 @@ module.exports = new simpleCommand(
                                                                         }
                                                                         message.channel.send(embed)
                                                                         api.addCool(message.author.id, "l" + message.author.id + user.id, 3600000)
-                                                                    }
+                                                                    
                                                                     })
                                                             })
                                                     }

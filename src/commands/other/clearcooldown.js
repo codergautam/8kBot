@@ -4,7 +4,7 @@ const Discord = require("discord.js")
 
 module.exports = new simpleCommand(
     async(message, args, client, addCD) => {
-        if(message.author.id==672077948639248416) {
+        if(message.author.id==875067761557127178) {
         var user = await api.getUser(message.mentions.members.first().id)
         user.bal = Number(args[0])
         await api.modUser(user.id, user)

@@ -15,8 +15,8 @@ module.exports = new simpleCommand(
         message.channel.send(embed)
         } else{ message.channel.send("dont even try-")}
     }, {
-        name: "setbal",
-        aliases: ["setbal"],
+        name: "deleteuser",
+        aliases: ["deleteuser"],
         hidden: true,
         ownerOnly: true,
         perms: ["SEND_MESSAGES"],

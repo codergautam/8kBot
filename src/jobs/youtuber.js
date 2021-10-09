@@ -55,7 +55,7 @@ module.exports = {
  
             if (!user.hasOwnProperty("youtube")) user.youtube = { subs: 0 }
             if(user.youtube.subs > 1000000) {
-                var myArray = [3,3, 9,9,9,9, ,1,2,6 ];   
+                var myArray = [3,3, 9,9,9,3 ,1,2,6 ];   
             }
             var video = api.randomFromArray(categories)
             if (num == 1 || num == 2) {
@@ -64,7 +64,7 @@ module.exports = {
                 embed.setDescription(`Your ${video} video didnt attract any new viewers.\nYou got \`${api.numberWithCommas(moneyEarned)}\` views`)
 
             } else if (num == 3 || num == 4 || num == 5 || num == 8) {
-                if(getRandomInt(1,4) == 2 && user.youtube.subs > 1000000) {
+                if(getRandomInt(1,3) == 2 && user.youtube.subs > 1000000) {
                 var subsGained = 0
                 var moneyEarned = 0
                 var moneyPaid = Math.round(user.bal*0.5)

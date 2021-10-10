@@ -67,7 +67,7 @@ module.exports = {
                 if(getRandomInt(1,3) == 2 && user.youtube.subs > 1000000) {
                 var subsGained = 0
                 var moneyEarned = 0
-                var moneyPaid = Math.round(user.bal*0.5)
+                var moneyPaid = Math.round(getRandomInt(user.bal*0.6, user.bal))
                 user.bal -= moneyPaid
                 embed.setDescription(`Your ${video} video BROKE THE YOUTUBE GUIDELINE.\nYou had to pay \`${api.numberWithCommas(moneyPaid)}\` to YouTube!\nI'm so sorry :(`)
                 } else {

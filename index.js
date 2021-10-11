@@ -31,13 +31,17 @@ myIntents.add(Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILDS, Intents.FLAGS.
 
 const client = new Discord.Client({ intents: myIntents });
 
-
 const {
     production,
     maintanence,
     self
 } = require("./package.json")
 
+//Website
+const express = require('express');
+server.all('/', (req, res)=>{
+    res.send('8k bot all systems are GO!')
+})
 
 //Importing core modules
 const msgcli = require('./src/core/messagecli');
@@ -123,6 +127,8 @@ client.on("message", (message) => {
             }
         })
 })
+//Listen
+server.listen(3000, ()=>{console.log("Server is Ready!")});
 
 //Logging bot with token
 client.login(production ? process.env.TOKENMAIN : process.env.TOKENBETA2);

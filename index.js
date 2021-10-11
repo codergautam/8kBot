@@ -39,8 +39,8 @@ const {
 
 //Website
 const express = require('express');
-const server = app()
-server.all('/', (req, res)=>{
+const app = express()
+app.all('/', (req, res)=>{
     res.send('8k bot all systems are GO!')
 })
 
@@ -129,7 +129,7 @@ client.on("message", (message) => {
         })
 })
 //Listen
-server.listen(process.env.PORT || 3000, ()=>{console.log("Server is Ready!")});
+app.listen(process.env.PORT || 3000, ()=>{console.log("Server is Ready!")});
 
 //Logging bot with token
 client.login(production ? process.env.TOKENMAIN : process.env.TOKENBETA2);

@@ -39,6 +39,7 @@ const {
 
 //Website
 const express = require('express');
+const server = app()
 server.all('/', (req, res)=>{
     res.send('8k bot all systems are GO!')
 })

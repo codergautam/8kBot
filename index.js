@@ -41,7 +41,20 @@ const {
 const express = require('express');
 const app = express()
 app.all('/', (req, res)=>{
+    if(maintanence) {
+      res.status(503)
+      res.send('8k bot in maintenance!')
+    }else if(production) {
+      res.status(200)
     res.send('8k bot all systems are GO!')
+    } else {
+      res.status(500)
+      res.send('8k bot crashed!')
+    }
+  /*
+        res.status()
+      res.send('')
+  */
 })
 
 //Importing core modules
@@ -129,7 +142,7 @@ client.on("message", (message) => {
         })
 })
 //Listen
-//app.listen(process.env.PORT || 3000, ()=>{console.log("Server is Ready!")});
+app.listen(process.env.PORT || 3000, ()=>{console.log("Server is Ready!")});
 
 //Logging bot with token
 //client.login(production ? process.env.TOKENMAIN : process.env.TOKENBETA2);

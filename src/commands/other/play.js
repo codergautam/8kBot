@@ -86,7 +86,9 @@ function play(url, msg, callback) {
                     })
                     // Handle error without crashing the app.
             })
-            .catch(console.error);
+            .catch((e) => {
+            msg.channel.send("Failed to join the voice channel!\nThis is usually due to the bot not having permission to join.\n\nDetailed Error\n```"+e.toString()+"```")
+        });
     } catch (e) {
         msg.channel.send(err.toString())
     }

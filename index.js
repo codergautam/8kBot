@@ -145,4 +145,4 @@ client.on("message", (message) => {
 app.listen(process.env.PORT || 3000, ()=>{console.log("Server is Ready!")});
 
 //Logging bot with token
-//client.login(production ? process.env.TOKENMAIN : process.env.TOKENBETA2);
+client.login(production ? process.env.TOKENMAIN : process.env.TOKENBETA2);

@@ -26,8 +26,8 @@ module.exports = {
                         } else {
                             amount = Number(message23.content)
                             if (userItem.amount >= amount) {
-                                //var randm = Math.floor(Math.random() * 100) + 1
-                                randm = 1
+                                var randm = Math.floor(Math.random() * 100) + 1
+                                //randm = 1
                                 if (randm == 1) {
                                     var moneyEarned = 100000 * amount
                                     var typ1e = "MEGA MEGA JACKPOT!!!!!🤑🤑🤑🤑"

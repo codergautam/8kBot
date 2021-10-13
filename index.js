@@ -41,6 +41,8 @@ const {
 const express = require('express');
 const app = express()
 app.all('/', (req, res)=>{
+    var maintainence = false
+    var production = false
     if(maintanence) {
       res.status(503)
       res.send('8k bot in maintenance!')
@@ -145,4 +147,4 @@ client.on("message", (message) => {
 app.listen(process.env.PORT || 3000, ()=>{console.log("Server is Ready!")});
 
 //Logging bot with token
-client.login(production ? process.env.TOKENMAIN : process.env.TOKENBETA2);
+//client.login(production ? process.env.TOKENMAIN : process.env.TOKENBETA2);

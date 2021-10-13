@@ -11,6 +11,7 @@ module.exports = new simpleCommand(
     async(msg, args, client, addCD) => {
         try {
             if (!msg.member.voice.channel) return msg.channel.send("You're not in a voice channel?");
+            await addCD()
             const name = args.join(' ')
             msg.channel.send("🔎Searching for `" + name + "`")
             if (name == "") {
@@ -64,8 +65,8 @@ module.exports = new simpleCommand(
         name: "play",
         aliases: ["play", "song"],
         usage: "{prefix}{cmd} <song>",
-        cooldown: 0,
-        cooldownMessage: "",
+        cooldown: 10000,
+        cooldownMessage: "Please wait **{timeleft}** before playing another song\nThis is to prevent spamming and bot crashes.",
         perms: ["SEND_MESSAGES"],
         description: "Play a song in a voice channel!"
     }

@@ -1,5 +1,4 @@
 /*
-
                                                                                                        
                                                                                                        
      888888888      kkkkkkkk                BBBBBBBBBBBBBBBBB                             tttt          
@@ -31,13 +30,33 @@ myIntents.add(Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILDS, Intents.FLAGS.
 
 const client = new Discord.Client({ intents: myIntents });
 
-
 const {
     production,
     maintanence,
     self
 } = require("./package.json")
 
+//Website
+const express = require('express');
+const app = express()
+app.all('/', (req, res)=>{
+  //  var maintainence = false
+    //var production = false
+    if(maintanence) {
+      res.status(503)
+      res.send('8k bot in maintenance!')
+    }else if(production) {
+      res.status(200)
+    res.send('8k bot all systems are GO!')
+    } else {
+      res.status(500)
+      res.send('8k bot crashed!')
+    }
+  /*
+        res.status()
+      res.send('')
+  */
+})
 
 //Importing core modules
 const msgcli = require('./src/core/messagecli');
@@ -123,6 +142,8 @@ client.on("message", (message) => {
             }
         })
 })
+//Listen
+app.listen(process.env.PORT || 3000, ()=>{console.log("Server is Ready!")});
 
 //Logging bot with token
 client.login(production ? process.env.TOKENMAIN : process.env.TOKENBETA2);

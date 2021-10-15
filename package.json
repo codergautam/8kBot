@@ -5,7 +5,7 @@
     "maintanence": false,
     "self": false,
     "owners": [
-        875067761557127178
+        875067761557127200
     ],
     "description": "currency bot",
     "main": "index.js",
@@ -25,6 +25,7 @@
         "canvas": "^2.8.0",
         "connectfour-discord": "^0.1.17",
         "discord.js": "^12.5.3",
+        "discord.js-akinator": "^3.2.1",
         "dotenv": "^8.6.0",
         "express": "^4.17.1",
         "ffmpeg": "0.0.4",
@@ -41,8 +42,7 @@
         "request": "^2.88.2",
         "top.gg": "^2.3.2",
         "translation-google": "^0.2.1",
-        "yt-search": "^2.10.1",
-        "ytdl-core": "^4.9.1",
-        "discord.js-akinator": "^3.2.1"
+        "yt-search": "^2.10.2",
+        "ytdl-core": "^4.9.1"
     }
 }

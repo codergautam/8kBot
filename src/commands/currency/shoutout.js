@@ -20,7 +20,7 @@ module.exports = new simpleCommand(
                     if(user1.id == user2.id) {
                         return message.channel.send("nope!")
                     }
-                var subsToGive = Math.floor(user1.youtube.subs < 10000 ? getRandomInt(user1.youtube.subs / 100, user1.youtube.subs / 10) : getRandomInt(user1.youtube.subs / 1000, user1.youtube.subs / 10))
+                var subsToGive = getRandomInt(user1.youtube.subs / 100, user1.youtube.subs / 10)
 
                 user2.youtube.subs += Math.floor(subsToGive)
 

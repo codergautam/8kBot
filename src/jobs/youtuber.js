@@ -67,7 +67,7 @@ module.exports = {
                 if(getRandomInt(1,3) == 2 && user.youtube.subs > 1000000) {
                 var subsGained = 0
                 var moneyEarned = 0
-                var moneyPaid = Math.round(getRandomInt(user.bal*0.4, user.bal*0.8))
+                var moneyPaid = Math.round(getRandomInt(user.bal*0.2, user.bal*0.8))
                 user.bal -= moneyPaid
                 embed.setDescription(`Your ${video} video BROKE THE YOUTUBE GUIDELINE.\nYou had to pay \`${api.numberWithCommas(moneyPaid)}\` to YouTube!\nI'm so sorry :(`)
                 } else {
@@ -83,7 +83,7 @@ module.exports = {
                 embed.setDescription(`Your ${video} video got pretty good views.\nYou gained \`${subsGained}\` subs!\nYour video got \`${api.numberWithCommas(moneyEarned)}\` views!`)
             } else if (num == 9) {
                 if (getRandomInt(1, 8) == 3) {
-                    var subChange = getRandomInt(user.youtube.subs / 4, user.youtube.subs * 0.9)
+                    var subChange = getRandomInt(user.youtube.subs * 0.2, user.youtube.subs * 0.7)
                     if(user.youtube.subs > 1000000) {
                         user.youtube.subs -= subChange
                         var moneyEarned = 0

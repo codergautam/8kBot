@@ -42,6 +42,7 @@
     "request": "^2.88.2",
     "top.gg": "^2.3.2",
     "translation-google": "^0.2.1",
+    "yahoo-stock-prices": "^1.1.0",
     "yt-search": "^2.10.2",
     "ytdl-core": "^4.9.1"
   },

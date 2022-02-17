@@ -21,6 +21,7 @@
      Rewrite v2 - By CoderGautamYT
 */
 //Initializing everything
+console.log("Loading 8k Bot..")
 const Discord = require('discord.js');
 const process = require("process");
 const { Intents } = require('discord.js');

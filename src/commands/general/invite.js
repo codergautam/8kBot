@@ -7,7 +7,7 @@ module.exports = new simpleCommand(
             .setColor('#0099ff')
             .setTitle("8k Bot Invite links!")
             .setDescription("Use this link to add 8k Bot to your own server!")
-            .addField('Link', '[https://discord.com/api/oauth2/authorize?client_id=783346270290968606&permissions=8&scope=bot](https://discord.com/api/oauth2/authorize?client_id=783346270290968606&permissions=8&scope=bot)', true)
+            .addField('Link', '[Click Here!](https://discord.com/oauth2/authorize?client_id=783346270290968606&permissions=321600&scope=bot)', true)
         message.channel.send(embed)
 
     }, {

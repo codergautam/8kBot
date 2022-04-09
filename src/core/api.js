@@ -31,13 +31,7 @@ module.exports = {
         log(msg, client) {
             return new Promise((resolve, reject) => {
                 if (production) {
-                    client.channels.cache.get(production ? "784448037350670376" : "784447943096401921").send(msg)
-                        .then(() => {
-                            resolve()
-                        })
-                        .catch(() => {
-                            resolve()
-                        })
+                    
                 } else {
                     resolve()
                 }

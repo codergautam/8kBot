@@ -29,7 +29,7 @@
     "dotenv": "^8.6.0",
     "express": "^4.17.1",
     "ffmpeg": "0.0.4",
-    "ffmpeg-static": "^4.4.0",
+    "ffmpeg-static": "^5.0.0",
     "gifencoder": "^2.0.1",
     "google-search-autocomplete": "^1.0.9",
     "got": "^11.8.2",
@@ -44,7 +44,7 @@
     "translation-google": "^0.2.1",
     "yahoo-stock-prices": "^1.1.0",
     "yt-search": "^2.10.2",
-    "ytdl-core": "^4.9.1"
+    "ytdl-core": "^4.11.0"
   },
   "devDependencies": {
     "node": "^16.13.0"

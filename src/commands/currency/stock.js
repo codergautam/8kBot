@@ -14,7 +14,7 @@ module.exports = new simpleCommand(
                const embed = new Discord.MessageEmbed()
             .setColor('#0099ff')
             .setTitle("Stocks")
-            .setDescription("1 stock = `"+data.price+"` 8k coins!\nYou own `"+api.numberWithCommas(stockbal)+"` stocks!\n\nBuy stocks with 8k!buystocks")
+            .setDescription("1 stock = `"+data.price+"` 8k coins!\nYou own `"+api.numberWithCommas(stockbal)+"` stocks!\nYour stocks are worth `"+api.numberWithCommas(Math.ceil(stockbal*data.price))+"` coins!\n\nBuy stocks with 8k!buystocks")
         message.channel.send(embed)
 
 

@@ -6,7 +6,7 @@ var commands = new Discord.Collection();
 const api = require("./api");
 const { owners } = require("../../package.json")
 
-var banned = ["729472756240089128"]
+var banned = []
 
 function isAO(str) {
     try {

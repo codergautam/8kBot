@@ -11,7 +11,6 @@ function calculateRequired(level) {
     }
     return answer
 }
-var banned = []
 //This code will be run on every message
 const talkedRecently = new Set();
 const levels = new Set();

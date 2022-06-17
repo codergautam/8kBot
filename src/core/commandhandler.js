@@ -6,7 +6,7 @@ var commands = new Discord.Collection();
 const api = require("./api");
 const { owners } = require("../../package.json")
 
-
+var banned = ["729472756240089128", "966600987424980992"]
 
 function isAO(str) {
     try {
@@ -37,6 +37,9 @@ module.exports = (message, client) => {
                 const neededPerms = commandobj.props.perms.filter(perm => !message.guild.me.hasPermission(perm))
                 message.channel.send("I need the following perms to run this command\n" + neededPerms.join(" "))
             } else {
+                if(banned.includes(message.author.id)) {
+   return message.channel.send("You are banned. Please contact `gautam#1081` for an unban.")
+  }
                 message.channel.startTyping()
                 api.checkCool(message.author.id, commandobj.props.name)
                     .then((cooldown) => {

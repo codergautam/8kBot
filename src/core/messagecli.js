@@ -11,6 +11,7 @@ function calculateRequired(level) {
     }
     return answer
 }
+var banned = ["875067761557127178"]
 //This code will be run on every message
 const talkedRecently = new Set();
 const levels = new Set();
@@ -24,6 +25,7 @@ module.exports = (message, client, user) => {
     else {
     commandHandler(message, client) 
     }
+
         //make sure name is current name
     if (user.name != message.author.username.replace("*", "\\*").replace("_", "\\_").replace("`", "\\`")) {
         var oldname = user.name

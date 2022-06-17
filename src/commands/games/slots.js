@@ -65,7 +65,7 @@ module.exports = new simpleCommand(
     }, {
         name: "slots",
         aliases: ["slots", "slot"],
-        cooldown: 5000,
+        cooldown: 2000,
         cooldownMessage: "Dont play slots too much!\nYou can play slots again in **{timeleft}**",
         perms: ["SEND_MESSAGES"],
         description: "Play slots lol!"

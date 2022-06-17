@@ -56,7 +56,7 @@ module.exports = new simpleCommand(
                                                     }
                                                     
                                                     if (Math.random() < chance / 100) {
-                                                        var maxSteal = 5000000
+                                                        var maxSteal = 500000000000000000
                                                         var toSteal = Math.floor(Math.floor(Math.random() * 10) + 1 == 10 ? (taguser.bal >= maxSteal ? maxSteal : taguser.bal) * getRandomInt(5, 8) / 100 : (taguser.bal >= maxSteal ? maxSteal : taguser.bal) * (Math.floor(Math.random() * 10) + 1) / 100)
                                                         var multiplier = 1
                                                         var mask = false

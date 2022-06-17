@@ -22,7 +22,7 @@ module.exports = new simpleCommand(
                     }
                 var subsToGive = Math.ceil(getRandomInt(user2.youtube.subs / 100, user2.youtube.subs / 10))
               if(user2.youtube.subs > 100000000) subsToGive *= 10;
-              if(user2.youtube.subs < 100000) subsToGive = 0;
+              if(user2.youtube.subs < 100) subsToGive = 0;
 
               var exposereasons = ["autoclicking in swordbattle", "hacking 8k bot", "lying", "faking their videos", "being bad at mc", "breaking youtube tos", "wasting money", "absolutely nothing"]
 

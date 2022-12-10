@@ -31,6 +31,10 @@ myIntents.add(Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILDS, Intents.FLAGS.
 
 const client = new Discord.Client({ intents: myIntents });
 
+const SlashCommandManager = require('./SlashCommandManager');
+
+client.SlashCommandManager = new SlashCommandManager(client);
+
 const {
     production,
     maintanence,
@@ -105,10 +109,39 @@ getDirectories("./src/commands").forEach(category => {
     })
 })
 
+client.ws.on('INTERACTION_CREATE', async interaction => {
+    switch (interaction.data.name) {
+        case "ping":
+            client.SlashCommandManager.respond(interaction, {
+                type: 4,
+                data: {
+                    content: 'Pong! Run 8k!help to get started.',
+                }
+            });
+            break;
+
+        default:
+            client.SlashCommandManager.respond(interaction, {
+                type: 3,
+                data: {
+                    content: `No handler found for \`/${interaction.data.name}\``,
+                    flags: 1 << 6
+                }
+            });
+            break;
+    };
+});
+
+
 //Ready event
-client.on("ready", () => {
+client.on("ready", async () => {
     console.log("8k bot is ready!")
 
+      const commandExists = await client.SlashCommandManager.globalCommandExists('ping');
+    if (!commandExists) client.SlashCommandManager.createGlobalCommand({
+        name: 'ping',
+        description: 'pong'
+    }).catch(console.error);
     clientHandler(client)
     processHandler(client)
 })

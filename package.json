@@ -19,7 +19,7 @@
   "author": "coder gautam yt",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/opus": "^0.3.3",
+    "@discordjs/opus": "^0.9.0",
     "awesome-dev-jokes": "^1.0.3",
     "canvacord": "^5.2.3",
     "canvas": "^2.8.0",
@@ -29,7 +29,7 @@
     "dotenv": "^8.6.0",
     "express": "^4.17.1",
     "ffmpeg": "0.0.4",
-    "ffmpeg-static": "^5.0.0",
+    "ffmpeg-static": "^5.1.0",
     "gifencoder": "^2.0.1",
     "google-search-autocomplete": "^1.0.9",
     "got": "^11.8.2",
@@ -44,7 +44,7 @@
     "translation-google": "^0.2.1",
     "yahoo-stock-prices": "^1.1.0",
     "yt-search": "^2.10.2",
-    "ytdl-core": "^4.11.0"
+    "ytdl-core": "^4.11.2"
   },
   "devDependencies": {
     "node": "^16.13.0"

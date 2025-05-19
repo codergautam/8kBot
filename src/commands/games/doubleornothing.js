@@ -31,7 +31,7 @@ module.exports = new simpleCommand(
     }, {
         name: "doubleornothing",
         aliases: ["don"],
-        cooldown: 1800000,
+        cooldown: 60000,
         cooldownMessage: "You just played Double Or Nothing!\nYou can play again in **{timeleft}**!",
         perms: ["SEND_MESSAGES"],
         usage: "{prefix}{cmd} [moneyToDouble]",

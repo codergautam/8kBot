@@ -62,7 +62,7 @@ module.exports = new simpleCommand(
                 if (pVal > 21) {
                     result = `💥 You busted with ${pVal}! You lost ${bet} coins.`
                 } else if (dVal > 21 || pVal > dVal) {
-                    winnings = bet * (isBlackjack(player) ? 4 : 3)
+                    winnings = bet * (isBlackjack(player) ? 3 : 2)
                     await api.changeBal(message.author.id, winnings)
                     result = `🎉 You win with ${pVal} against dealer's ${dVal}! You earned ${winnings} coins.`
                 } else if (pVal === dVal) {
@@ -87,7 +87,7 @@ module.exports = new simpleCommand(
         cooldownMessage: "You just played Blackjack!\nTry again in **{timeleft}**!",
         perms: ["SEND_MESSAGES"],
         usage: "{prefix}{cmd} [bet]",
-        description: "Play a fun game of blackjack against the dealer! Triple your coins if you win, quadruple if you get a blackjack!"
+        description: "Play a fun game of blackjack against the dealer! Double your coins if you win, Triple if you get a blackjack!"
     }
 )
 

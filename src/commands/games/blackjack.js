@@ -83,7 +83,7 @@ module.exports = new simpleCommand(
     }, {
         name: "blackjack",
         aliases: ["bj"],
-        cooldown: 30000,
+        cooldown: 0,
         cooldownMessage: "You just played Blackjack!\nTry again in **{timeleft}**!",
         perms: ["SEND_MESSAGES"],
         usage: "{prefix}{cmd} [bet]",

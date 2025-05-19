@@ -8,7 +8,7 @@ module.exports = new simpleCommand(
 
         const bet = parseInt(args[0])
         if (isNaN(bet) || bet < 1 || bet > user.bal) {
-            return message.channel.send(`Invalid bet. Command usage: \`8k!bet [amount]\` Include an amount between 1 and ${user.bal}`);
+            return message.channel.send(`Invalid bet. Command usage: \`8k!bj [amount]\` Include an amount between 1 and ${user.bal}`);
         }
 
         user.bal -= bet

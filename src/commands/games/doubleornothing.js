@@ -149,7 +149,7 @@ function ask(user, message) {
         api.modUser(message.author.id, user)
             .then(() => {
 
-                api.addCool(message.author.id, "doubleornothing", 1800000)
+                api.addCool(message.author.id, "doubleornothing", 60000)
                     .then(() => {
                         doubleornothing(money, 0, message)
                     })

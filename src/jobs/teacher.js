@@ -40,7 +40,7 @@ module.exports = {
             var moneyEarned = getRandomInt(1500, 3000)
             embed.setDescription("Your students started sleeping in class\nYou got `" + moneyEarned + "` coins!")
         } else if (num == 2) {
-            var moneyEarned = 2000 + getRandomInt(1200, 3000)
+            var moneyEarned = 2000 + getRandomInt(12000, 30000)
             var dd = moneyEarned - 2000
             embed.setDescription("YOUR STUDENTS LOVED YOUR LESSON!!! \n You got `2000` coins and an extra `" + dd + "` coins from a student!")
         } else if (num == 3) {

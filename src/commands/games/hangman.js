@@ -64,7 +64,7 @@ function createHangmanDisplay(incorrectGuesses) {
 }
 
 function displayWord(word, guessedLetters) {
-    return word.split('').map(letter => guessedLetters.includes(letter) ? letter : '_').join(' ')
+    return word.split('').map(letter => guessedLetters.includes(letter) ? letter : '\\_').join(' ')
 }
 
 function startHangman(message) {

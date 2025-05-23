@@ -193,30 +193,6 @@ function startHangman(message) {
                     }
                 } else {
                     msg.react('❌')
-                    incorrectCount++
-                    
-                    if (incorrectCount >= maxIncorrect) {
-                        gameActive = false
-                        collector.stop()
-                        activeGames.delete(channelId)
-                        
-                        const loseEmbed = new Discord.MessageEmbed()
-                            .setTitle("💀 Game Over!")
-                            .setDescription(`${createHangmanDisplay(incorrectCount)}\n\n**Word:** ${word}\n\nThe word was **${word}**! Better luck next time!`)
-                            .setColor('#ff0000')
-                        
-                        message.channel.send(loseEmbed)
-                        return
-                    }
-
-                    // Update game status after wrong word guess
-                    const gameEmbed = new Discord.MessageEmbed()
-                        .setTitle("🎯 Hangman Game")
-                        .setDescription(`${createHangmanDisplay(incorrectCount)}\n\n**Word:** ${displayWord(word, guessedLetters)}\n\n**Incorrect letters:** ${incorrectGuesses.join(', ') || 'None'}\n**Remaining guesses:** ${maxIncorrect - incorrectCount}\n\n❌ Wrong word guess!`)
-                        .setColor('#0099ff')
-                        .setFooter("Keep guessing! Type a letter or the full word")
-
-                    message.channel.send(gameEmbed)
                 }
             }
         })

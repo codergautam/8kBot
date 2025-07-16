@@ -57,7 +57,12 @@ module.exports = new simpleCommand(
                 }
             }
 
-            var data = await fetch.get("https://opentdb.com/api.php?amount=1&type=boolean")
+            const categories = [9, 17, 18, 19, 30];
+            // Pick a random category from the list
+            const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+            
+            // Updated API call with random category
+            var data = await fetch.get(`https://opentdb.com/api.php?amount=1&type=boolean&category=${randomCategory}`)
             var body = data.body.results[0]
 
 
@@ -100,7 +105,7 @@ module.exports = new simpleCommand(
     }, {
         name: "trivia",
         aliases: ["trivia", "quiz"],
-        cooldown: 20000,
+        cooldown: 2000,
         cooldownMessage: "You just played trivia!\nYou can play again in **{timeleft}**",
         description: "Play a game of true or false trivia! You can gain money if you win!",
         perms: ["SEND_MESSAGES"]
@@ -122,7 +127,7 @@ const wrongmsg = async(message, body, user, addCD) => {
 
 }
 const correctmsg = async(message, body, user, addCD) => {
-    var moneygain = (body.difficulty.toLowerCase() == "easy" ? 500 : (body.difficulty.toLowerCase() == "medium" ? 1000 : 2000)) + (user.trivia.streak * 100)
+    var moneygain = ((body.difficulty.toLowerCase() == "easy" ? 500 : (body.difficulty.toLowerCase() == "medium" ? 1000 : 2000)))*(Math.max(1,user.trivia.streak*20))
     user.bal += moneygain
     user.trivia.streak += 1
     if (user.trivia.streak > user.trivia.highstreak) user.trivia.highstreak = user.trivia.streak;
@@ -136,7 +141,7 @@ const correctmsg = async(message, body, user, addCD) => {
         .setDescription(`You got the answer right! Nice job!!\n\nYou gained \`${moneygain}\` coins and your new streak is ${user.trivia.streak}!`)
         .setFooter(`Type 8k!trivia stats to see your trivia stats!`)
     message.channel.send(embed)
-    api.addCool(message.author.id, "trivia", 20000)
+    api.addCool(message.author.id, "trivia", 2000)
 
 
 }
